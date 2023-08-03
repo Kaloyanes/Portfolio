@@ -1,0 +1,145 @@
+html {
+  background-color: #151024;
+}
+
+.layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-inline: 50px;
+}
+
+.title {
+  text-align: center;
+  color: white;
+  width: 100vw;
+  h2 {
+    font-size: 35px;
+    font-weight: 700;
+    transition: 300ms cubic-bezier(0.19, 1, 0.22, 1);
+    width: 100vw;
+  }
+}
+
+.title h2:hover {
+  font-size: 40px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-inline: 20rem;
+  margin-block: 0rem;
+}
+
+.text {
+  color: white;
+  margin: 15px;
+  border-radius: 20px;
+  transition: 300ms cubic-bezier(0.19, 1, 0.22, 1);
+
+  h3 {
+    font-weight: 300;
+    font-size: 150%;
+  }
+  font-size-adjust: 20px;
+  word-break: keep-all;
+  text-align: start;
+  width: 30vw;
+}
+
+.pfp {
+  img {
+    width: 16vw;
+    border-radius: 10px;
+    margin: 50px;
+    filter: grayscale(1);
+    transition: 600ms cubic-bezier(0.16, 1.08, 0, 1.02);
+  }
+
+  img:hover {
+    filter: none;
+    border-radius: 20px;
+    scale: 1.1;
+  }
+}
+
+button {
+  width: 10vw;
+  height: 5vh;
+}
+
+.headers {
+  width: 60vw;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 1rem;
+  scale: 0.85;
+  border-radius: 50px;
+  background-color: #352a55;
+
+  button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 0px;
+    border-bottom: solid white;
+    border-width: 0;
+    background-clip: content-box;
+    transition: 300ms ease-in-out;
+    font-size: 20px;
+    margin: 2rem;
+    text-align: center;
+    // padding: 50px;
+  }
+
+  button:hover {
+    scale: 1.05;
+  }
+}
+
+.header[stuck] {
+  background-color: #352a55;
+  box-shadow: 0 0 16px black;
+}
+
+@keyframes activeAnimation {
+  from {
+    color: white;
+    border-color: white;
+    border-width: 0px;
+  }
+  to {
+    color: #9a89b4;
+    border-color: #9a89b4;
+    border-width: 5px;
+  }
+}
+
+@keyframes exitAnimation {
+  from {
+    color: #9a89b4;
+    border-color: #9a89b4;
+    border-width: 5px;
+  }
+  to {
+    color: white;
+    border-color: white;
+    border-width: 0px;
+  }
+}
+
+.inactive {
+  animation: exitAnimation 300ms forwards ease-in-out;
+}
+
+.active {
+  border: none;
+  border-radius: 0px;
+  animation: activeAnimation 200ms forwards ease-in-out;
+}
