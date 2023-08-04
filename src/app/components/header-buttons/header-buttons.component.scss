@@ -1,0 +1,71 @@
+@import "../../../styles.scss";
+
+.headers {
+  width: 80vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  scale: 0.85;
+  border-radius: 50px;
+  background-color: $color-primary-container-dark;
+}
+
+.btn {
+  width: 20%;
+  height: 5vh;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 0px;
+  border-bottom: solid white;
+  border-width: 0;
+  background-clip: content-box;
+  transition: 300ms ease-out;
+  font-size: 20px;
+  margin: 2rem;
+  text-align: center;
+  // padding: 50px;
+}
+
+.btn:hover {
+  scale: 1.15;
+}
+
+.btn:active {
+  scale: 1.1;
+  opacity: 0.4;
+}
+
+@keyframes activeAnimation {
+  from {
+    color: white;
+    border-color: white;
+    border-width: 0px;
+  }
+  to {
+    color: white;
+    border-color: white;
+    border-width: 5px;
+  }
+}
+
+@keyframes exitAnimation {
+  from {
+    color: white;
+    border-color: white;
+    border-width: 5px;
+  }
+  to {
+    color: white;
+    border-color: white;
+    border-width: 0px;
+  }
+}
+
+.inactive {
+  animation: exitAnimation 300ms forwards ease-in-out;
+}
+
+.active {
+  animation: activeAnimation 200ms forwards ease-in-out;
+}

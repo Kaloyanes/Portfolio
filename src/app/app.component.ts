@@ -27,15 +27,7 @@ export class AppComponent {
     observer.observe(ds);
   }
 
-  makeActive(event: Event) {
-    var buttons = document.getElementsByClassName("btn");
-
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].classList.replace("active", "inactive");
-    }
 
 
 
-    (event.target as Element).classList.add("active");
-  }
 }
