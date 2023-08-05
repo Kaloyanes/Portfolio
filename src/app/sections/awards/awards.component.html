@@ -1,12 +1,88 @@
-<h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur, fuga eligendi odio explicabo excepturi laborum
-  rerum beatae fugit ipsam cumque earum minus officia illo ea enim! Dolores nostrum officiis ratione!
-  Facilis ut reiciendis, commodi itaque unde accusamus possimus dignissimos expedita necessitatibus sit impedit amet
-  doloribus numquam, iusto magni ex. Repellendus qui vero facere, perspiciatis quod excepturi perferendis sint
-  cupiditate doloremque?
-  Numquam similique accusantium unde adipisci nostrum ad, expedita vitae tempore dolore, voluptatum iure magni aliquid
-  asperiores id? Odio maiores, porro praesentium sint vero expedita, reprehenderit fugiat quaerat dignissimos quam nisi?
-  Nemo similique exercitationem nesciunt numquam molestiae mollitia eum, impedit necessitatibus velit saepe harum
-  commodi consequatur voluptatibus aut voluptates eaque id et ullam nihil, iste culpa asperiores! Repellendus soluta
-  atque totam?
-  Et totam fuga laborum expedita deleniti excepturi doloribus modi impedit nostrum enim? Nostrum eum architecto,
-  quisquam delectus aspernatur ipsa ab sint maiores, in reiciendis quaerat, harum quod? Dignissimos, beatae iusto!</h1>
+<h1 class="title-text">My awards</h1>
+
+<div class="awards">
+  <div class="" *ngFor="let item of awards; let i=index">
+
+    <div class="award " [ngClass]="{'reversed': (i + 1) % 2 == 0}">
+      <div class="info" [ngClass]="{'solo': item.imageUrl}">
+        <div class="location-time">
+          <h4 id="location">{{item.location}}</h4>
+          <h4>{{item.date}}</h4>
+        </div>
+        <div class="txt-layout" [ngClass]="{'reversed': (i ) % 2 == 0}">
+          <h1>{{item.title}}</h1>
+          <div class="divider">
+
+          </div>
+          <p>{{item.description}}</p>
+        </div>
+      </div>
+      <img *ngIf="item.imageUrl" src="{{item.imageUrl}}" clickable>
+    </div>
+  </div>
+  <div class="award">
+    <div class="info">
+      <div class="location-time">
+        <h4 id="location">Burgas and Shumen</h4>
+        <h4>06/2021</h4>
+      </div>
+      <div class="txt-layout">
+        <div>
+
+          <p>
+            Secured 7th place at the National Competition of IT, comprising regional
+            and national
+
+            04/2023
+
+            phases.
+          </p>
+          <ul>
+            <li>Regional Phase: Attained a score of 93 out of 100.</li>
+            <li>National Phase:
+              <ul>
+                <li>Test: Earned a score of 89 out of 100 (3rd place out of 30)</li>
+                <li>Presentation: Achieved a score of 77 out of 100</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <h1>7th place at National Competition of IT</h1>
+        </div>
+
+      </div>
+    </div>
+    <img src="../../../assets/noit.png" clickable>
+  </div>
+  <div class="award reversed">
+    <div class="info">
+      <div class="location-time">
+        <h4 id="location">Online</h4>
+        <h4>02/2023</h4>
+      </div>
+      <div class="txt-layout reversed">
+
+        <p>During SoftUniada 2023, I achieved 2nd place in the junior project category
+          with my outstanding project EducateIO. I demonstrated innovative skills
+          and surpassed numerous competitors, earning recognition for our
+          exceptional work.</p>
+        <div class="divider"></div>
+        <h1>2nd place at SoftUniada 2023</h1>
+      </div>
+    </div>
+    <iframe height="315" src="https://www.youtube.com/embed/5OdUHyuf-7A?start=834" title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+  </div>
+
+  <div class="award solo">
+    <div class="info">
+      <p>Sofia</p>
+      <h1>1st place at ROBO DAYS'23, competition hosted by Technical University Sofia</h1>
+      <h4>04/2023</h4>
+    </div>
+
+  </div>
+</div>
