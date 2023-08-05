@@ -7,7 +7,7 @@ import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 })
 export class HeaderButtonsComponent {
 
-  @HostListener('wheel')
+  // @HostListener('window:scroll')
   isScrolledIntoView() {
     var sections = document.querySelectorAll(".section");
 
@@ -45,8 +45,11 @@ export class HeaderButtonsComponent {
     var selected = event.target as Element;
     if (selected.textContent == null) return;
 
-    document.getElementById(selected.textContent.replace(" ", "-").toLowerCase().trim())?.scrollIntoView({
-      behavior: 'smooth', block: 'center',
+    var target = document.getElementById(selected.textContent.replace(" ", "-").toLowerCase().trim());
+
+    window.scrollTo({
+      behavior: 'smooth',
+      top: target!.offsetTop - 70
     })
 
     selected.classList.add("active");
