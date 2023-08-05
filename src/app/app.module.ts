@@ -13,6 +13,9 @@ import { ProjectsComponent } from './sections/projects/projects.component';
 import { ContactMeComponent } from './sections/contact-me/contact-me.component';
 import { ScrollToTopFabComponent } from './components/scroll-to-top-fab/scroll-to-top-fab.component';
 import { SkillComponent } from './components/skill/skill.component';
+import { ProjectPageComponent } from './pages/project-page/project-page.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { SkillComponent } from './components/skill/skill.component';
     ProjectsComponent,
     ContactMeComponent,
     ScrollToTopFabComponent,
-    SkillComponent
+    SkillComponent,
+    ProjectPageComponent,
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
