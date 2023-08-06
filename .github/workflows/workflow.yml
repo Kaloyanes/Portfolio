@@ -9,24 +9,37 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.12.1]
-
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3.5.3
 
-      - name: Install
-        working-directory: ./
+      - name: Set up Node.js
+        uses: actions/setup-node@v3.7.0
+        with:
+          node-version: 18
+
+      - name: Install dependencies
         run: npm install
 
-      - name: Build
-        working-directory: ./
-        run: npm run build
+      - name: Build Angular application
+        run: npm run build -- --prod
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.4.3
-        with:
-          branch: gh-pages
-          folder: ./dist/portfolio
+      - name: Create and switch to the gh-pages branch
+        run: |
+          git checkout -b gh-pages
+          git rm -rf .
+
+      - name: Copy dist folder contents to the gh-pages branch
+        run: |
+          cp -r dist/* .
+
+      - name: Commit and push changes to gh-pages
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -m "Deploy to GitHub Pages"
+          git push origin gh-pages
+
+      - name: Switch back to the master branch
+        run: git checkout master
