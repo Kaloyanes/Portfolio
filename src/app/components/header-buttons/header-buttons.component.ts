@@ -64,7 +64,6 @@ export class HeaderButtonsComponent {
   }
 
   makeActive(event: Event) {
-    this.makeAllButtonsInactive();
 
     var selected = event.target as Element;
     if (selected.textContent == null) return;
@@ -76,8 +75,6 @@ export class HeaderButtonsComponent {
       top: target!.offsetTop - 70
     })
 
-    selected.classList.add("active");
-    console.log(selected.textContent);
 
 
 
