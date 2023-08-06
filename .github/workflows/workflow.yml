@@ -43,7 +43,8 @@ jobs:
 
       - name: Commit and push changes to gh-pages
         run: |
-          git add .
+          cd dist/
+          git add -A
           git commit -m "Deploy to GitHub Pages"
           git push origin gh-pages
 
