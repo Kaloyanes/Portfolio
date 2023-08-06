@@ -1,0 +1,17 @@
+<mat-expansion-panel [hideToggle]="true" disabled #tile (mouseenter)="tile.open()" (mouseleave)="tile.close()"
+  (click)="print()">
+  <mat-expansion-panel-header collapsedHeight="150px">
+    <div class="panel-title">
+
+      <img src="{{this.project!.imageUrl}}" *ngIf="this.project!.imageUrl">
+      <h1>{{this.project!.name}}</h1>
+    </div>
+  </mat-expansion-panel-header>
+  <div class="content">
+    <h3>{{this.project!.startToEnd}}</h3>
+    <p>
+      {{this.project!.description}}
+    </p>
+    <button (click)="details()">Details</button>
+  </div>
+</mat-expansion-panel>
