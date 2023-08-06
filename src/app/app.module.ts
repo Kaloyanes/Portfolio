@@ -1,3 +1,4 @@
+import { TuiRootModule, TuiDialogModule, TuiAlertModule } from "@taiga-ui/core";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -17,6 +18,12 @@ import { ProjectPageComponent } from './pages/project-page/project-page.componen
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ProjectCardComponent } from './components/project-card/project-card.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,11 +39,15 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     SkillComponent,
     ProjectPageComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ProjectCardComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
