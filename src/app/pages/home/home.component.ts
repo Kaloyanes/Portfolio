@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -6,14 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  title = 'Portfolio';
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    setTimeout(() => {
-      this.makeAllImagesClickable();
-    }, 150);
-  }
+  title = 'Portfolio 2';
+  constructor(private titleService: Title) { }
+
+
+
 
 
   makeAllImagesClickable() {
