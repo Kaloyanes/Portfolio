@@ -35,7 +35,7 @@ export class AwardsComponent {
       description: "I was honored with the prestigious 'Vyarnata Posoka' diploma, awarded for my exceptional performance in the National Olympiad in Information Technology, where I secured an impressive 7th place in the 8-10th class age category.",
       date: "06/2021",
       location: "Burgas",
-      imageUrl: "http://pgee-bourgas.com//sites/pgee-bourgas.com/files/1686162705__1.jpg",
+      imageUrl: "../../../assets/vyarnataposoka.jpg",
     },
 
   ]
