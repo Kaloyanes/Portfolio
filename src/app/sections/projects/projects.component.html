@@ -1,14 +1,9 @@
-<h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi voluptatem laudantium possimus fugit assumenda vero
-  blanditiis perferendis minus quidem explicabo reprehenderit exercitationem asperiores, maiores similique quae
-  laboriosam cumque, quos aliquam.
-  Quisquam expedita labore enim porro inventore nisi minus nulla tenetur, autem magnam vel hic quos, rerum dolores
-  dolore quasi repellendus quibusdam, magni aut repudiandae? Ducimus quaerat neque inventore soluta ullam.
-  Necessitatibus nulla quo architecto ipsa repellendus, illum sint. Explicabo, voluptatem. Error odio illo assumenda
-  temporibus libero labore alias ex, maxime voluptas quibusdam cum repudiandae, neque similique expedita quasi. Tempore,
-  cupiditate?
-  Blanditiis repellat sit eum obcaecati, adipisci nam libero tempora, ducimus id repudiandae labore mollitia earum
-  possimus explicabo corporis commodi beatae quos, molestiae sint error saepe placeat dolores laborum! Architecto,
-  quidem.
-  Debitis provident nam dignissimos, ex rem aliquam excepturi dolorum placeat commodi aut cupiditate quam ad distinctio,
-  vel iure, reiciendis voluptates. Explicabo quo magnam necessitatibus pariatur ipsum voluptate debitis dignissimos
-  aliquam!</h1>
+<h1 class="title-text">Projects</h1>
+
+<div class="layout">
+
+  <div class="item" *ngFor="let project of projects; let i=index">
+
+    <app-project-card [project]="project" />
+  </div>
+</div>

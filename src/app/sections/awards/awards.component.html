@@ -5,7 +5,7 @@
 
     <div class="award " [ngClass]="{'reversed': (i + 1) % 2 == 0}">
       <div class="info" [ngClass]="{'solo': item.imageUrl}">
-        <div class="location-time">
+        <div class="location-time" [ngClass]="{'location-reversed': (i) % 2 ==0}">
           <h4 id="location">{{item.location}}</h4>
           <h4>{{item.date}}</h4>
         </div>
@@ -22,7 +22,7 @@
   </div>
   <div class="award">
     <div class="info">
-      <div class="location-time">
+      <div class="location-time location-reversed">
         <h4 id="location">Burgas and Shumen</h4>
         <h4>06/2021</h4>
       </div>
@@ -75,14 +75,5 @@
     <iframe height="315" src="https://www.youtube.com/embed/5OdUHyuf-7A?start=834" title="YouTube video player"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-  </div>
-
-  <div class="award solo">
-    <div class="info">
-      <p>Sofia</p>
-      <h1>1st place at ROBO DAYS'23, competition hosted by Technical University Sofia</h1>
-      <h4>04/2023</h4>
-    </div>
-
   </div>
 </div>
