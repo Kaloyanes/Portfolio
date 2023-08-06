@@ -40,12 +40,19 @@ iframe {
 
 .location-time {
   display: flex;
-  width: 50%;
+  width: 100%;
   align-items: center;
+  font-size: 20px;
+  text-align: center;
+  justify-content: left;
 
   #location {
     margin-right: 10%;
   }
+}
+
+.location-reversed {
+  justify-content: right !important;
 }
 
 img:hover,
@@ -57,6 +64,9 @@ iframe:hover {
 
 .txt-layout {
   display: flex;
+  p {
+    font-size: 25px;
+  }
 }
 
 .divider {
