@@ -1,4 +1,6 @@
 @import "../../../styles.scss";
+@import "@angular/material/theming";
+@include mat-core();
 
 .mat-expansion-panel {
   background-color: $color-primary-container-dark;
