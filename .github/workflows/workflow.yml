@@ -23,10 +23,10 @@ jobs:
 
       - name: Build
         working-directory: ./
-        run: npm run build && cp dist/portfolio/index.html
+        run: npm run build && cp ./dist/portfolio/index.html
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
           branch: gh-pages
-          folder: dist/portfolio
+          folder: ./dist/portfolio
