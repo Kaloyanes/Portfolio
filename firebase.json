@@ -1,6 +1,13 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "dist/portfolio",
+    "site": "kaloyanes-portfolio",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
     "ignore": [
       "firebase.json",
       "**/.*",

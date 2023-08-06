@@ -1,5 +1,5 @@
-<mat-expansion-panel [hideToggle]="true" disabled #tile (mouseenter)="tile.open()" (mouseleave)="tile.close()"
-  (click)="print()">
+<mat-expansion-panel [hideToggle]="true" disabled #tile (mouseenter)="tile.toggle()" (mouseleave)="tile.toggle()"
+  (click)=" print()">
   <mat-expansion-panel-header collapsedHeight="150px">
     <div class="panel-title">
 
