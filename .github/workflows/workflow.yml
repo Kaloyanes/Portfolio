@@ -34,7 +34,7 @@ jobs:
 
       - name: Copy dist folder contents to the gh-pages branch
         run: |
-          cp -r dist/* .
+          cp -r dist/portfolio/* .
 
       - name: Configure Git identity
         run: |
