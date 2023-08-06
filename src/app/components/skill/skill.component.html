@@ -1,11 +1,11 @@
 <div *ngIf="this.skill" class="container">
 
   <div class="nameImgSkill">
-    <img src="{{this.skill.imageUrl}}" *ngIf="this.skill.imageUrl" height="40" class="skill-img">
-    <h1>{{this.skill.name}}</h1>
+    <img src="{{this.skill!.imageUrl}}" *ngIf="this.skill.imageUrl" height="40" class="skill-img">
+    <h1>{{this.skill!.name}}</h1>
   </div>
-  <input type="range" max="10" min="1" disabled value="{{this.skill.skill}}" class="slider"
-    id=`{{this.skill.name.toLowerCase()}}`>
-  <h3>{{((this.skill.skill / 10) * 100).toFixed()}}%</h3>
+  <input type="range" max="10" min="1" disabled value="{{this.skill!.skill}}" class="slider"
+    id=`{{this.skill!.name.toLowerCase()}}`>
+  <h3>{{((this.skill!.skill / 10) * 100).toFixed()}}%</h3>
 
 </div>
