@@ -1,18 +1,27 @@
 <h1 class="title-text">Contact me</h1>
 
 <div class="layout">
-  <div class="info"></div>
+  <div class="socials">
+    <div class="social-card" *ngFor="let item of socials" (click)="openLink(item.link)">
+      <img [src]="item.imageUrl">
+      <h2 id="name">{{item.name}}</h2>
+      <h4 id="username">{{item.username}}</h4>
+    </div>
+  </div>
+
 
   <div class="col">
-    <div class="socials">
-      <div class="social-card" *ngFor="let item of socials" (click)="openLink(item.link)">
-        <img [src]="item.imageUrl">
-        <h2 id="name">{{item.name}}</h2>
-        <h4 id="username">{{item.username}}</h4>
-      </div>
+    <div class="info">
+      <p class="info-tile"><mat-icon>location_on</mat-icon>Burgas</p>
+      <p class="info-tile clickable" (click)="launchMail()"><mat-icon>email</mat-icon>kaloyangfx@gmail.com</p>
+      <p class=" info-tile clickable" (click)="call()"><mat-icon>phone</mat-icon>+359879900137</p>
+      <p class="info-tile"><mat-icon>school</mat-icon>PGEE Burgas</p>
+      <!-- <p class="info-tile"><mat-icon>location_on</mat-icon>Location: Burgas</p> -->
     </div>
-    <div class="contact-me">
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home">home</mat-icon>
-    </div>
+    <!-- <div class="contact-me">
+      <form>
+        <textarea></textarea>
+      </form>
+    </div> -->
   </div>
 </div>
