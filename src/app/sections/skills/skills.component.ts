@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
 import { Skill } from 'src/app/models/skill.type';
+import { SkillComponent } from '../../components/skill/skill.component';
+import { NgFor } from '@angular/common';
 
 
 
 @Component({
-  selector: 'app-skills',
-  templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.scss']
+    selector: 'app-skills',
+    templateUrl: './skills.component.html',
+    styleUrls: ['./skills.component.scss'],
+    standalone: true,
+    imports: [NgFor, SkillComponent]
 })
 export class SkillsComponent {
   characterSkills: Skill[] = [

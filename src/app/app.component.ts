@@ -1,13 +1,14 @@
 import { state, style, trigger } from '@angular/animations';
 import { Component, HostListener, Renderer2, ViewEncapsulation } from '@angular/core';
 import { Title } from "@angular/platform-browser";
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  // encapsulation: ViewEncapsulation.None,
-
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    standalone: true,
+    imports: [RouterOutlet],
 })
 export class AppComponent {
 

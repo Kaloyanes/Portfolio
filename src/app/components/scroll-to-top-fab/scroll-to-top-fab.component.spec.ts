@@ -8,8 +8,8 @@ describe('ScrollToTopFabComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ScrollToTopFabComponent]
-    });
+    imports: [ScrollToTopFabComponent]
+});
     fixture = TestBed.createComponent(ScrollToTopFabComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

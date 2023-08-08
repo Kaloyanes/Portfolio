@@ -2,9 +2,10 @@ import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-header-buttons',
-  templateUrl: './header-buttons.component.html',
-  styleUrls: ['./header-buttons.component.scss']
+    selector: 'app-header-buttons',
+    templateUrl: './header-buttons.component.html',
+    styleUrls: ['./header-buttons.component.scss'],
+    standalone: true
 })
 export class HeaderButtonsComponent {
 
@@ -74,9 +75,5 @@ export class HeaderButtonsComponent {
       behavior: 'smooth',
       top: target!.offsetTop - 70
     })
-
-
-
-
   }
 }

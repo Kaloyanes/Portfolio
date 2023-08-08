@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
 import { Project } from 'src/app/models/project.type';
+import { ProjectCardComponent } from '../../components/project-card/project-card.component';
+import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss']
+    selector: 'app-projects',
+    templateUrl: './projects.component.html',
+    styleUrls: ['./projects.component.scss'],
+    standalone: true,
+    imports: [NgFor, ProjectCardComponent]
 })
 export class ProjectsComponent {
   projects: Project[] = [
     {
       name: "CharGO",
-      description: "CharGO is a mobile app that aims to revolutionize the way users find and reserve electric car chargers.With a user- friendly interface, CharGO simplifies the process of locating and booking charging stations, providing a seamless experience for electric vehicle owners.I developed the ability to construct and present innovative ideas effectively.",
+      description: "CharGO is a mobile app that aims to revolutionize the way users find and reserve electric car chargers.With a user- friendly interface, CharGO simplifies the process of locating and booking charging stations, providing a seamless experience for electric vehicle owners. I developed the ability to construct and present innovative ideas effectively.",
       downloadFileLink: "",
       github: "https://github.com/mutenoic/CharGO",
       imageUrl: "https://camo.githubusercontent.com/b9b0ac02657b31fabe92e3240e8eb7278c7ade3879fdd7879eabdd16b345b42d/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f6174746163686d656e74732f313039303434353336303835393732353836342f313131343439323333393932333230363135342f63686172676f5f6e6f5f62672e706e67",
@@ -18,10 +22,10 @@ export class ProjectsComponent {
     },
     {
       name: "ReportR",
-      description: "ReportR is an innovative app that provides a practical solution to the everyday challenges faced by large organizations, such as schools and businesses.The app aims to simplify the process of managing and resolving issues that can arise in these organizations, making it easier for them to maintain a smooth and efficient operation by user contribution.I gained valuable skills in teamwork, coordination, and adaptability.",
+      description: "ReportR is an innovative app that provides a practical solution to the everyday challenges faced by large organizations, such as schools and businesses. The app aims to simplify the process of managing and resolving issues that can arise in these organizations, making it easier for them to maintain a smooth and efficient operation by user contribution. I gained valuable skills in teamwork, coordination, and adaptability.",
       downloadFileLink: "",
       github: "https://github.com/kaloyanstoyanov06/reportr",
-      imageUrl: "https://camo.githubusercontent.com/13a59001149a945b642a91bdc3fee0de4f4335aa09ca986b0173061059cd65c5/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f6174746163686d656e74732f313034353436333031343837363339373633382f313039353430383838343335343635303232332f63325446676435695f34782e6a7067",
+      imageUrl: "https://github.com/KaloyanStoyanov06/reportr/blob/master/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png?raw=true",
       startToEnd: "04/2023"
     },
     {
@@ -34,7 +38,7 @@ export class ProjectsComponent {
     },
     {
       name: "School Program",
-      description: "This mobile application is developed using the Flutter framework and utilizes local storage to store program data.It enables users to conveniently schedule recurring programs from Monday to Friday and set reminders for homework and tests.It's extremely useful for students and teachers. I developed proficiency in utilizing local storage and saving settings within the mobile application, optimizing user experience and data management.",
+      description: "This mobile application is developed using the Flutter framework and utilizes local storage to store program data. It enables users to conveniently schedule recurring programs from Monday to Friday and set reminders for homework and tests. It's extremely useful for students and teachers. I developed proficiency in utilizing local storage and saving settings within the mobile application, optimizing user experience and data management.",
       downloadFileLink: "",
       github: "https://github.com/mutenoic/CharGO",
       imageUrl: "https://github.com/KaloyanStoyanov06/school_program/blob/main/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png?raw=true",

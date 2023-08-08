@@ -4,27 +4,25 @@
   width: 80vw;
   overflow: hidden;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   scale: 0.85;
   border-radius: 50px;
   background-color: $color-primary-container-dark;
 }
 
 .btn {
-  width: 20%;
-  height: 5vh;
   background-color: transparent;
   color: white;
   border: none;
   border-radius: 0px;
-  border-bottom: solid white;
+  border-bottom: solid transparent;
   border-width: 0;
   background-clip: content-box;
-  transition: 300ms ease-out;
+  transition: all 400ms ease-out;
   font-size: 20px;
   margin: 2rem;
   text-align: center;
-  // padding: 50px;
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -32,40 +30,39 @@
 }
 
 .btn:active {
-  scale: 1.1;
+  scale: 1.05;
   opacity: 0.4;
 }
 
 @keyframes activeAnimation {
   from {
-    color: white;
-    border-color: white;
     border-width: 0px;
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
   }
   to {
-    color: white;
-    border-color: white;
     border-width: 5px;
+    transform: translateY(0px);
   }
 }
 
 @keyframes exitAnimation {
   from {
-    color: white;
-    border-color: white;
     border-width: 5px;
   }
   to {
-    color: white;
-    border-color: white;
     border-width: 0px;
   }
 }
 
 .inactive {
   animation: exitAnimation 300ms forwards ease-in-out;
+  border-color: transparent;
 }
 
 .active {
-  animation: activeAnimation 200ms forwards ease-in-out;
+  animation: activeAnimation 300ms forwards ease-in-out;
+  border-color: white;
 }
