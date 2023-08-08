@@ -1,10 +1,21 @@
 import { Component, HostListener } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { ScrollToTopFabComponent } from '../../components/scroll-to-top-fab/scroll-to-top-fab.component';
+import { ContactMeComponent } from '../../sections/contact-me/contact-me.component';
+import { ProjectsComponent } from '../../sections/projects/projects.component';
+import { AwardsComponent } from '../../sections/awards/awards.component';
+import { SkillsComponent } from '../../sections/skills/skills.component';
+import { EducationComponent } from '../../sections/education/education.component';
+import { HeaderButtonsComponent } from '../../components/header-buttons/header-buttons.component';
+import { AboutShortComponent } from '../../components/about-short/about-short.component';
+import { TitleComponent } from '../../components/title/title.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  standalone: true,
+  imports: [TitleComponent, AboutShortComponent, HeaderButtonsComponent, EducationComponent, SkillsComponent, AwardsComponent, ProjectsComponent, ContactMeComponent, ScrollToTopFabComponent]
 })
 export class HomeComponent {
   title = 'Portfolio 2';

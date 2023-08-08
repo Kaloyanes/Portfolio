@@ -7,7 +7,8 @@ import { HeaderButtonsComponent } from '../header-buttons/header-buttons.compone
   styleUrls: ['./scroll-to-top-fab.component.scss'],
   providers: [
     HeaderButtonsComponent,
-  ]
+  ],
+  standalone: true
 })
 export class ScrollToTopFabComponent {
   constructor(private buttons: HeaderButtonsComponent) { }

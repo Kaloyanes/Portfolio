@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { Award } from 'src/app/models/award.type';
+import { NgFor, NgClass, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-awards',
-  templateUrl: './awards.component.html',
-  styleUrls: ['./awards.component.scss']
+    selector: 'app-awards',
+    templateUrl: './awards.component.html',
+    styleUrls: ['./awards.component.scss'],
+    standalone: true,
+    imports: [NgFor, NgClass, NgIf]
 })
 export class AwardsComponent {
   awards: Award[] = [

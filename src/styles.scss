@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 $md-source: #6750a4;
 /* primary */
@@ -120,7 +121,7 @@ $color-scrim-light: #000000;
 /* dark */
 $color-primary-dark: #d0bcff;
 $color-on-primary-dark: #381e72;
-$color-primary-container-dark: #4f378b;
+$color-primary-container-dark: #34245e;
 $color-on-primary-container-dark: #eaddff;
 $color-secondary-dark: #ccc2dc;
 $color-on-secondary-dark: #332d41;
@@ -183,11 +184,15 @@ html {
   border-bottom: 2px solid white;
 }
 
+* {
+  font-family: "Roboto Slab", serif;
+}
+
 html,
 body {
   height: 100%;
 }
 body {
   margin: 0;
-  font-family: "Roboto Slab", serif;
+  // font-family: "Roboto Slab", serif;
 }
