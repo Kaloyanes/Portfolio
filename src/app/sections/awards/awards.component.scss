@@ -1,6 +1,9 @@
 .awards {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .award {
@@ -69,10 +72,70 @@ iframe:hover {
   }
 }
 
+.txt-reverse {
+  flex-direction: row-reverse;
+}
+
 .divider {
   height: 150px;
   width: 2px;
   margin-inline: 20px;
   background-color: white;
   border: 2px solid white;
+}
+
+@media (max-width: 1100px) {
+  .awards {
+    margin-inline: 1vw;
+    display: flex;
+  }
+
+  .award {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    margin-inline: auto;
+    margin-bottom: 20px;
+    border-bottom: 2px solid white;
+    padding-bottom: 5%;
+  }
+
+  .award:last-child {
+    border-bottom: none;
+  }
+
+  .reversed {
+    flex-direction: row;
+  }
+
+  .location-time {
+    justify-content: right !important;
+
+    #location {
+      margin-right: 1%;
+    }
+  }
+
+  .location-reversed {
+    justify-content: right !important;
+  }
+
+  img,
+  iframe {
+    margin-top: 2vh;
+    width: 70%;
+  }
+
+  .txt-layout {
+    display: flex;
+    flex-direction: column;
+    font-size: 25%;
+  }
+
+  .divider {
+    display: none;
+  }
 }
