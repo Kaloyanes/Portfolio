@@ -4,3 +4,9 @@
   gap: 1rem;
   margin-inline: 2vw;
 }
+
+@media (width <= 850px) {
+  .layout {
+    gap: 2rem;
+  }
+}

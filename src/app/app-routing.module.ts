@@ -5,6 +5,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
+  { component: ProjectPageComponent, path: "project/:slug", },
+  { component: ProjectPageComponent, path: "project/", },
   { redirectTo: "", path: "home" },
   { component: HomeComponent, path: "", },
   { component: NotFoundComponent, path: "**" }
