@@ -188,10 +188,10 @@ html {
 }
 
 .title-text {
-  position: relative;
+  position: static;
   text-align: center;
   font-size: 40px;
-  width: 100%;
+  width: 100vw;
   padding-bottom: 20px;
   border-bottom: 2px solid white;
 }
@@ -204,8 +204,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
   font-size: var(--step-0);
   // overflow-x: hidden;
 }
