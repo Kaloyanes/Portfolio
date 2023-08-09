@@ -1,13 +1,23 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-    selector: 'app-header-buttons',
-    templateUrl: './header-buttons.component.html',
-    styleUrls: ['./header-buttons.component.scss'],
-    standalone: true
+  selector: 'app-header-buttons',
+  templateUrl: './header-buttons.component.html',
+  styleUrls: ['./header-buttons.component.scss'],
+  standalone: true,
+  imports: [MatIconModule]
 })
 export class HeaderButtonsComponent {
+
+  locations: Record<string, string> = {
+    "school": "education",
+    "build": "skills",
+    "star": "awards",
+    "folder": "projects",
+    "call": "contact me",
+  }
 
   constructor(private titleService: Title) { }
 
@@ -65,11 +75,17 @@ export class HeaderButtonsComponent {
   }
 
   makeActive(event: Event) {
-
     var selected = event.target as Element;
     if (selected.textContent == null) return;
 
-    var target = document.getElementById(selected.textContent.replace(" ", "-").toLowerCase().trim());
+    var strTarget = selected.textContent.replace(" ", "-").toLowerCase().trim();
+    var loc = strTarget;
+    if (strTarget.includes("-")) {
+      loc = strTarget.substring(0, strTarget.lastIndexOf("-"));
+    }
+
+    console.log(loc);
+    var target = document.getElementById(this.locations[loc]);
 
     window.scrollTo({
       behavior: 'smooth',
