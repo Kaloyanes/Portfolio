@@ -6,37 +6,21 @@ app-header-buttons {
   z-index: 10;
 }
 
+.sections {
+  margin: 0;
+  width: 100%;
+}
+
 .layout {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  // width: 100%;
 }
 
 .section {
   margin: 10px;
-}
-
-.imageviewer {
-  visibility: visible;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding: 10px;
-  width: 100vw;
-  height: 100vh;
-  background-color: #00000090;
-
-  // margin-top: -100px; /* Negative half of height. */
-  // margin-left: -250px; /* Negative half of width. */
-  // top: 30%;
-  // left: 25%;
-  z-index: 20;
 }
 
 .closeBtn {
