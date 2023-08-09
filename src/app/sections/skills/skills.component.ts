@@ -6,17 +6,17 @@ import { NgFor } from '@angular/common';
 
 
 @Component({
-    selector: 'app-skills',
-    templateUrl: './skills.component.html',
-    styleUrls: ['./skills.component.scss'],
-    standalone: true,
-    imports: [NgFor, SkillComponent]
+  selector: 'app-skills',
+  templateUrl: './skills.component.html',
+  styleUrls: ['./skills.component.scss'],
+  standalone: true,
+  imports: [NgFor, SkillComponent]
 })
 export class SkillsComponent {
   characterSkills: Skill[] = [
-    new Skill("Problem Solving", 9),
-    new Skill("Adaptability", 10),
-    new Skill("Teamwork", 9),
+    new Skill("Problem Solving", 7),
+    new Skill("Adaptability", 9),
+    new Skill("Teamwork", 7),
     new Skill("Bulgarian", 10),
     new Skill("English", 8),
   ];

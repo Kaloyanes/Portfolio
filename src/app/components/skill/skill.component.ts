@@ -12,4 +12,16 @@ import { NgIf } from '@angular/common';
 export class SkillComponent {
   @Input({ required: true }) skill: Skill | undefined;
 
+
+  calculateSkill(percentage: number) {
+    if (percentage < 50) {
+      return "Novice";
+    }
+
+    if (percentage >= 50 && percentage <= 80) {
+      return "Advanced";
+    }
+
+    return "Expert";
+  }
 }

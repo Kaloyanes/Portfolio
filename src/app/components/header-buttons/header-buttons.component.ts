@@ -19,12 +19,14 @@ export class HeaderButtonsComponent {
     "call": "contact me",
   }
 
+
   constructor(private titleService: Title) { }
 
-  @HostListener("window:scroll")
-  onScroll() {
+  @HostListener("window:scroll", ['$event'])
+  onScroll(event: any) {
     var section = this.getCurrentVisibleSection();
     console.log(section);
+
     if (section == null) return;
     this.makeAllButtonsInactive();
 
@@ -37,10 +39,10 @@ export class HeaderButtonsComponent {
 
     this.titleService.setTitle("Kaloyan Stoyanov - " + this.capitalizeFirstLetter(section));
   }
+
   capitalizeFirstLetter(input: string): string {
     return input.charAt(0).toUpperCase() + input.slice(1);
   }
-
 
   getCurrentVisibleSection(): string | null {
     const sections = document.querySelectorAll(".section");
@@ -55,7 +57,7 @@ export class HeaderButtonsComponent {
 
       // Check if the section is at least 50% visible in the viewport
       if (sectionTop < viewportHeight / 2 && sectionBottom > viewportHeight / 2) {
-        return section.getAttribute("id"); // Assuming you have set an "id" attribute for each section
+        return section.getAttribute("id")!.toLowerCase().replaceAll("-", " ").trim(); // Assuming you have set an "id" attribute for each section
       }
     }
 
@@ -75,21 +77,40 @@ export class HeaderButtonsComponent {
   }
 
   makeActive(event: Event) {
+    event.preventDefault();
     var selected = event.target as Element;
     if (selected.textContent == null) return;
 
     var strTarget = selected.textContent.replace(" ", "-").toLowerCase().trim();
     var loc = strTarget;
+
+    // Check if the string contains "-" and extract the relevant part
     if (strTarget.includes("-")) {
       loc = strTarget.substring(0, strTarget.lastIndexOf("-"));
     }
 
-    console.log(loc);
-    var target = document.getElementById(this.locations[loc]);
+    // Assuming this.locations is a valid object mapping location names to IDs
+    var targetID = this.locations[loc];
+
+    if (!targetID) {
+      targetID = strTarget;
+    }
+
+    targetID = targetID.replaceAll('-', " ").trim();
+
+    var target = document.getElementById(targetID);
+
+    if (!target) {
+      console.log("Target element not found.");
+      return;
+    }
+
 
     window.scrollTo({
       behavior: 'smooth',
-      top: target!.offsetTop - 70
-    })
+      top: target.offsetTop - 70
+    });
+
+
   }
 }
