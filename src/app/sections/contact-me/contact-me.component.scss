@@ -14,6 +14,8 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
   grid-template-rows: repeat(auto-fit, 200px);
   gap: 30px;
+  justify-content: center;
+  align-items: center;
 }
 
 .social-card {

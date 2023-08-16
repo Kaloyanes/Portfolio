@@ -4,19 +4,20 @@ import { Title } from "@angular/platform-browser";
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    standalone: true,
-    imports: [RouterOutlet],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  standalone: true,
+  imports: [RouterOutlet],
 })
 export class AppComponent {
 
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(e: MouseEvent) {
+    const circle = document.getElementsByClassName('circle')[0] as HTMLElement;
 
-
+    circle.style.top = e.pageY - 10 + 'px';
+    circle.style.left = e.pageX - 10 + 'px';
   }
 
   constructor(private renderer: Renderer2) {

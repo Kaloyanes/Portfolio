@@ -108,7 +108,7 @@ export class HeaderButtonsComponent {
 
     window.scrollTo({
       behavior: 'smooth',
-      top: target.offsetTop - 70
+      top: target.offsetTop - 100
     });
 
 
