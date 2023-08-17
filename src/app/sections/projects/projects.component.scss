@@ -5,6 +5,17 @@
   margin-inline: 2vw;
 }
 
+.wrapper {
+  width: 100%;
+  height: 150vh;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: difference;
+
+  background-image: url("../../../assets/waves/projects-background.svg");
+}
+
 @media (width <= 850px) {
   .layout {
     gap: 2rem;
