@@ -14,19 +14,17 @@
 }
 
 .container {
-  background-color: $color-primary-container-dark;
+  background-color: #1d2957;
   border-radius: 20px;
   padding-inline: 20px;
   padding-block: 10px;
-  filter: grayscale(0.3);
   transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0px 0px 10px #4f378b;
+  box-shadow: 0px 0px 10px #193c4d;
 }
 
 .container:hover {
   scale: 1.1;
-  filter: none;
-  box-shadow: 0px 0px 50px #4f378b;
+  box-shadow: 0px 0px 25px #193c4d;
 }
 
 input {
