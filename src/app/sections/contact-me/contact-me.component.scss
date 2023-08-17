@@ -14,7 +14,6 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
-  grid-template-rows: repeat(auto-fit, 200px);
   gap: 30px;
   justify-content: center;
   align-items: center;
@@ -117,10 +116,13 @@ a {
     margin: 0;
   }
 
+  .wrapper {
+    height: 100%;
+  }
+
   .social-card {
     padding-inline: 10px;
     padding-block: 5px;
-
     img {
       position: relative;
       height: 25%;
