@@ -22,6 +22,14 @@
   margin-inline: 20px;
 }
 
+.wrapper {
+  background-color: #241941;
+}
+
+.title-text {
+  margin: 0;
+}
+
 @media (width <= 700px) {
   .verticalDivider {
     display: none;

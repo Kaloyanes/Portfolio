@@ -1,3 +1,7 @@
+.wrapper {
+  background-color: #34245e !important;
+}
+
 .layout {
   display: flex;
   justify-content: center;
@@ -24,6 +28,7 @@
   justify-content: space-around;
   align-items: center;
   width: 80vw;
+  margin-block: 2rem;
 }
 
 .info {
@@ -42,8 +47,30 @@ img {
 img:hover {
   scale: 1.1;
   z-index: 0;
-  box-shadow: 0px 0px 50px #4f378b;
+  box-shadow: 0px 0px 50px #695894;
 }
+
+.wave {
+  aspect-ratio: 960/ 300;
+  width: 100%;
+  height: 90vh;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../../../assets/waves/education-top.svg");
+}
+
+.wave-out {
+  aspect-ratio: 960/ 300;
+  width: 100%;
+  height: 100vh;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-clip: content-box;
+  background-image: url("../../../assets/waves/education-bottom.svg");
+}
+
 @media (max-width: 1100px) {
   .layout {
     width: 90%;
