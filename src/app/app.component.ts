@@ -1,7 +1,8 @@
-import { state, style, trigger } from '@angular/animations';
-import { Component, HostListener, Renderer2, ViewEncapsulation } from '@angular/core';
-import { Title } from "@angular/platform-browser";
+import { Component, Renderer2, } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import * as LocomotiveScroll from 'locomotive-scroll';
 
 @Component({
   selector: 'app-root',
@@ -11,16 +12,13 @@ import { RouterOutlet } from '@angular/router';
   imports: [RouterOutlet],
 })
 export class AppComponent {
+  constructor(private renderer: Renderer2) {
+    gsap.registerPlugin(ScrollTrigger);
 
-  @HostListener('document:mousemove', ['$event'])
-  onMouseMove(e: MouseEvent) {
-    const circle = document.getElementsByClassName('circle')[0] as HTMLElement;
-
-    circle.style.top = e.pageY - 10 + 'px';
-    circle.style.left = e.pageX - 10 + 'px';
+    this.darkOrWhiteFavicon();
   }
 
-  constructor(private renderer: Renderer2) {
+  private darkOrWhiteFavicon() {
     // Subscribe to dark mode changes
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       this.updateFavicon(true);

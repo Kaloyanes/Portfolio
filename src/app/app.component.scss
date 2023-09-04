@@ -5,14 +5,14 @@ router-outlet {
   height: 100%;
 }
 
-.circle {
-  width: 25px;
-  height: 25px;
-  z-index: 60;
-  background-color: white;
-  border-radius: 100px;
-  position: absolute;
-  // Invert everything behind the circle
-  mix-blend-mode: difference;
-  overflow: hidden;
-}
+// .circle {
+//   width: 25px;
+//   height: 25px;
+//   z-index: 60;
+//   background-color: white;
+//   border-radius: 100px;
+//   position: absolute;
+//   // Invert everything behind the circle
+//   mix-blend-mode: difference;
+//   overflow: hidden;
+// }

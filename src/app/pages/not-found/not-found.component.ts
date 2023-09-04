@@ -8,5 +8,4 @@ import { Router } from '@angular/router';
     standalone: true
 })
 export class NotFoundComponent {
-
 }
