@@ -1,67 +1,22 @@
-<div class="wave">
-
-</div>
-
 <div class="wrapper">
 
 
-  <h1 class="title-text">My awards</h1>
+  <h1 class="title-text">Achievements</h1>
 
   <div class="awards">
-
     <div class="award" [ngClass]="{'reversed': (i + 1) % 2 == 0}" *ngFor="let item of awards; let i=index">
-      <div class="info" [ngClass]="{'solo': item.imageUrl}">
-        <div class="location-time" [ngClass]="{'location-reversed': (i) % 2 ==0}">
-          <h4 id="location">{{item.location}}</h4>
+      <div class="txt">
+        <h1 class="title">{{item.title}}</h1>
+        <p>{{item.description}}</p>
+
+        <div class="location">
+          <h4>{{item.location}}</h4>
           <h4>{{item.date}}</h4>
         </div>
-        <div class="txt-layout" [ngClass]="{'reversed': (i ) % 2 == 0}">
-          <h1>{{item.title}}</h1>
-          <div class="divider">
-
-          </div>
-          <p>{{item.description}}</p>
-        </div>
       </div>
-      <img *ngIf="item.imageUrl" alt="award image" src="{{item.imageUrl}}" clickable>
+      <img *ngIf="item.imageUrl" alt="award image" src="{{item.imageUrl}}">
     </div>
-    <div class="award">
-      <div class="info">
-        <div class="location-time location-reversed">
-          <h4 id="location">Burgas and Shumen</h4>
-          <h4>04/2023</h4>
-        </div>
-        <div class="txt-layout txt-reverse">
-          <div>
-            <h1>7th place at National Competition of IT</h1>
-          </div>
-          <div class="divider"></div>
-          <div>
-            <p>
-              Secured 7th place at the National Competition of IT, comprising regional
-              and national
-
-              04/2023
-
-              phases.
-            </p>
-            <ul>
-              <li>Regional Phase: Attained a score of 93 out of 100.</li>
-              <li>National Phase:
-                <ul>
-                  <li>Test: Earned a score of 89 out of 100 (3rd place out of 30)</li>
-                  <li>Presentation: Achieved a score of 77 out of 100</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-
-
-        </div>
-      </div>
-      <img src="../../../assets/noit.png" clickable>
-    </div>
-    <div class="award reversed">
+    <!-- <div class="award reversed">
       <div class="info">
         <div class="location-time">
           <h4 id="location">Online</h4>
@@ -81,9 +36,6 @@
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
     </div>
+  </div> -->
+
   </div>
-
-</div>
-<div class="wave wave-out">
-
-</div>
