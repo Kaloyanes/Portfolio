@@ -31,18 +31,7 @@ export class ContactMeComponent {
       username: "Калоян Стоянов",
       link: "https://www.facebook.com/kalstst/",
     },
-    {
-      name: "Instagram",
-      imageUrl: "../../../../assets/logos/instagram.svg",
-      username: "kaloyanes",
-      link: "https://www.instagram.com/kaloyanes/",
-    },
-    {
-      name: "Twitter/X",
-      imageUrl: "../../../../assets/logos/x.svg",
-      username: "denoic06",
-      link: "https://twitter.com/denoic06",
-    },
+
   ]
 
   openLink(link: string) {
