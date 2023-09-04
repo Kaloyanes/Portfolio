@@ -1,7 +1,7 @@
 @import "../../../styles.scss";
 
 app-about-short {
-  height: 100vh;
+  height: 120%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,6 +17,8 @@ app-header-buttons {
 .sections {
   margin: 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .layout {
