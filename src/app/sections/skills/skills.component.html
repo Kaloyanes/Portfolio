@@ -1,24 +1,32 @@
-<div class="wrapper">
-  <h1 class="title-text">Skills</h1>
+<h1 class="title-text" id="skill-title">Skills</h1>
+<div class="wrapper" id="skill-wrapper">
 
-
-  <div class="skill-layout">
-    <div class="charlay">
-      <h1 class="skill-title">Character</h1>
-      <div class="character skill-grid">
-        <div class="skill" *ngFor="let item of this.characterSkills">
-          <app-skill [skill]="item" />
+  <div class="layout">
+    <div class="skill-group">
+      <h2>Frontend</h2>
+      <div class="skills">
+        <div class="skill" *ngFor="let item of frontendSkills">
+          <img [src]="item.imageUrl" alt="skill icon" />
+          <p>{{ item.name }}</p>
         </div>
       </div>
     </div>
-    <div class="verticalDivider">
-    </div>
-    <div class="programlay">
-      <h1 class="skill-title">Programming</h1>
-      <div class="programming skill-grid">
-        <div class="skill" *ngFor="let item of this.programmingSkills">
-          <app-skill [skill]="item" />
+    <div class="skill-group">
+      <h2>Backend</h2>
+      <div class="skills">
+        <div class="skill" *ngFor="let item of backendSkills">
+          <img [src]="item.imageUrl" alt="skill icon" />
+          <p>{{ item.name }}</p>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="skill-group">
+    <h2>Mobile</h2>
+    <div class="skills">
+      <div class="skill" *ngFor="let item of mobileSkills">
+        <img [src]="item.imageUrl" alt="skill icon" />
+        <p>{{ item.name }}</p>
       </div>
     </div>
   </div>

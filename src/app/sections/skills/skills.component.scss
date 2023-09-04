@@ -1,36 +1,129 @@
-.skill-layout {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
+// .skill-layout {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-evenly;
+//   width: 100%;
 
-  .skill-title {
-    text-align: center;
-  }
-}
-.skill-grid {
-  width: 45vw !important;
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  margin-inline: 10px;
-}
-
-.verticalDivider {
-  width: 2px;
-  background-color: white;
-  margin-inline: 20px;
-}
+//   .skill-title {
+//     text-align: center;
+//   }
+// }
+@import "/src/styles.scss";
 
 .wrapper {
-  background-color: #241941;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.title-text {
-  margin: 0;
+.layout {
+  // Layout that makes the 2 first items appear on the same row and the 3rd on the next centered\
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
-@media (width <= 700px) {
+.skill-group {
+  width: 30%;
+  padding: 20px 50px;
+  border-radius: 20px;
+  border: 2px solid $primary30;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0 0 10px 0 $primary30;
+  background-color: rgba($primary30, 0.1);
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition-property: scale, background-color;
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  &:hover {
+    box-shadow: 0 0 10px 0 $primary30;
+    background-color: rgba($primary30, 0.2);
+    scale: 1.05 !important;
+  }
+}
+
+.skill-group:nth-child(2) {
+  margin-block: 1rem;
+}
+
+@for $i from 1 through 3 {
+  .skill-group:nth-child(#{$i}) {
+    opacity: 0;
+    transform: translateY(#{$i * 500}px);
+  }
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+
+  & > * {
+    margin: 1.5rem;
+  }
+}
+
+.skill {
+  $duration: 400ms;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all $duration cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  img {
+    width: 3rem;
+    height: 4rem;
+    aspect-ratio: 1;
+    object-fit: scale-down;
+  }
+
+  p {
+    text-align: center;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    transition: all $duration cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  &:hover {
+    transform: scale(1.2);
+
+    p {
+      letter-spacing: 2px;
+    }
+  }
+}
+
+@media (width <= 800px) {
+  .layout {
+    // Layout that makes the 2 first items appear on the same row and the 3rd on the next centered\
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 100%;
+  }
+
+  .skill-group {
+    margin-block: 1rem !important;
+  }
+
   .verticalDivider {
     display: none;
   }
@@ -59,9 +152,3 @@
     margin-inline: 0;
   }
 }
-
-// @media (width <= 1750px) {
-//   .verticalDivider {
-//     display: none !important;
-//   }
-// }
