@@ -1,29 +1,24 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
-	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-
-	let wrapper: HTMLElement;
 
 	onMount(() => {
-		setTimeout(() => {
-			let tl = gsap.timeline({
-				scrollTrigger: {
-					trigger: '.wrapper',
-					start: 'top center',
-					end: '+=500',
-					scrub: 1
-				}
-			});
+		let tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: '#educatWrapper',
+				start: 'top center',
+				end: '+=500',
+				scrub: 1
+			}
+		});
 
-			tl.fromTo('#educatTitle', { opacity: 0, y: 300 }, { opacity: 1, y: 0, duration: 1 });
-			tl.fromTo('.img1', { opacity: 0, x: -1000 }, { opacity: 1, x: 0, duration: 1 }, 0);
-			tl.fromTo('.img2', { opacity: 0, x: 1000 }, { opacity: 1, x: 0, duration: 1 }, 0);
-		}, 0);
+		tl.fromTo('#educatTitle', { opacity: 0, y: 300 }, { opacity: 1, y: 0, duration: 1 });
+		tl.fromTo('.img1', { opacity: 0, x: -1000 }, { opacity: 1, x: 0, duration: 1 }, 0);
+		tl.fromTo('.img2', { opacity: 0, x: 1000 }, { opacity: 1, x: 0, duration: 1 }, 0);
 	});
 </script>
 
-<div class="wrapper" id="educatWrapper" bind:this={wrapper}>
+<div class="wrapper" id="educatWrapper">
 	<h1 class="title-text" id="educatTitle">Education</h1>
 
 	<div class="layout">
