@@ -20,8 +20,7 @@ export class EducationComponent {
           trigger: ".wrapper",
           start: "0 center",
           end: "350 top",
-          markers: true,
-          scrub: 0.5,
+          scrub: 1,
         }
       })
 
