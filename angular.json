@@ -17,6 +17,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "/src/"
+              ]
+            },
             "outputPath": "dist/portfolio",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -36,7 +41,6 @@
             ],
             "styles": [
               "@angular/material/prebuilt-themes/purple-green.css",
-
               "src/styles.scss"
             ],
             "scripts": []
