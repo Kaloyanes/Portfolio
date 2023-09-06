@@ -36,7 +36,7 @@ export class ProjectCardComponent {
           trigger: `#${this.name}`,
           start: "-300 center",
           end: "center center",
-          markers: true,
+          markers: false,
           scrub: 1,
 
         },
