@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Skill } from 'src/app/models/skill.type';
-import { SkillComponent } from '../../components/skill/skill.component';
 import { CommonModule, NgFor } from '@angular/common';
 import gsap from 'gsap';
 
@@ -11,7 +10,7 @@ import gsap from 'gsap';
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.scss'],
   standalone: true,
-  imports: [NgFor, SkillComponent, CommonModule, NgFor]
+  imports: [NgFor, CommonModule]
 })
 export class SkillsComponent {
 
@@ -50,7 +49,6 @@ export class SkillsComponent {
           start: "top center",
           end: "bottom center",
           scrub: 1,
-          markers: true,
 
         },
       });

@@ -1,16 +1,18 @@
-<mat-expansion-panel [hideToggle]="true" disabled #tile (mouseenter)="tile.toggle()" (mouseleave)="tile.toggle()">
-  <mat-expansion-panel-header collapsedHeight="150px">
-    <div class="panel-title">
-
-      <img src="{{this.project!.imageUrl}}" *ngIf="this.project!.imageUrl">
-      <h1>{{this.project!.name}}</h1>
-    </div>
-  </mat-expansion-panel-header>
-  <div class="content">
-    <h3>{{this.project!.startToEnd}}</h3>
-    <p>
-      {{this.project!.description}}
-    </p>
-    <button (click)="details()">Details</button>
+<div class="project">
+  <div class="logo-wrapper">
+    <img class="logo" src="{{this.project!.imageUrl}}" alt="{{this.project!.name}}">
+    <h1 class="title">{{this.project!.name}}</h1>
   </div>
-</mat-expansion-panel>
+
+  <div class="content">
+    <p class="description">{{this.project!.description}}</p>
+    <a class="link" href="{{this.project!.github}}" target="_blank">View Project</a>
+  </div>
+
+  <div class="images">
+    <div class="image" [ngClass]="{'position': project!.images!.length != 1}"
+      *ngFor="let picture of [project!.images![0],project!.images![1]]; let i=index">
+      <img src="{{picture}}" alt="{{this.project!.name}}">
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@ export class Project {
   public imageUrl: string | undefined;
   public downloadFileLink: string | undefined;
   public startToEnd: string;
+  public images: string[] | undefined;
 
 
   constructor(
@@ -13,7 +14,8 @@ export class Project {
     github: string,
     imageUrl: string | undefined,
     downloadFileLink: string | undefined,
-    startToEnd: string
+    startToEnd: string,
+    images: string[] | undefined
   ) {
     this.name = name
     this.description = description
@@ -21,5 +23,6 @@ export class Project {
     this.imageUrl = imageUrl
     this.downloadFileLink = downloadFileLink
     this.startToEnd = startToEnd
+    this.images = images
   }
 }
