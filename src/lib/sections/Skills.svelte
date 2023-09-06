@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Skill } from '$lib/models/skill.type';
 	import { onMount } from 'svelte';
-	import gsap from 'gsap';
 
 	let frontendSkills: Skill[] = [
 		new Skill('Angular', 8, 'https://angular.io/assets/images/logos/angular/angular.svg'),

@@ -3,8 +3,6 @@
 	import type { Award } from '$lib/models/award.type';
 	import { onMount } from 'svelte';
 
-	import gsap from 'gsap';
-
 	let awards: Award[] = [
 		{
 			title: "1st place at ROBO DAYS'23, competition hosted by Technical University Sofia",

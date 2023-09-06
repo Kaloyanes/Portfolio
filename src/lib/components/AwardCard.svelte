@@ -2,8 +2,6 @@
 	import type { Award } from '$lib/models/award.type';
 	import { onMount } from 'svelte';
 
-	import gsap from 'gsap';
-
 	export let award: Award;
 	export let reversed: boolean = false;
 

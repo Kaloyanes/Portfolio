@@ -3,16 +3,14 @@
 	import AboutShort from '$lib/components/AboutShort.svelte';
 	import { onMount } from 'svelte';
 	import Education from '$lib/sections/Education.svelte';
-	import gsap from 'gsap';
-	import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 	import Projects from '$lib/sections/Projects.svelte';
 	import Awards from '$lib/sections/Awards.svelte';
 	import ContactMe from '$lib/sections/ContactMe.svelte';
-	gsap.registerPlugin(ScrollTrigger);
 
 	let currentFavicon = '/light-favicon.png';
+	onMount(async () => {
+		const { gsap } = await import('gsap');
 
-	onMount(() => {
 		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 			updateFavicon(true);
 		} else {

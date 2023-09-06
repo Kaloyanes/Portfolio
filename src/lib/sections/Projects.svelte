@@ -2,7 +2,6 @@
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import type { Project } from '$lib/models/project.type';
 	import { onMount } from 'svelte';
-	import gsap from 'gsap';
 
 	let projects: Project[] = [
 		{

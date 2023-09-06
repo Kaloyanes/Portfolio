@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { Project } from '$lib/models/project.type';
 	import { onMount } from 'svelte';
-	import gsap from 'gsap';
 
 	export let project: Project;
 
