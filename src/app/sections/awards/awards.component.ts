@@ -53,70 +53,74 @@ export class AwardsComponent {
 
   ]
 
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    setTimeout(() => {
+      const documents = [
+        document.querySelector("#awardTitle"),
+        document.querySelector("#awardWrapper"),
+      ];
+
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#awardWrapper",
+          start: "-300 center",
+          end: "350 top",
+          scrub: 1,
+          markers: true,
+        },
 
 
-  ngAfterContentInit(): void {
-    //Called after ngOnInit when the component's or directive's content has been initialized.
-    //Add 'implements AfterContentInit' to the class.
+      });
 
+      tl.fromTo("#awardTitle", { opacity: 0, y: 300 }, { opacity: 1, y: 0, duration: 1 }, 0);
+      tl.fromTo(".awards", { opacity: 0, y: 300 }, { opacity: 1, y: 0, duration: 1 }, 0);
 
-    const documents = [
-      document.querySelector("#awardTitle"),
-      document.querySelector("#awardWrapper"),
-    ];
+      const awards = gsap.utils.toArray('.award');
 
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#awardWrapper",
-        start: "-300 center",
-        end: "350 top",
-        scrub: 1,
-        markers: true,
-      },
+      function fadeIn(targets: HTMLElement[]) {
+        targets.forEach((element, i) => {
 
+          gsap.fromTo(element, {
+            x: i % 2 == 0 ? -1000 : 1000,
+            opacity: 0,
+          }, {
+            opacity: 1,
+            x: 0,
+            duration: 1,
 
-    });
+            ease: "power2.out",
 
-    tl.fromTo("#awardTitle", { opacity: 0, y: 300 }, { opacity: 1, y: 0, duration: 1 }, 0);
-    tl.fromTo(".awards", { opacity: 0, y: 300 }, { opacity: 1, y: 0, duration: 1 }, 0);
-
-    const awards = gsap.utils.toArray('.award');
-
-    function fadeIn(targets: HTMLElement[]) {
-      targets.forEach((element, i) => {
-
-        gsap.fromTo(element, {
-          x: i % 2 == 0 ? -1000 : 1000,
-          opacity: 0,
-        }, {
-          opacity: 1,
-          x: 0,
-          duration: 1,
-
-          ease: "power2.out",
-
+          });
         });
+      }
+
+      let observer = new IntersectionObserver(function (entries, self) {
+        let targets = entries.map(entry => {
+
+          if (entry.isIntersecting) {
+            self.unobserve(entry.target);
+            return entry.target;
+          }
+
+          return null;
+        });
+
+        // Call our animation function
+        fadeIn(targets as HTMLElement[]);
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.award').forEach(box => {
+        observer.observe(box);
       });
-    }
 
-    let observer = new IntersectionObserver(function (entries, self) {
-      let targets = entries.map(entry => {
 
-        if (entry.isIntersecting) {
-          self.unobserve(entry.target);
-          return entry.target;
-        }
 
-        return null;
-      });
 
-      // Call our animation function
-      fadeIn(targets as HTMLElement[]);
-    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.award').forEach(box => {
-      observer.observe(box);
-    });
+
+    }, 0);
   }
 
 
