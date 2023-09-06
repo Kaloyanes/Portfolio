@@ -1,15 +1,14 @@
 .awards {
-  width: 500vw;
-  height: 100vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .award {
   display: flex;
+  opacity: 0;
 
   align-items: center;
   justify-content: center;
@@ -26,7 +25,8 @@
 .title {
   padding-bottom: 2%;
   border-bottom: 2px solid white;
-  width: 70%;
+  width: 100%;
+  margin-inline: auto !important;
 }
 
 // Styling for every type of image 1/1, 16/9, 9/16
@@ -43,6 +43,7 @@ iframe {
   width: 70%;
   margin-inline: auto;
   position: relative;
+  text-align: center;
 
   p {
     font-weight: 400;
@@ -62,9 +63,9 @@ iframe {
   }
 }
 
-// .reversed {
-//   flex-direction: row-reverse;
-// }
+.reversed {
+  flex-direction: row-reverse;
+}
 
 // img,
 // iframe {

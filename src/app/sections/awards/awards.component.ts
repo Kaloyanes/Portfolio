@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Award } from 'src/app/models/award.type';
-import { NgFor, NgClass, NgIf } from '@angular/common';
+import { NgFor, NgClass, NgIf, NgOptimizedImage } from '@angular/common';
 import gsap from 'gsap';
 
 @Component({
@@ -11,20 +11,22 @@ import gsap from 'gsap';
   imports: [NgFor, NgClass, NgIf]
 })
 export class AwardsComponent {
+
+
   awards: Award[] = [
     {
       title: "1st place at ROBO DAYS'23, competition hosted by Technical University Sofia",
       description: "Working together with a talented classmate, our team managed to clinch the top spot in the software project category, leaving other teams behind.",
       date: "04/2023",
       location: "Sofia",
-      imageUrl: "../../../assets/robodays.jpg",
+      imageUrl: "../../../assets/robodays.webp",
     },
     {
       title: "1st place at BurgasBlueS 2023, hackathon hosted by University prof. dr.Asen Zlatarov ",
       description: "Me and my friend formed a successful team that placed at first position in the junior project category, surpassing numerous competing teamsemerging as the ultimate winners.",
       date: "06/2023",
       location: "Burgas",
-      imageUrl: "../../../assets/burgasblues.jpg",
+      imageUrl: "../../../assets/burgasblues.webp",
     },
     {
       title: " Secured 7th place at the National Competition of IT, comprising regional and national",
@@ -38,7 +40,7 @@ export class AwardsComponent {
       description: "I was honored with the prestigious 'Vyarnata Posoka' diploma, awarded for my exceptional performance in the National Olympiad in Information Technology, where I secured an impressive 7th place in the 8-10th class age category.",
       date: "06/2021",
       location: "Burgas",
-      imageUrl: "../../../assets/vyarnataposoka.jpg",
+      imageUrl: "../../../assets/vyarnataposoka.webp",
     },
     {
       title: "2nd place at 6-th Regional IT Competition",
@@ -51,31 +53,71 @@ export class AwardsComponent {
 
   ]
 
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    setTimeout(() => {
-      const awards = gsap.utils.toArray('.award');
 
-      let scrollTween = gsap.to(awards, {
-        xPercent: -100 * (awards.length - 1),
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.awards',
-          pin: true,
-          scrub: 1,
 
-          // base vertical scrolling on how wide the container is so it feels more natural.
-          end: () => '+=' + (document.querySelector('.awards') as HTMLElement).offsetWidth
-          // end: '+=' + awards.length * 110,
+  ngAfterContentInit(): void {
+    //Called after ngOnInit when the component's or directive's content has been initialized.
+    //Add 'implements AfterContentInit' to the class.
 
-        },
+
+    const documents = [
+      document.querySelector("#awardTitle"),
+      document.querySelector("#awardWrapper"),
+    ];
+
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#awardWrapper",
+        start: "-300 center",
+        end: "350 top",
+        scrub: 1,
+        markers: true,
+      },
+
+
+    });
+
+    tl.fromTo("#awardTitle", { opacity: 0, y: 300 }, { opacity: 1, y: 0, duration: 1 }, 0);
+    tl.fromTo(".awards", { opacity: 0, y: 300 }, { opacity: 1, y: 0, duration: 1 }, 0);
+
+    const awards = gsap.utils.toArray('.award');
+
+    function fadeIn(targets: HTMLElement[]) {
+      targets.forEach((element, i) => {
+
+        gsap.fromTo(element, {
+          x: i % 2 == 0 ? -1000 : 1000,
+          opacity: 0,
+        }, {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+
+          ease: "power2.out",
+
+        });
+      });
+    }
+
+    let observer = new IntersectionObserver(function (entries, self) {
+      let targets = entries.map(entry => {
+
+        if (entry.isIntersecting) {
+          self.unobserve(entry.target);
+          return entry.target;
+        }
+
+        return null;
       });
 
+      // Call our animation function
+      fadeIn(targets as HTMLElement[]);
+    }, { threshold: 0.1 });
 
-
-
-
-    }, 0);
+    document.querySelectorAll('.award').forEach(box => {
+      observer.observe(box);
+    });
   }
+
+
 }

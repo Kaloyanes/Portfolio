@@ -1,7 +1,7 @@
-<div class="wrapper">
+<div class="wrapper" id="awardWrapper">
 
 
-  <h1 class="title-text">Achievements</h1>
+  <h1 class="title-text" id="awardTitle">Achievements</h1>
 
   <div class="awards">
     <div class="award" [ngClass]="{'reversed': (i + 1) % 2 == 0}" *ngFor="let item of awards; let i=index">
@@ -14,7 +14,7 @@
           <h4>{{item.date}}</h4>
         </div>
       </div>
-      <img *ngIf="item.imageUrl" alt="award image" src="{{item.imageUrl}}">
+      <img *ngIf="item.imageUrl" alt="award image" src="{{item.imageUrl}}" loading="lazy">
     </div>
     <!-- <div class="award reversed">
       <div class="info">
