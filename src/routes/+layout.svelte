@@ -1,6 +1,6 @@
 <slot />
 
-<style lang="scss" global>
+<style lang="scss">
 	@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
 	@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 	@import '$lib/variables.scss';
@@ -25,63 +25,58 @@
 	}
 
 	// Firefox
-	* {
+	::global(*) {
 		scrollbar-width: 0px;
 		scrollbar-color: $color-primary-dark;
+		font-family: 'Roboto Slab', serif;
 	}
 
 	/* Chrome, Edge, and Safari */
-	*::-webkit-scrollbar {
+	::global(*)::-webkit-scrollbar {
 		width: 7px;
 	}
 
-	*::-webkit-scrollbar-track {
+	::global(*)::-webkit-scrollbar-track {
 		background: transparent;
 	}
 
-	*::-webkit-scrollbar-thumb {
+	::global(*)::-webkit-scrollbar-thumb {
 		background-color: $primary30;
 		border-radius: 10px;
 	}
 
-	* {
-		font-family: 'Roboto Slab', serif;
-	}
-
 	:root,
-	body {
+	:global(html),
+	:global(body) {
 		margin: 0;
 		padding: 0;
 		font-size: var(--step-0);
 		// overflow-x: hidden;
 	}
 
-	h1 {
+	:global(h1) {
 		font-size: var(--step-0);
 	}
 
-	h2 {
+	:global(h2) {
 		font-size: var(--step-0);
 	}
 
-	h3 {
+	:global(h3) {
 		font-size: var(--step-1);
 	}
 
-	p,
-	li {
+	:global(p),
+	:global(li) {
 		font-size: var(--step--1);
 	}
 
 	:global(.title-text) {
-		position: relative;
-		left: 50%;
-		transform: translateX(-50%);
 		text-align: center;
 		font-size: 40px;
 		padding-bottom: 20px;
-		width: 50%;
 		transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+		margin-inline: auto;
 
 		&:hover {
 			letter-spacing: 3px;
