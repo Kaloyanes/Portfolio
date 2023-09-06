@@ -193,12 +193,6 @@
 				transition: all 600ms cubic-bezier(0.165, 0.84, 0.44, 1);
 			}
 
-			.mat-icon {
-				width: 50px;
-				height: 50px;
-				font-size: 50px;
-			}
-
 			&:hover {
 				color: $primary50;
 				transform: translateY(-10px) scale(1.1);
@@ -224,12 +218,6 @@
 			margin-inline: auto;
 			justify-self: center;
 			left: 0;
-		}
-
-		.wave {
-			width: 100%;
-			aspect-ratio: 9/16;
-			background-position: center;
 		}
 
 		.text {
