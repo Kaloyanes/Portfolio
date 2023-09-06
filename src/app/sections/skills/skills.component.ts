@@ -47,14 +47,14 @@ export class SkillsComponent {
         scrollTrigger: {
           trigger: "#skill-wrapper",
           start: "top center",
-          end: "bottom center",
+          end: "+=400",
           scrub: 1,
 
         },
       });
 
       tl
-        .fromTo("#skill-title", { opacity: 0, duration: 1, y: 300, ease: "power2.out" }, { opacity: 1, duration: 1, y: 0, ease: "power2.out" }, 0);
+        .fromTo("#skill-title", { opacity: 0, duration: 1, y: 300, }, { opacity: 1, duration: 1, y: 0 }, 0);
 
       tl
         .to(".skill-group", { opacity: 1, duration: 1, y: 0, ease: "power2.out" }, 0)

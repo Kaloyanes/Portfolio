@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Project } from 'src/app/models/project.type';
 import { ProjectCardComponent } from '../../components/project-card/project-card.component';
 import { NgFor } from '@angular/common';
+import gsap from 'gsap';
 
 @Component({
   selector: 'app-projects',
@@ -94,4 +95,23 @@ export class ProjectsComponent {
     },
 
   ];
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    setTimeout(() => {
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#project-wrapper",
+          start: "top center",
+          end: "+=300",
+          scrub: 1,
+
+        },
+      });
+
+      tl
+        .fromTo("#project-title", { opacity: 0, duration: 1, y: 300, }, { opacity: 1, duration: 1, y: 0, }, 0);
+    }, 0)
+  }
 }

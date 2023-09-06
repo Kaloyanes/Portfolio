@@ -1,3 +1,5 @@
+@import "/src/styles.scss";
+
 .wrapper {
   width: 100%;
 }
@@ -39,19 +41,21 @@
   width: 40%;
 }
 
-.layout img {
+img {
   display: flex;
   margin: 10px;
   border-radius: 20px;
   transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   width: 50%;
-  box-shadow: 0px 0px 0px #4f378b;
-}
+  box-shadow: 0px 15px 40px $color-primary-container-dark;
 
-.layout img:hover {
-  scale: 1.1 !important;
-  z-index: 0;
-  box-shadow: 0px 0px 50px #695894;
+  &:hover {
+    scale: 1.1 !important;
+    z-index: 0;
+    box-shadow: 0px 15px 60px $color-primary-container-dark;
+
+    border-radius: 50px;
+  }
 }
 
 .reversed {
