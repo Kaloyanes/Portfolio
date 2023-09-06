@@ -1,0 +1,16 @@
+<div class="award" id="{{name}}" [ngClass]="{'reversed': reversed}">
+  <div class="txt" id="content-{{name}}">
+    <div>
+      <h1 class="title">{{award!.title}}</h1>
+      <p>{{award!.description}}</p>
+    </div>
+
+    <div class="location">
+      <h4>{{award!.location}}</h4>
+      <h4>{{award!.date}}</h4>
+    </div>
+  </div>
+  <div class="img" *ngIf="award!.imageUrl">
+    <img id="img-{{name}}" alt="award image" src="{{award!.imageUrl}}" loading="lazy">
+  </div>
+</div>

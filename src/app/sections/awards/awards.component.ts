@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { Award } from 'src/app/models/award.type';
 import { NgFor, NgClass, NgIf, NgOptimizedImage } from '@angular/common';
 import gsap from 'gsap';
+import { AwardCardComponent } from 'src/app/components/award-card/award-card.component';
 
 @Component({
   selector: 'app-awards',
   templateUrl: './awards.component.html',
   styleUrls: ['./awards.component.scss'],
   standalone: true,
-  imports: [NgFor, NgClass, NgIf]
+  imports: [NgFor, NgClass, NgIf, AwardCardComponent]
 })
 export class AwardsComponent {
 
@@ -23,7 +24,7 @@ export class AwardsComponent {
     },
     {
       title: "1st place at BurgasBlueS 2023, hackathon hosted by University prof. dr.Asen Zlatarov ",
-      description: "Me and my friend formed a successful team that placed at first position in the junior project category, surpassing numerous competing teamsemerging as the ultimate winners.",
+      description: "Me and my friend formed a successful team that placed at first position in the junior project category, surpassing numerous competing teams emerging as the ultimate winners.",
       date: "06/2023",
       location: "Burgas",
       imageUrl: "../../../assets/burgasblues.webp",
@@ -57,64 +58,20 @@ export class AwardsComponent {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     setTimeout(() => {
-      const documents = [
-        document.querySelector("#awardTitle"),
-        document.querySelector("#awardWrapper"),
-      ];
+
 
       let tl = gsap.timeline({
         scrollTrigger: {
-          trigger: "#awardWrapper",
-          start: "-300 center",
-          end: "350 top",
+          trigger: "#award-wrapper",
+          start: "top center",
+          end: "+=300",
           scrub: 1,
-          markers: true,
+
         },
-
-
       });
 
-      tl.fromTo("#awardTitle", { opacity: 0, y: 300 }, { opacity: 1, y: 0, duration: 1 }, 0);
-      tl.fromTo(".awards", { opacity: 0, y: 300 }, { opacity: 1, y: 0, duration: 1 }, 0);
-
-      const awards = gsap.utils.toArray('.award');
-
-      function fadeIn(targets: HTMLElement[]) {
-        targets.forEach((element, i) => {
-
-          gsap.fromTo(element, {
-            x: i % 2 == 0 ? -1000 : 1000,
-            opacity: 0,
-          }, {
-            opacity: 1,
-            x: 0,
-            duration: 1,
-
-            ease: "power2.out",
-
-          });
-        });
-      }
-
-      let observer = new IntersectionObserver(function (entries, self) {
-        let targets = entries.map(entry => {
-
-          if (entry.isIntersecting) {
-            self.unobserve(entry.target);
-            return entry.target;
-          }
-
-          return null;
-        });
-
-        // Call our animation function
-        fadeIn(targets as HTMLElement[]);
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.award').forEach(box => {
-        observer.observe(box);
-      });
-
+      tl
+        .fromTo("#award-title", { opacity: 0, duration: 1, y: 300, }, { opacity: 1, duration: 1, y: 0, }, 0);
 
 
 

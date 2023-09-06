@@ -34,17 +34,17 @@ export class ProjectCardComponent {
       let tl = gsap.timeline({
         scrollTrigger: {
           trigger: `#${this.name}`,
-          start: "-200 center",
-          end: "+=700",
+          start: "-300 center",
+          end: "center center",
           markers: true,
-          scrub: true,
+          scrub: 1,
 
         },
 
       });
 
-      tl.fromTo(`#logo-${this.name}`, { opacity: 0, x: -500 }, { opacity: 1, x: 0, duration: 1, ease: "sine.out" }, 0);
-      tl.fromTo(`#content-${this.name}`, { opacity: 0, y: 500 }, { opacity: 1, y: 0, duration: 1, ease: "sine.out" }, 0);
+      tl.fromTo(`#logo-${this.name}`, { opacity: 0, x: -500, rotateZ: 5 }, { opacity: 1, x: 0, duration: 1, rotateZ: 0, ease: "power2.out" }, 0);
+      tl.fromTo(`#content-${this.name}`, { opacity: 0, y: 500 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" }, 0);
 
       // get images and make a staggered effect
 
@@ -53,7 +53,7 @@ export class ProjectCardComponent {
       console.log(imagesDiv);
 
       console.log(images)
-      tl.fromTo(images, { stagger: 5, x: 500, y: 250, opacity: 0, ease: "sine.out" }, { x: 0, y: 0, opacity: 1, duration: 1 }, 0);
+      tl.fromTo(images, { stagger: 5, x: 700, y: 250, opacity: 0, ease: "power2.out", }, { x: 0, y: 0, opacity: 1, duration: 1, }, 0);
 
     }, 0);
   }
