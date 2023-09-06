@@ -4,9 +4,7 @@
   <h1 class="title-text">Projects</h1>
 
   <div class="layout">
-
-    <div class="item" *ngFor="let project of projects; let i=index">
-
+    <div class="project" *ngFor="let project of projects; let i=index">
       <app-project-card [project]="project" />
     </div>
   </div>
