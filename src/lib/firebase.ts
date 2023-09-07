@@ -2,7 +2,6 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
 import { getAnalytics, initializeAnalytics, logEvent } from "firebase/analytics";
 import { onMount } from "svelte";
-import { browser } from "$app/environment";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCKGvJjnm3JxESI67fsJ3I6QAUSpk6lWX8",
