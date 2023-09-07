@@ -1,7 +1,0 @@
-<svg id="visual" viewBox="0 0 960 540" width="960" height="540" xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
-  <rect x="0" y="0" width="960" height="540" fill="#1c1b1f"></rect>
-  <path
-    d="M0 330L40 329.7C80 329.3 160 328.7 240 306.2C320 283.7 400 239.3 480 220.8C560 202.3 640 209.7 720 213.5C800 217.3 880 217.7 920 217.8L960 218L960 0L920 0C880 0 800 0 720 0C640 0 560 0 480 0C400 0 320 0 240 0C160 0 80 0 40 0L0 0Z"
-    fill="#34245e" stroke-linecap="round" stroke-linejoin="miter"></path>
-</svg>
