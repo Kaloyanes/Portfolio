@@ -41,14 +41,14 @@
 	</div>
 
 	<div class="sections">
-		<div id="education" class="section">
-			<Education />
+		<div class="section" id="projects">
+			<Projects />
 		</div>
 		<div class="section" id="skills">
 			<Skills />
 		</div>
-		<div class="section" id="projects">
-			<Projects />
+		<div id="education" class="section">
+			<Education />
 		</div>
 		<div class="section" id="awards">
 			<Awards />

@@ -1,10 +1,52 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Email from 'svelte-material-icons/Email.svelte';
+
+	let contact: HTMLElement;
+	let pfp: HTMLElement;
+	let text: HTMLElement;
+
+	onMount(() => {
+		let tl = gsap.timeline({ delay: 0.5 });
+
+		tl.fromTo(
+			pfp,
+			{ opacity: 0, x: 1500 },
+			{ opacity: 1, duration: 1, x: 0, ease: 'power2.out' },
+			0
+		);
+
+		tl.fromTo(
+			text,
+			{
+				x: -1500
+			},
+			{
+				x: 0,
+				duration: 1.5,
+				scale: 1,
+				ease: 'power2.out'
+			},
+			0
+		);
+
+		tl.fromTo(
+			contact.children,
+			{
+				x: -250
+			},
+			{
+				x: 0,
+				stagger: 0.3,
+				duration: 0.6
+			}
+		);
+	});
 </script>
 
 <div class="contact">
 	<!-- Icons with email and linkedin and facebook -->
-	<div class="icons">
+	<div class="icons" bind:this={contact}>
 		<a href="mailto:kaloyangfx@gmail.com" target="_blank">
 			<Email size="50" />
 		</a>
@@ -78,7 +120,7 @@
 </div>
 
 <div class="container">
-	<div class="txt-layout" id="short-txt">
+	<div class="txt-layout" id="short-txt" bind:this={text}>
 		<div class="circle" />
 		<div class="text">
 			Let's build something
@@ -87,7 +129,7 @@
 		</div>
 	</div>
 
-	<img src="/pfp2.webp" class="pfp" alt="Kaloyan Stoyanov Selfie" />
+	<img src="/pfp2.webp" class="pfp" alt="Kaloyan Stoyanov Selfie" bind:this={pfp} />
 </div>
 
 <style lang="scss">
@@ -113,6 +155,7 @@
 		transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		box-shadow: 0px 0px 5px $color-primary-container-dark;
 
+		transform: translateX(1500px);
 		&:hover {
 			filter: none;
 			border-radius: 30px;
@@ -127,6 +170,7 @@
 		align-items: center;
 		position: relative;
 		width: 40%;
+		transform: translateX(-1500px);
 	}
 
 	.txt-layout:hover {
@@ -185,6 +229,7 @@
 		transform: translate(0, -50%);
 
 		a {
+			transform: translateX(-250px);
 			margin-block: 1rem;
 			color: white;
 			transition: all 600ms cubic-bezier(0.165, 0.84, 0.44, 1);

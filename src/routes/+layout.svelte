@@ -1,7 +1,23 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+
+	import { setAnalyticsCollectionEnabled, setUserId } from 'firebase/analytics';
+
+	onMount(async () => {
+		const { analytics } = await import('$lib/firebase');
+
+		// Count the user
+		setAnalyticsCollectionEnabled(analytics, true);
+		setUserId(analytics, 'dev');
+	});
+</script>
+
 <svelte:head>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-0L6X6Q5RER"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </svelte:head>
+
 <slot />
 
 <style lang="scss">

@@ -8,6 +8,7 @@
 	let logo: HTMLElement;
 	let content: HTMLElement;
 	let imagesDiv: HTMLElement;
+	let images: HTMLElement[] = [];
 
 	onMount(() => {
 		let tl = gsap.timeline({
@@ -33,8 +34,6 @@
 			0
 		);
 
-		let images = imagesDiv.getElementsByClassName('img');
-
 		tl.fromTo(
 			images,
 			{ stagger: 5, x: 700, y: 250, opacity: 0, ease: 'power2.out' },
@@ -56,9 +55,9 @@
 	</div>
 
 	<div class="images" bind:this={imagesDiv}>
-		{#each [project.images[0], project.images[1]] as picture}
+		{#each [project.images[0], project.images[1]] as picture, i}
 			<div class="image" class:position={project.images.length != 1}>
-				<img src={picture} alt={project.name} class="img" />
+				<img src={picture} alt={project.name} class="img" bind:this={images[i]} />
 			</div>
 		{/each}
 	</div>
