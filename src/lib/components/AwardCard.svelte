@@ -86,7 +86,8 @@
 	.location {
 		margin-top: 2rem;
 
-		h4 {
+		h4,
+		h5 {
 			margin: 0;
 		}
 	}
