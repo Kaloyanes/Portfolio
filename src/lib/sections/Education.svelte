@@ -1,6 +1,8 @@
 <script lang="ts">
+	import SplitType from 'split-type';
 	import { onMount } from 'svelte';
 
+	let title: HTMLElement;
 	onMount(() => {
 		let tl = gsap.timeline({
 			scrollTrigger: {
@@ -11,14 +13,21 @@
 			}
 		});
 
-		tl.fromTo('#educatTitle', { opacity: 0, y: 300 }, { opacity: 1, y: 0, duration: 1 });
-		tl.fromTo('.img1', { opacity: 0, x: -1000 }, { opacity: 1, x: 0, duration: 1 }, 0);
-		tl.fromTo('.img2', { opacity: 0, x: 1000 }, { opacity: 1, x: 0, duration: 1 }, 0);
+		let titleWords = new SplitType(title, { types: 'chars' });
+
+		tl.fromTo(
+			titleWords.chars,
+			{ opacity: 0, duration: 1, y: 40 },
+			{ opacity: 1, duration: 1, y: 0, stagger: 0.1 },
+			0
+		);
+		tl.fromTo('.img1', { opacity: 0, x: -1000 }, { opacity: 1, x: 0, duration: 1 }, 1);
+		tl.fromTo('.img2', { opacity: 0, x: 1000 }, { opacity: 1, x: 0, duration: 1 }, 1);
 	});
 </script>
 
 <div class="wrapper" id="educatWrapper">
-	<h1 class="title-text" id="educatTitle">Education</h1>
+	<h1 class="title-text" id="educatTitle" bind:this={title}>Education</h1>
 
 	<div class="layout">
 		<div class="row reversed">
@@ -35,7 +44,7 @@
 			<div class="info img1">
 				<h1>Erasmus+ programs</h1>
 				<h4>EU Programme for education, training, youth and sport</h4>
-				<h4>Projects that I have attended:</h4>
+				<h5>Projects that I have attended:</h5>
 				<ul>
 					<li>
 						Project under the Erasmus+ program, KD 1, sector Vocational education training on the

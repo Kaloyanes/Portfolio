@@ -1,6 +1,7 @@
 <script lang="ts">
 	import AwardCard from '$lib/components/AwardCard.svelte';
 	import type { Award } from '$lib/models/award.type';
+	import SplitType from 'split-type';
 	import { onMount } from 'svelte';
 
 	let awards: Award[] = [
@@ -55,14 +56,21 @@
 		let tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: wrapper,
-				start: 'top center',
+				start: '-200 center',
 				end: '+=300',
 				scrub: 1,
-				markers: false
+				markers: true
 			}
 		});
 
-		tl.fromTo(title, { opacity: 0, duration: 1, y: 300 }, { opacity: 1, duration: 1, y: 0 }, 0);
+		let titleWords = new SplitType(title, { types: 'chars' });
+
+		tl.fromTo(
+			titleWords.chars,
+			{ opacity: 0, duration: 1, y: 40 },
+			{ opacity: 1, duration: 1, y: 0, stagger: 0.1 },
+			0
+		);
 	});
 </script>
 
