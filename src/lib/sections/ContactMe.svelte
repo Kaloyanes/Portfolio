@@ -1,8 +1,16 @@
 <script lang="ts">
 	import type { Social } from '$lib/models/social.type';
+	import { Firestore, addDoc, collection, doc, setDoc } from 'firebase/firestore';
+	import { onMount } from 'svelte';
 
-	import Email from 'svelte-material-icons/Email.svelte';
-	import Phone from 'svelte-material-icons/Phone.svelte';
+	import SplitType from 'split-type';
+
+	let db: Firestore;
+
+	onMount(async () => {
+		const { firestore } = await import('$lib/firebase');
+		db = firestore;
+	});
 
 	let socials: Social[] = [
 		{
@@ -29,50 +37,207 @@
 		window.open(link, '_blank');
 	}
 
-	function launchMail() {
-		window.open('mailto:kaloyangfx@gmail.com');
+	let email: string = '';
+	let message: string = '';
+
+	function mail() {
+		email = email.trim();
+		message = message.trim();
+
+		if (email === '' || message === '') {
+			alert('Please fill all the fields!');
+			return;
+		}
+
+		if (email.includes('@') === false) {
+			alert('Please enter a valid email!');
+			return;
+		}
+
+		addDoc(collection(db, 'mail'), {
+			to: ['kaloyangfx@gmail.com'],
+			message: {
+				subject: `New message from ${email.trim()}!`,
+				html: `
+        <body style="font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 0;">
+          <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="80%" style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #ffffff; border: 1px solid #cccccc; border-radius: 5px;">
+              <tr>
+                  <td>
+                      <h1 style="font-size: 24px; color: #333333;">New Message from Visitor!</h1>
+                      <p style="font-size: 16px; color: #666666;"><strong>Email from:</strong>${email}</p>
+                      <div class="message" style="margin-top: 20px;">
+                          <h2 style="font-size: 20px; color: #333333;">Message:</h2>
+                          <p style="font-size: 16px; color: #666666;">${message}</p>
+                      </div>
+                  </td>
+              </tr>
+          </table>
+        </body>
+        `
+			}
+		});
+
+		email = '';
+		message = '';
 	}
 
-	function call() {
-		window.open('tel:+359879900137');
-	}
+	let wrapper: HTMLElement;
+
+	let title: HTMLElement;
+	let thank: HTMLElement;
+	let contact: HTMLElement;
+
+	let form: HTMLElement;
+
+	onMount(() => {
+		let tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: wrapper,
+				start: '-100 center',
+				end: '+=550',
+				scrub: 2,
+				markers: true
+			}
+		});
+
+		let titleWords = new SplitType(title, { types: 'chars' });
+		let thankWords = new SplitType(thank, { types: 'words, chars' });
+		let contactWords = new SplitType(contact, { types: 'words, chars' });
+
+		let words = [...titleWords.chars!, ...thankWords.words!, ...contactWords.words!];
+		console.log(words);
+
+		tl.fromTo(
+			words,
+			{ y: 50, opacity: 0 },
+			{ y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: 'ease' },
+			0
+		);
+
+		var socialCards = document.querySelectorAll('.social-card');
+		tl.fromTo(
+			socialCards,
+			{
+				y: 100,
+				opacity: 0,
+				scale: 0.5
+			},
+			{
+				y: 0,
+				opacity: 1,
+				scale: 1,
+				duration: 1,
+				stagger: 0.5,
+				ease: 'ease'
+			},
+			0
+		);
+
+		tl.fromTo(
+			form.children,
+			{
+				y: 200,
+				opacity: 0,
+				scale: 0.5
+			},
+			{
+				scale: 1,
+				y: 0,
+				opacity: 1,
+				duration: 2,
+				stagger: 0.5,
+				ease: 'ease'
+			},
+			0
+		);
+	});
 </script>
 
-<div class="wrapper">
-	<h1 class="title-text">Contact me</h1>
-
+<div class="wrapper" bind:this={wrapper}>
+	<div class="text">
+		<h1 class="title-text" bind:this={title}>Contact me</h1>
+		<h3 bind:this={thank}>Thank you for visiting my portfolio!</h3>
+		<h4 bind:this={contact}>
+			Feel free to contact me if you have any questions or if you want to work with me!
+		</h4>
+	</div>
 	<div class="layout">
 		<div class="col">
 			<div class="socials">
-				{#each socials as social}
-					<div class="social-card" on:click={() => openLink(social.link)}>
+				{#each socials as social, i}
+					<div
+						class="social-card"
+						tabindex={i}
+						role="button"
+						aria-label="Social media link"
+						on:click={() => openLink(social.link)}
+						on:keypress={() => openLink(social.link)}
+					>
 						<img src={social.imageUrl} alt={social.name} />
 						<h2 id="name">{social.name}</h2>
 					</div>
 				{/each}
 			</div>
-
-			<div class="info">
-				<p class="info-tile"><mat-icon>location_on</mat-icon>Burgas</p>
-				<p class="info-tile clickable" on:click={launchMail}>
-					<Email /> kaloyangfx@gmail.com
+			<!-- <div class="info">
+				<p class="info-tile">
+					<LocationEnter />Location: Burgas
 				</p>
-				<p class="info-tile clickable" on:click={call}>
+				<p class="info-tile clickable" on:click={launchMail} on:keypress={launchMail}>
+					<Email />Email: kaloyangfx@gmail.com
+				</p>
+
+				<p class="info-tile clickable" on:click={call} on:keypress={call}>
 					<Phone /> +359879900137
 				</p>
-				<p class="info-tile"><mat-icon>school</mat-icon>PGEE Burgas</p>
-			</div>
+				<p class="info-tile"><School /> PGEE Burgas</p>
+			</div> -->
 		</div>
 
-		<div class="contact-form" />
+		<div>
+			<form on:submit|preventDefault={mail} class="contact-form" bind:this={form}>
+				<div class="inputBox">
+					<label for="emailField">Email</label>
+					<input type="email" bind:value={email} id="emailField" required />
+				</div>
+				<div class="inputBox">
+					<label for="messageField">Message</label>
+					<textarea bind:value={message} id="messageField" required cols="50" rows="30" />
+				</div>
+
+				<button type="submit">Send mail</button>
+			</form>
+		</div>
 	</div>
 </div>
 
 <style lang="scss">
 	@import '$lib/variables.scss';
 
+	.text {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 1rem;
+
+		* {
+			letter-spacing: 0.5px;
+			transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+			&:hover {
+				letter-spacing: 1.5px;
+			}
+		}
+
+		h3 {
+			margin: 0;
+		}
+	}
+
 	.wrapper {
 		margin-bottom: 5rem;
+		margin-inline: 7rem;
 	}
 
 	.layout {
@@ -83,7 +248,7 @@
 	}
 
 	.col {
-		flex: 1;
+		flex: 0.5;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -99,6 +264,10 @@
 		margin-block: 2rem;
 
 		.social-card {
+			border: 1px solid $primary30;
+
+			margin-block: 1rem;
+			max-width: 5rem;
 			cursor: pointer;
 			margin-inline: 2rem;
 			padding: 2rem;
@@ -110,7 +279,8 @@
 			justify-content: space-evenly;
 			align-items: center;
 			flex-direction: column;
-			background-color: $color-primary-container-dark;
+
+			background-color: rgba($color: $color-primary-container-dark, $alpha: 0.6);
 			transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 			box-shadow: 0 10px 40px $primary30;
 
@@ -123,11 +293,11 @@
 			}
 
 			&:hover {
-				background-color: $primary30;
+				background-color: rgba($color: $color-primary-container-dark, $alpha: 1);
 				scale: 1.1;
 				transform: translateY(-10px);
 				box-shadow: 0 20px 60px $primary30;
-				letter-spacing: 2px;
+				letter-spacing: 3px;
 
 				img {
 					scale: 1.1;
@@ -144,5 +314,101 @@
 
 	.contact-form {
 		flex: 1;
+
+		margin-top: 2rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		.inputBox {
+			display: flex;
+			flex-direction: column;
+
+			margin-block: 1rem;
+			width: 100%;
+
+			input,
+			textarea {
+				height: 1rem;
+				padding: 0.5rem;
+				border: 1px solid $primary30;
+
+				// Change opacity of $color-primary-container-dark
+				background-color: rgba($color-primary-container-dark, 0.4);
+
+				border-radius: 10px;
+				outline: none;
+				color: #fff;
+				font-size: 1em;
+				font-weight: 400;
+				letter-spacing: 1px;
+				line-height: 1.5rem;
+				padding: 1rem;
+				transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+				box-shadow: 0 5px 20px $primary30;
+				border: 1px solid $primary30;
+
+				&:hover {
+					scale: 1.05;
+					background-color: rgba($color-primary-container-dark, 0.5);
+					box-shadow: 0 20px 25px $primary30;
+				}
+
+				&:active,
+				&:focus {
+					border-radius: 20px;
+					scale: 1.1;
+					box-shadow: 0 20px 30px $primary30;
+					background-color: rgba($color-primary-container-dark, 0.6);
+				}
+			}
+
+			textarea {
+				font-family: Arial, sans-serif !important;
+				min-height: 7rem;
+				resize: none;
+				font-size: 1rem;
+			}
+
+			label {
+				font-weight: 400;
+				font-size: 1rem;
+				margin-bottom: 10px;
+				transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+				&:hover {
+					letter-spacing: 2px;
+				}
+			}
+		}
+
+		button {
+			width: 60%;
+			font-size: 1.2rem;
+			letter-spacing: 0.5px;
+			margin-bottom: 2rem;
+			border-radius: 10px;
+			border: 1px solid $primary30;
+
+			color: white;
+			background-color: rgba($color: $color-primary-container-dark, $alpha: 0.7);
+			text-decoration: none;
+			transition: all 600ms cubic-bezier(0.165, 0.84, 0.44, 1);
+			box-shadow: 0px 0px 20px $color-primary-container-dark;
+			padding: 1rem;
+			margin-top: 2rem;
+			text-align: center;
+			cursor: pointer;
+
+			&:hover {
+				border-radius: 20px;
+				box-shadow: 0px 0px 50px $color-primary-container-dark;
+				background-color: rgba($color: $color-primary-container-dark, $alpha: 1);
+
+				color: #f5f5f5;
+				scale: 1.1;
+			}
+		}
 	}
 </style>
