@@ -46,7 +46,7 @@
 
 		<div class="location">
 			<h4>{award.location}</h4>
-			<h4>{award.date}</h4>
+			<h5>{award.date}</h5>
 		</div>
 	</div>
 	{#if award.imageUrl}
