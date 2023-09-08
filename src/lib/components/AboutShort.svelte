@@ -7,50 +7,51 @@
 	let text: HTMLElement;
 
 	onMount(() => {
-		let tl = gsap.timeline({ delay: 0.5 });
-
-		tl.fromTo(
-			pfp,
-			{ opacity: 0, x: 1500 },
-			{ opacity: 1, duration: 1, x: 0, ease: 'power2.out' },
-			0
-		);
-
-		tl.fromTo(
-			text,
-			{
-				x: -1500
-			},
-			{
-				x: 0,
-				duration: 1.5,
-				scale: 1,
-				ease: 'power2.out'
-			},
-			0
-		);
-
-		tl.fromTo(
-			contact.children,
-			{
-				x: -250
-			},
-			{
-				x: 0,
-				stagger: 0.3,
-				duration: 0.6
-			}
-		);
+		// let tl = gsap.timeline({ delay: 0.5 });
+		// tl.fromTo(
+		// 	pfp,
+		// 	{ opacity: 0, x: 1500 },
+		// 	{ opacity: 1, duration: 1, x: 0, ease: 'power2.out' },
+		// 	0
+		// );
+		// tl.fromTo(
+		// 	text,
+		// 	{
+		// 		x: -1500
+		// 	},
+		// 	{
+		// 		x: 0,
+		// 		duration: 1.5,
+		// 		scale: 1,
+		// 		ease: 'power2.out'
+		// 	},
+		// 	0
+		// );
+		// tl.fromTo(
+		// 	contact.children,
+		// 	{
+		// 		x: -250
+		// 	},
+		// 	{
+		// 		x: 0,
+		// 		stagger: 0.3,
+		// 		duration: 0.6
+		// 	}
+		// );
 	});
 </script>
 
 <div class="contact">
 	<!-- Icons with email and linkedin and facebook -->
 	<div class="icons" bind:this={contact}>
-		<a href="mailto:kaloyangfx@gmail.com" target="_blank">
+		<a href="mailto:kaloyangfx@gmail.com" target="_blank" aria-label="Email me">
 			<Email size="50" />
 		</a>
-		<a href="https://www.linkedin.com/in/kaloyan-stoyanov-ba2799205/" target="_blank">
+		<a
+			href="https://www.linkedin.com/in/kaloyan-stoyanov-ba2799205/"
+			target="_blank"
+			aria-label="Contact me on LinkedIn"
+		>
 			<svg
 				fill="#ffffff"
 				height="50px"
@@ -83,7 +84,7 @@
 				</g>
 			</svg>
 		</a>
-		<a href="https://www.facebook.com/kalstst/" target="_blank">
+		<a href="https://www.facebook.com/kalstst/" target="_blank" aria-label="Add me on Facebook">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -155,7 +156,7 @@
 		transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		box-shadow: 0px 0px 5px $color-primary-container-dark;
 
-		transform: translateX(1500px);
+		// transform: translateX(1500px);
 		&:hover {
 			filter: none;
 			border-radius: 30px;
@@ -170,7 +171,7 @@
 		align-items: center;
 		position: relative;
 		width: 40%;
-		transform: translateX(-1500px);
+		// transform: translateX(-1500px);
 	}
 
 	.txt-layout:hover {
@@ -206,8 +207,7 @@
 		background-color: $color-primary-container-dark;
 		filter: blur(5px);
 		z-index: -1;
-		aspect-ratio: 1 / 1;
-		width: 70%;
+		aspect-ratio: 1;
 		height: 120%;
 		position: absolute;
 		left: 40%;
@@ -229,7 +229,7 @@
 		transform: translate(0, -50%);
 
 		a {
-			transform: translateX(-250px);
+			// transform: translateX(-250px);
 			margin-block: 1rem;
 			color: white;
 			transition: all 600ms cubic-bezier(0.165, 0.84, 0.44, 1);
