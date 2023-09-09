@@ -6,10 +6,25 @@
 	import Projects from '$lib/sections/Projects.svelte';
 	import Awards from '$lib/sections/Awards.svelte';
 	import ContactMe from '$lib/sections/ContactMe.svelte';
+	import Lenis from '@studio-freight/lenis';
 
 	let currentFavicon = '/light-favicon.png';
 	onMount(async () => {
 		const { gsap } = await import('gsap');
+
+		const lenis = new Lenis({
+			duration: 1,
+			normalizeWheel: true,
+			wheelMultiplier: 1.5,
+			lerp: 0.5
+		});
+
+		function raf(time: any) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+
+		requestAnimationFrame(raf);
 
 		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 			updateFavicon(true);
