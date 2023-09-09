@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 
 	import SplitType from 'split-type';
+	import { fade, fly } from 'svelte/transition';
 
 	let db: Firestore;
 
@@ -39,7 +40,7 @@
 
 	let email: string = '';
 	let message: string = '';
-
+	let toast: HTMLElement;
 	function mail() {
 		email = email.trim();
 		message = message.trim();
@@ -54,32 +55,60 @@
 			return;
 		}
 
-		addDoc(collection(db, 'mail'), {
-			to: ['kaloyangfx@gmail.com'],
-			message: {
-				subject: `New message from ${email.trim()}!`,
-				html: `
-        <body style="font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 0;">
-          <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="80%" style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #ffffff; border: 1px solid #cccccc; border-radius: 5px;">
+		try {
+			addDoc(collection(db, 'mail'), {
+				to: ['kaloyangfx@gmail.com'],
+				message: {
+					subject: `New message from ${email.trim()}!`,
+					html: `
+          <body style="font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 0;">
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="80%" style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #ffffff; border: 1px solid #cccccc; border-radius: 5px;">
               <tr>
-                  <td>
-                      <h1 style="font-size: 24px; color: #333333;">New Message from Visitor!</h1>
-                      <p style="font-size: 16px; color: #666666;"><strong>Email from:</strong>${email}</p>
-                      <div class="message" style="margin-top: 20px;">
-                          <h2 style="font-size: 20px; color: #333333;">Message:</h2>
-                          <p style="font-size: 16px; color: #666666;">${message}</p>
-                      </div>
-                  </td>
+                <td>
+                  <h1 style="font-size: 24px; color: #333333;">New Message from Visitor!</h1>
+                  <p style="font-size: 16px; color: #666666;"><strong>Email from:</strong>${email}</p>
+                  <div class="message" style="margin-top: 20px;">
+                    <h2 style="font-size: 20px; color: #333333;">Message:</h2>
+                    <p style="font-size: 16px; color: #666666;">${message}</p>
+                  </div>
+                </td>
               </tr>
-          </table>
-        </body>
-        `
-			}
-		});
-
+            </table>
+          </body>
+                    `
+				}
+			});
+		} catch (e) {
+			console.log(e);
+			type = 'failure';
+			email = '';
+			message = '';
+			showToast();
+			return;
+		}
 		email = '';
 		message = '';
+		type = 'success';
+		showToast();
 	}
+
+	function showToast() {
+		gsap.fromTo(
+			toast,
+			{ y: 50, opacity: 0, scale: 0.2 },
+			{ y: 0, opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' }
+		);
+
+		setTimeout(() => {
+			gsap.fromTo(
+				toast,
+				{ y: 0, opacity: 1, scale: 1 },
+				{ y: 50, opacity: 0, scale: 0.2, duration: 0.3, ease: 'power2.out' }
+			);
+		}, 5000);
+	}
+
+	let type: string = 'success'; // TYPE CAN BE SUCCESS OR FAILURE
 
 	let wrapper: HTMLElement;
 
@@ -206,6 +235,13 @@
 
 				<button type="submit">Send mail</button>
 			</form>
+			<div class="toast" class:success={type === 'success'} bind:this={toast}>
+				{#if type === 'success'}
+					<h2>Message sent successfully!</h2>
+				{:else}
+					<h2>Message failed to send!</h2>
+				{/if}
+			</div>
 		</div>
 	</div>
 </div>
@@ -294,8 +330,8 @@
 
 			&:hover {
 				background-color: rgba($color: $color-primary-container-dark, $alpha: 1);
-				scale: 1.1;
-				transform: translateY(-10px);
+				scale: 1.1 !important;
+				transform: translateY(-10px) !important;
 				box-shadow: 0 20px 60px $primary30;
 				letter-spacing: 3px;
 
@@ -407,8 +443,67 @@
 				background-color: rgba($color: $color-primary-container-dark, $alpha: 1);
 
 				color: #f5f5f5;
-				scale: 1.1;
+				scale: 1.1 !important;
 			}
+		}
+	}
+
+	.toast {
+		background-color: rgba($tertiary20, 0.5);
+		text-align: center;
+		border-radius: 20px;
+		box-shadow: 0px 10px 20px $tertiary20;
+		transition: all 600ms cubic-bezier(0.165, 0.84, 0.44, 1);
+
+		letter-spacing: 1px;
+		padding: 0.5rem 1rem;
+		opacity: 0;
+		scale: 0.2;
+		translate: 0px 50px;
+
+		&:hover {
+			box-shadow: 0px 10px 30px $tertiary20;
+			scale: 1.1 !important;
+		}
+	}
+
+	.success {
+		background-color: rgba(#00c853, 0.5) !important;
+		box-shadow: 0px 10px 30px #00c853 !important;
+	}
+
+	@media (max-width: 850px) {
+		.wrapper {
+			margin-bottom: 0;
+		}
+
+		.layout {
+			flex-direction: column;
+		}
+
+		.col {
+			width: 100%;
+		}
+
+		.text {
+			text-align: center;
+		}
+
+		.contact-form {
+			margin-inline: auto;
+			width: 80%;
+		}
+	}
+
+	@media (max-width: 1100px) {
+		.contact-form {
+			flex-direction: column;
+		}
+	}
+
+	@media (max-width: 1350px) {
+		.socials {
+			flex-wrap: wrap;
 		}
 	}
 </style>
