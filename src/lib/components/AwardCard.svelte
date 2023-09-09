@@ -23,7 +23,7 @@
 				start: '-300 center',
 				end: 'center center',
 				markers: false,
-				scrub: 1
+				scrub: 0.5
 			}
 		});
 
@@ -37,7 +37,7 @@
 		tl.fromTo(
 			titleWords.chars,
 			{ opacity: 0, y: 35 },
-			{ opacity: 1, y: 0, duration: 10, stagger: 1, ease: 'power2.out' },
+			{ opacity: 1, y: 0, duration: 50, stagger: 1, ease: 'power2.out' },
 			0
 		);
 

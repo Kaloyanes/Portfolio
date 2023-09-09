@@ -15,7 +15,7 @@
 			scrollTrigger: {
 				trigger: projectWrapper,
 				start: '-300 center',
-				end: '+=1000',
+				end: '+=500',
 				markers: false,
 				scrub: 1
 			}
