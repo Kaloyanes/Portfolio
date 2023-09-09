@@ -59,7 +59,7 @@
 				start: '-200 center',
 				end: '+=300',
 				scrub: 1,
-				markers: true
+				markers: false
 			}
 		});
 

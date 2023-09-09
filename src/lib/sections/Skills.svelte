@@ -72,7 +72,7 @@
 			scrollTrigger: {
 				trigger: '#skill-wrapper',
 				start: 'top center',
-				end: '+=500',
+				end: 'center center',
 				scrub: 1,
 				markers: false
 			}
@@ -86,8 +86,16 @@
 			{ opacity: 1, duration: 1, y: 0, stagger: 0.1 },
 			0
 		);
-
-		tl.to('.skill-group', { opacity: 1, duration: 1, y: 0, ease: 'power2.out' }, 0);
+		var skillGroups = gsap.utils.toArray('.skill-group');
+		tl.fromTo(
+			skillGroups,
+			{
+				opacity: 0,
+				y: 500
+			},
+			{ opacity: 1, duration: 1, y: 0, ease: 'power2.out', stagger: 1 },
+			0
+		);
 	});
 </script>
 
@@ -156,6 +164,7 @@
 		padding: 20px 50px;
 		border-radius: 20px;
 		border: 2px solid $primary30;
+		margin-bottom: 2rem;
 
 		display: flex;
 		flex-direction: column;
@@ -178,17 +187,6 @@
 			box-shadow: 0 0 10px 0 $primary30;
 			background-color: rgba($primary30, 0.2);
 			scale: 1.05 !important;
-		}
-	}
-
-	.skill-group:nth-child(2) {
-		margin-block: 1rem;
-	}
-
-	@for $i from 1 through 3 {
-		.skill-group:nth-child(#{$i}) {
-			opacity: 0;
-			transform: translateY(#{$i * 500}px);
 		}
 	}
 

@@ -125,7 +125,7 @@
 				start: '-100 center',
 				end: '+=550',
 				scrub: 2,
-				markers: true
+				markers: false
 			}
 		});
 

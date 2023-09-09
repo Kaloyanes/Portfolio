@@ -21,7 +21,7 @@
 			scrollTrigger: {
 				trigger: wrapper,
 				start: '-300 center',
-				end: '+=700',
+				end: 'center center',
 				markers: false,
 				scrub: 1
 			}
