@@ -78,8 +78,17 @@
 <style lang="scss">
 	@import '$lib/variables.scss';
 
+	.layout {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+	}
+
 	.about-short {
-		height: 120%;
+		// margin-bottom: 10rem;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -94,13 +103,5 @@
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-	}
-
-	.layout {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		width: 100%;
 	}
 </style>

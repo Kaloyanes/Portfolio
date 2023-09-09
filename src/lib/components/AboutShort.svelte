@@ -171,18 +171,19 @@
 		align-items: center;
 		position: relative;
 		width: 40%;
+		margin-right: 2rem;
 		// transform: translateX(-1500px);
-	}
 
-	.txt-layout:hover {
-		.text {
-			scale: 1.05;
-			user-select: none;
-			letter-spacing: 3px;
-		}
+		&:hover {
+			.text {
+				scale: 1.05;
+				user-select: none;
+				letter-spacing: 3px;
+			}
 
-		.circle {
-			filter: blur(10px);
+			.circle {
+				filter: blur(10px);
+			}
 		}
 	}
 
@@ -200,7 +201,6 @@
 		font-size: 80px;
 
 		word-break: keep-all;
-		text-align: start;
 	}
 
 	.circle {
@@ -208,9 +208,9 @@
 		filter: blur(5px);
 		z-index: -1;
 		aspect-ratio: 1;
-		height: 120%;
+		height: 600px !important;
 		position: absolute;
-		left: 40%;
+		left: 45%;
 		top: 50%;
 		transform: translate(-50%, -50%);
 		border-radius: 50%;
@@ -249,18 +249,21 @@
 		}
 	}
 
-	@media (width <= 1200px) {
+	@media (max-width: 1200px) {
 		.container {
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
+			height: 100%;
 			width: 100%;
 			padding-top: 5rem;
 		}
 
-		img {
-			width: 60%;
-			margin-inline: auto;
+		.pfp {
+			width: 80%;
+			margin-block: 7rem;
+
+			// margin-inline: auto;
 			justify-self: center;
 			left: 0;
 		}
@@ -270,17 +273,51 @@
 			position: relative;
 			left: 0;
 			top: 0;
-			width: 70%;
+			width: 60%;
+			margin-bottom: 2rem;
 			margin-inline: 20px;
 			text-align: center;
 			color: white;
 			transition: 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-			font-weight: bold;
 			font-size: 60px;
 			white-space: pre-line;
 
 			word-break: keep-all;
+		}
+
+		.txt-layout {
+			width: 100%;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin: 0;
+			margin-top: 5rem;
+
+			&:hover {
+				.text {
+					scale: 1;
+					user-select: none;
+					letter-spacing: 1px;
+				}
+
+				.circle {
+					filter: blur(10px);
+				}
+			}
+		}
+
+		.circle {
+			left: 50%;
+			height: 450px !important;
+		}
+
+		.icons {
+			flex-direction: row;
+			justify-content: space-evenly;
+			width: 100%;
+			top: 3rem;
+			left: 0;
 		}
 	}
 </style>
