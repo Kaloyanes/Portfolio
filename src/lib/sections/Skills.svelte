@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Skill } from '$lib/models/skill.type';
+	import SplitType from 'split-type';
 	import { onMount } from 'svelte';
 
 	let frontendSkills: Skill[] = [
@@ -64,30 +65,42 @@
 		new Skill('Dart', 10, 'https://upload.wikimedia.org/wikipedia/commons/9/91/Dart-logo-icon.svg')
 	];
 
+	let title: HTMLElement;
+
 	onMount(() => {
 		let tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: '#skill-wrapper',
 				start: 'top center',
-				end: '+=500',
+				end: 'center center',
 				scrub: 1,
 				markers: false
 			}
 		});
 
+		let titleWords = new SplitType(title, { types: 'chars' });
+
 		tl.fromTo(
-			'#skill-title',
-			{ opacity: 0, duration: 1, y: 300 },
-			{ opacity: 1, duration: 1, y: 0 },
+			titleWords.chars,
+			{ opacity: 0, duration: 1, y: 40 },
+			{ opacity: 1, duration: 1, y: 0, stagger: 0.1 },
 			0
 		);
-
-		tl.to('.skill-group', { opacity: 1, duration: 1, y: 0, ease: 'power2.out' }, 0);
+		var skillGroups = gsap.utils.toArray('.skill-group');
+		tl.fromTo(
+			skillGroups,
+			{
+				opacity: 0,
+				y: 500
+			},
+			{ opacity: 1, duration: 1, y: 0, ease: 'power2.out', stagger: 1 },
+			0
+		);
 	});
 </script>
 
 <div class="wrapper" id="skill-wrapper">
-	<h1 class="title-text" id="skill-title">Skills</h1>
+	<h1 class="title-text" bind:this={title}>Skills</h1>
 
 	<div class="layout">
 		<div class="skill-group">
@@ -151,6 +164,7 @@
 		padding: 20px 50px;
 		border-radius: 20px;
 		border: 2px solid $primary30;
+		margin-bottom: 2rem;
 
 		display: flex;
 		flex-direction: column;
@@ -173,17 +187,6 @@
 			box-shadow: 0 0 10px 0 $primary30;
 			background-color: rgba($primary30, 0.2);
 			scale: 1.05 !important;
-		}
-	}
-
-	.skill-group:nth-child(2) {
-		margin-block: 1rem;
-	}
-
-	@for $i from 1 through 3 {
-		.skill-group:nth-child(#{$i}) {
-			opacity: 0;
-			transform: translateY(#{$i * 500}px);
 		}
 	}
 

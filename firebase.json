@@ -12,7 +12,7 @@
     ],
     "frameworksBackend": {
       "region": "europe-west1",
-      "maxInstances": 1
+      "maxInstances": 5
     }
   }
 }

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import type { Project } from '$lib/models/project.type';
+	import SplitType from 'split-type';
 	import { onMount } from 'svelte';
 
 	let projects: Project[] = [
@@ -93,6 +94,8 @@
 		}
 	];
 
+	let title: HTMLElement;
+
 	onMount(() => {
 		let tl = gsap.timeline({
 			scrollTrigger: {
@@ -103,17 +106,19 @@
 			}
 		});
 
+		let titleWords = new SplitType(title, { types: 'chars' });
+
 		tl.fromTo(
-			'#project-title',
-			{ opacity: 0, duration: 1, y: 300 },
-			{ opacity: 1, duration: 1, y: 0 },
+			titleWords.chars,
+			{ opacity: 0, duration: 1, y: 40 },
+			{ opacity: 1, duration: 1, y: 0, stagger: 0.1 },
 			0
 		);
 	});
 </script>
 
 <div class="wrapper" id="project-wrapper">
-	<h1 class="title-text" id="project-title">Projects</h1>
+	<h1 class="title-text" bind:this={title}>Projects</h1>
 
 	<div class="layout">
 		{#each projects as project}

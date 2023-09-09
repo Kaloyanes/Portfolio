@@ -70,6 +70,10 @@
 		align-items: center;
 	}
 
+	.section {
+		margin-block: 3rem;
+	}
+
 	.sections {
 		margin: 0;
 		width: 100%;

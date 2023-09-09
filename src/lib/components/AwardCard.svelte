@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Award } from '$lib/models/award.type';
+	import SplitType from 'split-type';
 	import { onMount } from 'svelte';
 
 	export let award: Award;
@@ -8,6 +9,12 @@
 	let wrapper: HTMLElement;
 	let content: HTMLElement;
 	let image: HTMLElement;
+
+	let title: HTMLElement;
+	let description: HTMLElement;
+
+	let date: HTMLElement;
+	let location: HTMLElement;
 
 	onMount(() => {
 		let tl = gsap.timeline({
@@ -20,10 +27,24 @@
 			}
 		});
 
+		const titleWords = new SplitType(title, { types: 'chars' });
+		const descriptionWords = new SplitType(description, { types: 'words, chars, lines' });
+		const dateWords = new SplitType(date, { types: 'words, chars' });
+		const locationWords = new SplitType(location, { types: 'words, chars' });
+
+		const all = [...descriptionWords.lines!, ...locationWords.words!, ...dateWords.words!];
+
 		tl.fromTo(
-			content,
-			{ opacity: 0, x: reversed ? 500 : -500 },
-			{ opacity: 1, x: 0, duration: 1, ease: 'power2.out' },
+			titleWords.chars,
+			{ opacity: 0, y: 35 },
+			{ opacity: 1, y: 0, duration: 10, stagger: 1, ease: 'power2.out' },
+			0
+		);
+
+		tl.fromTo(
+			all,
+			{ opacity: 0, y: 35 },
+			{ opacity: 1, y: 0, duration: 50, delay: 50, stagger: 10, ease: 'power2.out' },
 			0
 		);
 		if (image) {
@@ -40,13 +61,13 @@
 <div class="award" bind:this={wrapper} class:reversed>
 	<div class="txt" bind:this={content}>
 		<div>
-			<h1 class="title">{award.title}</h1>
-			<p>{award.description}</p>
+			<h1 class="title" bind:this={title}>{award.title}</h1>
+			<p bind:this={description}>{award.description}</p>
 		</div>
 
 		<div class="location">
-			<h4>{award.location}</h4>
-			<h4>{award.date}</h4>
+			<h4 bind:this={location}>{award.location}</h4>
+			<h5 bind:this={date}>{award.date}</h5>
 		</div>
 	</div>
 	{#if award.imageUrl}
@@ -86,7 +107,8 @@
 	.location {
 		margin-top: 2rem;
 
-		h4 {
+		h4,
+		h5 {
 			margin: 0;
 		}
 	}
