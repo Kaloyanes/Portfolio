@@ -17,15 +17,24 @@
 	let location: HTMLElement;
 
 	onMount(() => {
+		let end = 'center center';
+
+		if (window.innerWidth < 1000) {
+			end = '+=700';
+		}
+
 		let tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: wrapper,
 				start: '-300 center',
-				end: 'center center',
+				end: end,
 				markers: false,
 				scrub: 0.5
 			}
 		});
+
+		if (window.innerWidth < 1000) {
+		}
 
 		const titleWords = new SplitType(title, { types: 'chars' });
 		const descriptionWords = new SplitType(description, { types: 'words, chars, lines' });
@@ -35,7 +44,7 @@
 		const all = [...descriptionWords.lines!, ...locationWords.words!, ...dateWords.words!];
 
 		tl.fromTo(
-			titleWords.chars,
+			titleWords.chars!,
 			{ opacity: 0, y: 35 },
 			{ opacity: 1, y: 0, duration: 50, stagger: 1, ease: 'power2.out' },
 			0
@@ -51,8 +60,8 @@
 			tl.fromTo(
 				image,
 				{ opacity: 0, x: reversed ? -500 : 500 },
-				{ opacity: 1, x: 0, duration: 1, ease: 'power2.out' },
-				0
+				{ opacity: 1, x: 0, duration: 1, delay: 100, ease: 'power2.out' },
+				1
 			);
 		}
 	});
@@ -79,6 +88,7 @@
 
 <style lang="scss">
 	.award {
+		width: 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -88,12 +98,15 @@
 		flex: 2;
 		margin-inline: 3rem;
 		text-align: center;
+		display: block;
 
 		.title {
+			display: block;
 			margin: 0;
 			padding-bottom: 2%;
 			border-bottom: 2px solid white;
 			margin-inline: auto !important;
+			word-wrap: break-word;
 		}
 
 		p {
@@ -101,6 +114,7 @@
 			letter-spacing: 1.5px;
 			font-size: 1.5rem;
 			line-height: 1.5;
+			word-wrap: break-word;
 		}
 	}
 
@@ -133,6 +147,30 @@
 			scale: 1.05 !important;
 			box-shadow: 0px 20px 40px #381e72;
 			border-radius: 50px;
+		}
+	}
+
+	@media (max-width: 1100px) {
+		.award {
+			flex-direction: column !important;
+			justify-content: center;
+			align-items: center;
+			margin-inline: auto !important;
+		}
+
+		.txt {
+			margin-inline: 0;
+			margin-bottom: 2rem;
+		}
+
+		.img {
+			margin-inline: 0;
+		}
+	}
+
+	@media (max-width: 1200px) {
+		.award {
+			flex-direction: row-reverse;
 		}
 	}
 </style>

@@ -123,7 +123,7 @@
 			scrollTrigger: {
 				trigger: wrapper,
 				start: '-100 center',
-				end: '+=550',
+				end: '+=500',
 				scrub: 2,
 				markers: false
 			}
@@ -250,7 +250,8 @@
 	@import '$lib/variables.scss';
 
 	.text {
-		width: 100%;
+		width: 80%;
+		margin-inline: auto;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -272,8 +273,10 @@
 	}
 
 	.wrapper {
+		width: 100%;
+
 		margin-bottom: 5rem;
-		margin-inline: 7rem;
+		// margin-inline: 7rem;
 	}
 
 	.layout {
@@ -472,9 +475,11 @@
 		box-shadow: 0px 10px 30px #00c853 !important;
 	}
 
-	@media (max-width: 850px) {
+	@media (max-width: 1000px) {
 		.wrapper {
 			margin-bottom: 0;
+
+			margin-inline: 0rem;
 		}
 
 		.layout {
@@ -496,12 +501,22 @@
 	}
 
 	@media (max-width: 1100px) {
+		.wrapper {
+			margin-bottom: 0;
+
+			margin-inline: 0rem;
+		}
 		.contact-form {
 			flex-direction: column;
 		}
 	}
 
 	@media (max-width: 1350px) {
+		.wrapper {
+			margin-bottom: 0;
+
+			margin-inline: 0rem;
+		}
 		.socials {
 			flex-wrap: wrap;
 		}

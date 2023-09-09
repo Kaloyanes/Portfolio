@@ -234,21 +234,19 @@
 		}
 	}
 
-	@media (width <= 800px) {
+	@media (width <= 1600px) {
 		.layout {
-			// Layout that makes the 2 first items appear on the same row and the 3rd on the next centered\
 			display: flex;
-			flex-direction: column;
+			flex-direction: row;
+			justify-content: space-evenly;
 			align-content: center;
 			width: 100%;
 		}
 
 		.skill-group {
-			margin-block: 1rem !important;
-		}
-
-		.skill {
-			text-align: center;
+			width: 33.3%;
+			min-width: 300px;
+			margin-bottom: 2rem;
 		}
 	}
 </style>
