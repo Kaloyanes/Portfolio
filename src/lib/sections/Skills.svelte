@@ -157,6 +157,7 @@
 		align-items: center;
 		flex-wrap: wrap;
 		width: 100%;
+		margin-inline: 2rem;
 	}
 
 	.skill-group {
@@ -234,6 +235,15 @@
 		}
 	}
 
+	@media (width <= 1000px) {
+		.skill-group {
+			width: 50%;
+			min-width: 300px;
+			margin-bottom: 2rem;
+			margin-inline: 2rem !important;
+		}
+	}
+
 	@media (width <= 1600px) {
 		.layout {
 			display: flex;
@@ -244,7 +254,8 @@
 		}
 
 		.skill-group {
-			width: 33.3%;
+			width: 50%;
+
 			min-width: 300px;
 			margin-bottom: 2rem;
 		}

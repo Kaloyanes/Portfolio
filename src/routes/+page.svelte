@@ -10,8 +10,6 @@
 
 	let currentFavicon = '/light-favicon.png';
 	onMount(async () => {
-		const { gsap } = await import('gsap');
-
 		const lenis = new Lenis({
 			duration: 1,
 			normalizeWheel: true,

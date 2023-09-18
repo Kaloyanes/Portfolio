@@ -12,7 +12,11 @@
 
 		document.cookie = 'yourCookieName=yourCookieValue; samesite=Lax';
 	});
+
+	let width = 0;
 </script>
+
+<svelte:window bind:innerWidth={width} />
 
 <svelte:head>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-0L6X6Q5RER"></script>
@@ -38,11 +42,16 @@
 	}
 
 	:root,
-	:global(html) {
+	:global(html),
+	:global(body) {
 		font-family: 'Poppins', sans-serif;
 		color: $color-on-surface-dark;
 		background-color: $color-background-dark;
 		overflow-x: hidden;
+		margin: 0;
+		padding: 0;
+		font-size: var(--step-0);
+		width: 100%;
 	}
 
 	// Firefox
@@ -66,13 +75,7 @@
 		border-radius: 10px;
 	}
 
-	:root,
-	:global(html),
 	:global(body) {
-		margin: 0;
-		padding: 0;
-		font-size: var(--step-0);
-		// overflow-x: hidden;
 	}
 
 	:global(h1) {
@@ -101,6 +104,12 @@
 
 		&:hover {
 			letter-spacing: 3px;
+		}
+	}
+
+	@media (max-width: 1000px) {
+		:global(*) {
+			text-align: center;
 		}
 	}
 </style>
