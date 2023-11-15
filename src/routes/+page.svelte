@@ -31,9 +31,6 @@
 		}
 
 		window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
-			// const newColorScheme = event.matches ? "dark" : "light";
-			console.log(event.matches);
-
 			updateFavicon(event.matches);
 		});
 	});
@@ -69,7 +66,6 @@
 		<div class="section" id="contact me">
 			<ContactMe />
 		</div>
-		<!-- <app-contact-me id="contact me" class="section" /> -->
 	</div>
 </div>
 
@@ -93,7 +89,7 @@
 	}
 
 	.section {
-		margin-block: 3rem;
+		margin-block: 5rem;
 	}
 
 	.sections {

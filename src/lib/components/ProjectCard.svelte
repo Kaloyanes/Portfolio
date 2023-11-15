@@ -208,6 +208,7 @@
 			margin-bottom: 2rem;
 			border-bottom: 1px solid white;
 			border-right: none;
+			padding-right: 0rem;
 		}
 
 		.content {
@@ -253,6 +254,7 @@
 			margin-bottom: 2rem;
 			border-bottom: 1px solid white;
 			border-right: none;
+			padding-right: 0rem;
 		}
 
 		.content {
