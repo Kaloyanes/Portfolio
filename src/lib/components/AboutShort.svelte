@@ -122,15 +122,15 @@
 
 <div class="container">
 	<div class="txt-layout" id="short-txt" bind:this={text}>
-		<div class="circle" />
 		<div class="text">
 			Let's build something
 			<strong>incredible</strong>
 			together.
 		</div>
+		<!-- <div class="circle" /> -->
 	</div>
 
-	<img src="/pfp2.webp" class="pfp" alt="Kaloyan Stoyanov Selfie" bind:this={pfp} />
+	<img src="/pfp3.webp" class="pfp" alt="Kaloyan Stoyanov Selfie" bind:this={pfp} />
 </div>
 
 <style lang="scss">
@@ -152,7 +152,7 @@
 		width: 23%;
 		border-radius: 15px;
 		margin: 50px;
-		filter: grayscale(1) blur(5px);
+		filter: grayscale(0.5) blur(3px);
 		transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		box-shadow: 0px 0px 5px $color-primary-container-dark;
 

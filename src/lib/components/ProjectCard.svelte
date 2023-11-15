@@ -208,6 +208,7 @@
 			margin-bottom: 2rem;
 			border-bottom: 1px solid white;
 			border-right: none;
+			padding-right: 0rem;
 		}
 
 		.content {
@@ -219,7 +220,8 @@
 		.images {
 			flex: 1;
 			margin-right: 0;
-			margin-inline: 5rem;
+			margin-inline: 0rem;
+			flex-direction: column;
 		}
 
 		.position {
@@ -230,18 +232,14 @@
 			margin: 0;
 		}
 
-		.img {
-			width: 60%;
+		.img,
+		img {
+			width: 90%;
 			height: auto;
 		}
 
-		.position:nth-child(1) {
-			transform: rotateZ(-10deg);
-			z-index: 2;
-		}
-
-		.position:nth-child(2) {
-			transform: rotateZ(10deg);
+		.position {
+			transform: rotateZ(0) !important;
 		}
 	}
 
@@ -256,6 +254,7 @@
 			margin-bottom: 2rem;
 			border-bottom: 1px solid white;
 			border-right: none;
+			padding-right: 0rem;
 		}
 
 		.content {
