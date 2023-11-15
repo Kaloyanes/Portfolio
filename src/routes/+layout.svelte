@@ -52,6 +52,7 @@
 		padding: 0;
 		font-size: var(--step-0);
 		width: 100%;
+		text-wrap: balance;
 	}
 
 	// Firefox
