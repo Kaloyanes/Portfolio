@@ -1,4 +1,8 @@
 <script lang="ts">
+	import LocationEnter from 'svelte-material-icons/LocationEnter.svelte';
+	import Email from 'svelte-material-icons/Email.svelte';
+	import Phone from 'svelte-material-icons/Phone.svelte';
+	import School from 'svelte-material-icons/School.svelte';
 	import type { Social } from '$lib/models/social.type';
 	import { Firestore, addDoc, collection, doc, setDoc } from 'firebase/firestore';
 	import { onMount } from 'svelte';
@@ -207,19 +211,6 @@
 					</div>
 				{/each}
 			</div>
-			<!-- <div class="info">
-				<p class="info-tile">
-					<LocationEnter />Location: Burgas
-				</p>
-				<p class="info-tile clickable" on:click={launchMail} on:keypress={launchMail}>
-					<Email />Email: kaloyangfx@gmail.com
-				</p>
-
-				<p class="info-tile clickable" on:click={call} on:keypress={call}>
-					<Phone /> +359879900137
-				</p>
-				<p class="info-tile"><School /> PGEE Burgas</p>
-			</div> -->
 		</div>
 
 		<div>
@@ -498,6 +489,10 @@
 			margin-inline: auto;
 			width: 80%;
 		}
+	}
+
+	#messageField {
+		text-align: start !important;
 	}
 
 	@media (max-width: 1100px) {
