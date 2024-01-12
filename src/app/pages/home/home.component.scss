@@ -1,0 +1,13 @@
+.wrapper {
+  display: grid;
+  gap: 1rem;
+
+  // columns get all available space
+
+  margin: 2rem;
+}
+
+.cell {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
