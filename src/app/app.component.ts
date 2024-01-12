@@ -1,14 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { Firestore, doc, getDoc } from '@angular/fire/firestore';
 
 @Component({
-  selector: 'app-root',
+  selector: 'root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  imports: [CommonModule, RouterOutlet]
 })
 export class AppComponent {
   title = 'Portfolio';
+
+  fs = signal("fs");
+
+  constructor(private firestore: Firestore) { }
+
+  async ngOnInit() {
+
+  }
 }
