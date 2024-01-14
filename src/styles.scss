@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Ubuntu+Mono:wght@700&display=swap');
 
 /* You can add global styles to this file, and also import other style files */
 @tailwind base;
@@ -6,20 +6,29 @@
 @tailwind utilities;
 
 
+
 body,
 html {
   @apply bg-background;
-  @apply text-primary;
+  @apply text-gray-300;
 
+  height: max-content;
+  width: 100%;
   margin: 0;
   padding: 0;
   font-size: 16px;
   line-height: 1.5;
   background-image: radial-gradient(#707070 1px, transparent 0);
   background-size: 22px 22px;
+  background-position: center center;
+
 }
 
 
 * {
   font-family: "Inter";
+}
+
+.cell {
+  @apply bg-card-bg bg-opacity-15 text-center rounded-lg border-gray-500 border min-h-24 flex-1 backdrop-blur-sm;
 }

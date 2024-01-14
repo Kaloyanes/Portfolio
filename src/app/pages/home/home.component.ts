@@ -1,24 +1,21 @@
 import { Component } from '@angular/core';
+import { AboutMeComponent } from "./sections/about-me/about-me.component";
+import { ProjectsComponent } from "./sections/projects/projects.component";
+import { ContactMeComponent } from "./sections/contact-me/contact-me.component";
 
 @Component({
   selector: 'home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  imports: []
+  imports: [AboutMeComponent, ProjectsComponent, ContactMeComponent]
 })
 export class HomeComponent {
-
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    // mouse event
-
     document.body.addEventListener('pointermove', (e) => {
       document.documentElement.style.setProperty('--x', Math.round(e.clientX).toString());
       document.documentElement.style.setProperty('--y', Math.round(e.clientY).toString());
     });
-
   }
 
 

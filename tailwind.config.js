@@ -6,19 +6,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-
-        'background': "#0F0F0F",
+        'background': "#08040C",
+        "card-bg": "#1B1726",
         'primary': "#fff",
         'accent': "#9A7AA0",
-        "card-bg": "#171717",
       },
       caretColor: {
         dark: "#fff",
-      }
+      },
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+        mono: ["Ubuntu Mono", "monospace"],
+      },
     },
   },
-  plugins: [
-    // require("daisyui")
-  ],
+  plugins: [],
 }
 

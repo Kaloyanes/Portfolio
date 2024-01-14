@@ -27,6 +27,9 @@
       "@components/*": [
         "./src/app/components/*"
       ],
+      "@models/*": [
+        "./src/app/models/*"
+      ],
     }
   },
   "angularCompilerOptions": {
