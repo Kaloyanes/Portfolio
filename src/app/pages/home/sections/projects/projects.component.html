@@ -1,0 +1,12 @@
+<div class="flex flex-col gap-5">
+  @for (item of projects; track $index) {
+  <div class="cell p-5">
+    <div class="flex justify-start">
+      <div class="flex flex-col items-start">
+        <h1 class="text-xl">{{item.name}}</h1>
+        <p>{{item.description}}</p>
+      </div>
+    </div>
+  </div>
+  }
+</div>
