@@ -5,16 +5,18 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body,
 html {
   @apply bg-background;
   @apply text-primary;
-  height: 100%;
-  width: 100%;
+
   margin: 0;
   padding: 0;
   font-size: 16px;
   line-height: 1.5;
+  background-image: radial-gradient(#707070 1px, transparent 0);
+  background-size: 22px 22px;
 }
 
 
