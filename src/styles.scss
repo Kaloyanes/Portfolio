@@ -32,7 +32,3 @@ html {
 * {
   font-family: "Inter";
 }
-
-.cell {
-  @apply bg-card-bg bg-opacity-10 text-center rounded-lg border-border-primary border min-h-24 flex-1 backdrop-blur-sm;
-}
