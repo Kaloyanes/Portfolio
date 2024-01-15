@@ -23,7 +23,7 @@ export class ProjectsComponent {
   getProjectsFromFireStore() {
     var firestore = getFirestore();
 
-    collectionData(collection(firestore, 'projects')).subscribe((data) => {
+    collectionData(collection(firestore, 'projects'), { idField: 'id' }).subscribe((data) => {
       this.projects.set((data as Project[]).filter(el => el.top).sort((a, b) => {
         if (a.position >= b.position) {
           return 1;

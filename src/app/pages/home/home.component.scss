@@ -2,8 +2,6 @@
   user-select: none
 }
 
-
-
 .socials {
   .cell {
     min-width: 10vw;
@@ -22,7 +20,7 @@
 
   flex: 0.5;
 
-  @apply saturate-50 hue-rotate-30 hover:saturate-100 hover:hue-rotate-0 transition-all duration-500;
+  @apply saturate-50 hue-rotate-30 hover:saturate-100 hover:hue-rotate-0 transition-all duration-500 hover:scale-105 hover:rounded-3xl;
 }
 
 
@@ -30,9 +28,6 @@
   flex: 1.6
 }
 
-.cell {
-  @apply bg-gray-900 bg-opacity-25 dark:bg-opacity-5 text-center rounded-lg border-border-primary border min-h-24 flex-1 backdrop-blur-sm;
-}
 
 #headline {
   display: flex;
@@ -44,6 +39,10 @@
   strong {
     @apply font-mono font-bold;
   }
+}
+
+.cell {
+  @apply bg-gray-900 rounded-xl bg-opacity-25 dark:bg-opacity-5 text-center border-border-primary border min-h-24 flex-1 backdrop-blur-sm;
 }
 
 #aboutme {

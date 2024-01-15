@@ -1,3 +1,34 @@
 :host {
   display: block;
 }
+
+.fa-brands,
+.fa-solid {
+  transition: all 0.2s ease-in-out;
+  scale: 2.5;
+
+}
+
+
+.animation {
+  scale: 1;
+  transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+
+  min-width: 250px;
+
+  &:hover {
+    scale: 1.1;
+
+    letter-spacing: 2px;
+
+    p {
+      transform-origin: left;
+    }
+
+
+    i {
+      color: rgb(192, 132, 252);
+
+    }
+  }
+}

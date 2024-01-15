@@ -1,1 +1,25 @@
-<p>contact-me works!</p>
+<div class="flex gap-10 flex-wrap justify-center">
+  @for (item of socials; track $index) {
+  <a href="{{item.url}}" (click)="contactMe()"
+    class="flex flex-row items-center gap-5 border border-border-primary px-8 py-5 rounded-xl animation">
+    @if(item.icon == "envelope"){
+    <i class="fa-solid fa-{{item.icon}}"></i>
+    } @else {
+    <i class="fa-brands fa-{{item.icon}}"></i>
+    }
+    <p class="font-mono text-2xl">{{item.name}}</p>
+  </a>
+  }
+</div>
+<dialog id="contact-me-dialog" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Hello!</h3>
+    <p class="py-4">Press ESC key or click the button below to close</p>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>

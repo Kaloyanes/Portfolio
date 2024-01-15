@@ -5,12 +5,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 body,
 html {
   @apply bg-background dark:bg-background-dark text-text dark:text-gray-300;
-  // @apply text-gray-300;
 
   height: max-content;
   width: 100%;
@@ -26,8 +23,6 @@ html {
     background-image: radial-gradient(#707070 1px, transparent 0);
   }
 }
-
-
 
 * {
   font-family: "Inter";

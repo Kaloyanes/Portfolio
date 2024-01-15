@@ -1,15 +1,19 @@
 <div class="flex flex-col gap-4 items-center">
   <h1 class="font-bold font-mono text-3xl ">Projects</h1>
+
   @for (item of projects(); track $index) {
-  <div class="cell p-5 w-full">
-    <div class="flex justify-start">
-      <div class="flex flex-col items-start">
-        <h1 class="text-xl">{{item.name}}</h1>
-        <p>{{item.shortDescription}}</p>
+
+  <a href="/project/{{item.id}}" class="w-full">
+    <div class="cell ">
+      <div class="flex justify-start">
+        <div class="flex flex-col items-start">
+          <h1 class="text-xl">{{item.name}}</h1>
+          <p>{{item.shortDescription}}</p>
+        </div>
       </div>
     </div>
-  </div>
+  </a>
   }
-  <button class="cell px-10 py-2 ">See
-    more</button>
+
+  <a href="/projects"><button class="cell px-10 py-2 ">See More</button></a>
 </div>

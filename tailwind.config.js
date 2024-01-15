@@ -4,7 +4,6 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-
     extend: {
       colors: {
         'background': "#fff",
@@ -26,6 +25,10 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: ["black"]
+  },
+
 }
 
