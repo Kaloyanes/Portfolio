@@ -1,7 +1,7 @@
 import type { CanActivateFn } from '@angular/router';
 import { getAuth } from '@firebase/auth';
 
-export const AuthGuard: CanActivateFn = async (route, state) => {
+export const CreateAuthGuard: CanActivateFn = async (route, state) => {
   // get firebase auth
   const auth = getAuth();
 
