@@ -26,6 +26,13 @@
 }
 
 
+#projects {
+  flex: 1.6
+}
+
+.cell {
+  @apply bg-gray-900 bg-opacity-25 dark:bg-opacity-5 text-center rounded-lg border-border-primary border min-h-24 flex-1 backdrop-blur-sm;
+}
 
 #headline {
   display: flex;
@@ -41,7 +48,7 @@
 
 #aboutme {
   align-items: stretch;
-  flex: 1.22;
+  flex: 1.2;
 }
 
 #pics {
@@ -50,5 +57,5 @@
 
 
 #aboutText {
-  flex: 0.6;
+  flex: 0.3;
 }
