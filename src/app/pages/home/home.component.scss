@@ -58,3 +58,12 @@
 #aboutText {
   flex: 0.3;
 }
+
+.invalid {
+  @apply input-bordered input-error;
+}
+
+.error {
+  @apply text-error font-bold pt-5;
+
+}

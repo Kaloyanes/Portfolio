@@ -28,3 +28,48 @@
     </div>
   </div>
 </div>
+
+
+<dialog id="contact-me-dialog" class="modal  backdrop-blur-sm bg-opacity-5">
+  <div class="modal-box border border-primary bg-card-bg gap-5">
+    <div class="flex flex-col gap-8 w-full">
+      <h1 class="font-mono text-3xl">Contact Me</h1>
+      <div>
+        <input
+          class="input input-primary bg-background-dark bg-opacity-10 input-ghost input-bordered rounded-xl w-full transition-all duration-300 focus:rounded-3xl "
+          type="email" placeholder="Email" [formControl]="email"
+          [class.invalid]="email.invalid && email.dirty && isSubmitted" />
+
+        <div class="mt-2">
+          @if(email.dirty && email.hasError('required')) {
+          <span class="error">This field is required</span>
+          }
+          @else if(email.dirty && email.hasError('email')) {
+          <span class="error">This field must be a valid email</span>
+          }
+        </div>
+      </div>
+      <div>
+        <textarea
+          class="textarea textarea-primary bg-background-dark bg-opacity-10  textarea-ghost textarea-bordered rounded-xl min-h-52 w-full text-start transition-all duration-300 focus:rounded-3xl "
+          type="text" placeholder="Your Message" [formControl]="message"
+          [class.invalid]="message.invalid && message.dirty"></textarea>
+
+        <div class="mt-2">
+          @if(message.dirty && message.hasError('required')) {
+          <span class="error">This field is required</span>
+          } @else if(message.dirty && message.hasError('minlength') && isSubmitted) {
+          <span class="error">This field must be at least 10 characters long</span>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn btn-primary rounded-xl">Close</button>
+      </form>
+      <button class="btn btn-primary rounded-xl" (click)="sendEmail()">Send</button>
+    </div>
+  </div>
+</dialog>

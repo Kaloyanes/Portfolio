@@ -30,6 +30,9 @@
       "@models/*": [
         "./src/app/models/*"
       ],
+      "@services/*": [
+        "./src/app/services/*"
+      ],
     }
   },
   "angularCompilerOptions": {

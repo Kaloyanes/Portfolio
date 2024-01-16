@@ -46,7 +46,9 @@ export class ContactMeComponent {
     }
   ]
 
-  contactMe() {
+  contactMe(item_icon: string) {
+    if (item_icon !== "envelope") { return; }
+
     (document.querySelector("#contact-me-dialog") as HTMLDialogElement).showModal();
   }
 }
