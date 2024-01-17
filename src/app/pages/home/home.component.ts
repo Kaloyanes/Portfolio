@@ -38,11 +38,19 @@ export class HomeComponent {
   constructor(public emailService: EmailService) { }
 
   ngAfterViewInit(): void {
+    // if localhost
+    let skipAnimation = true;
+
+    if (document.location.hostname === "localhost" && skipAnimation) {
+      document.querySelector(".welcome")!.classList.add("hidden");
+      return;
+    }
+
     timeline(
       [
         ['.img-pfp', {
-          scale: [0, 1.3],
-          y: ['-15%', '15%'],
+          scale: [0.4, 1.3],
+          y: ['15%', '15%'],
           opacity: [0, 1],
         },
           {
@@ -75,6 +83,7 @@ export class HomeComponent {
           {
             at: "<",
             delay: 1.5,
+            easing: easeOutCubic,
           },
         ],
         [
