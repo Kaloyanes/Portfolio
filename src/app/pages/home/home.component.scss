@@ -39,10 +39,18 @@
   strong {
     @apply font-mono font-bold;
   }
+
+  h1 {
+    text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.5);
+  }
+
+  strong {
+    text-shadow: 1px 1px 10px rgba(192, 132, 252, 0.5);
+  }
 }
 
 .cell {
-  @apply bg-gray-900 rounded-xl bg-opacity-25 dark:bg-opacity-5 text-center border-border-primary border min-h-24 flex-1 backdrop-blur-sm;
+  @apply bg-gray-900 rounded-xl bg-opacity-25 dark:bg-opacity-5 text-center border-border-primary border min-h-24 flex-1 backdrop-blur-sm hover:rounded-2xl transition-all duration-200;
 }
 
 #aboutme {
@@ -76,6 +84,6 @@
 
   h1 {
     letter-spacing: 1px;
-    text-shadow: 1px 1px 10px white;
+    text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.267);
   }
 }

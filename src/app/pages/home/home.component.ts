@@ -7,6 +7,8 @@ import { EmailService } from '@services/email.service';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { animate, timeline, stagger } from 'motion';
 import { easeOutBack, easeOutCubic, easeOutElastic } from '@utils/Easings';
+import SplitType from 'split-type';
+import { getAnalytics, logEvent, setUserId, setAnalyticsCollectionEnabled, setConsent } from '@angular/fire/analytics';
 
 @Component({
   selector: 'home',
@@ -37,7 +39,34 @@ export class HomeComponent {
 
   constructor(public emailService: EmailService) { }
 
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.analytic();
+  }
+
+  async analytic() {
+
+    let analytics = getAnalytics();
+    await setAnalyticsCollectionEnabled(analytics, true);
+    await setUserId(analytics, new Date().getTime().toString());
+    await logEvent(analytics, "page_view", {});
+
+    console.log("analytics", analytics);
+
+  }
+
   ngAfterViewInit(): void {
+    // if its debug mode, don't animate
+    let skipAnimation = false;
+
+    if (location.hostname === "localhost" && skipAnimation) {
+      document.querySelector(".welcome")?.classList.add('hidden');
+      return;
+    }
+
+    const nameWords = new SplitType('#nameHeadline');
+
     timeline(
       [
         ['.img-pfp', {
@@ -85,14 +114,21 @@ export class HomeComponent {
           , {
             duration: 0.8, delay: stagger(0.2, { from: "first" }), easing: easeOutElastic, at: 2
           }
+        ],
+        [
+          nameWords.chars!, {
+            opacity: [0, 1],
+            scale: [0.8, 1],
+            y: ['100%', '0%'],
+          }, {
+            delay: stagger(0.07, { from: "first" }), easing: easeOutCubic, at: 2, duration: 0.5
+          }
         ]
       ],
     );
   }
 
   sendEmail() {
-
-    // call sendEmail from contactMeComponent
     this.isSubmitted = true;
 
     if (this.email.invalid || this.message.invalid) {
@@ -114,14 +150,4 @@ export class HomeComponent {
   closeDialog() {
     (document.querySelector('#contact-me-dialog') as HTMLDialogElement).close();
   }
-
-
-  ngOnInit(): void {
-    document.body.addEventListener('pointermove', (e) => {
-      document.documentElement.style.setProperty('--x', Math.round(e.clientX).toString());
-      document.documentElement.style.setProperty('--y', Math.round(e.clientY).toString());
-    });
-  }
-
-
 }
