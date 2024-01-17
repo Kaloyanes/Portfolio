@@ -1,12 +1,13 @@
 <div class="flex flex-col justify-center items-center h-screen gap-8 ">
 
-  <div
+  <form (submit)="signIn()"
     class="bg-card-bg flex flex-col justify-center gap-5 p-8 rounded-xl bg-opacity-5 backdrop-blur-sm shadow-sm shadow-white">
+
     <h1 class="font-mono text-2xl">Login</h1>
 
     <input class="input input-bordered rounded-xl" type="text" placeholder="Email" [(ngModel)]='email' />
     <input class="input input-bordered rounded-xl" type="password" placeholder="Password" [(ngModel)]="password" />
 
-    <button class="btn btn-primary rounded-xl" (click)="signIn()">Login</button>
-  </div>
+    <button type="submit" class="btn btn-primary rounded-xl" (click)="signIn()">Login</button>
+  </form>
 </div>

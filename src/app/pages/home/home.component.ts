@@ -39,7 +39,7 @@ export class HomeComponent {
 
   ngAfterViewInit(): void {
     // if localhost
-    let skipAnimation = true;
+    let skipAnimation = false;
 
     if (document.location.hostname === "localhost" && skipAnimation) {
       document.querySelector(".welcome")!.classList.add("hidden");
