@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-center h-screen">
+<div class="flex flex-col justify-center h-screen relative">
   <div class="flex gap-5 mx-32">
     <div class="flex flex-col flex-1 gap-5  items-stretch" id="aboutme">
       <div class="cell flex-1 text-4xl" id="headline">
@@ -15,7 +15,9 @@
     </div>
     <div class="flex flex-col gap-5" id="pics">
       <div class="flex flex-1 gap-5">
-        <div class="cell p-8 img-pfp"></div>
+        <div class="cell p-8 img-pfp" id="pfp">
+
+        </div>
         <div class="cell p-8" id="projects">
           <projects />
         </div>
@@ -27,10 +29,16 @@
       </div>
     </div>
   </div>
+
+  <div class="flex justify-center w-full">
+    <div class=" welcome ">
+      <h1 class="text-4xl font-mono">Welcome to my Portfolio</h1>
+    </div>
+  </div>
 </div>
 
 
-<dialog id="contact-me-dialog" class="modal  backdrop-blur-sm bg-opacity-5">
+<dialog id="contact-me-dialog" class="modal backdrop-blur-sm bg-opacity-5">
   <div class="modal-box border border-primary bg-card-bg gap-5">
     <div class="flex flex-col gap-8 w-full">
       <h1 class="font-mono text-3xl">Contact Me</h1>
@@ -64,12 +72,14 @@
         </div>
       </div>
     </div>
-    <div class="modal-action">
-      <form method="dialog">
-        <!-- if there is a button in form, it will close the modal -->
-        <button class="btn btn-primary rounded-xl">Close</button>
-      </form>
-      <button class="btn btn-primary rounded-xl" (click)="sendEmail()">Send</button>
+    <div class="modal-action flex">
+      <button class="btn flex-1 btn-primary bg-opacity-5 backdrop-blur-sm rounded-xl text-white"
+        (click)="closeDialog()">Close</button>
+      <!-- <form method="dialog flex-1 flex"> -->
+      <!-- if there is a button in form, it will close the modal -->
+      <!-- </form> -->
+      <button class="btn flex-1 btn-primary bg-opacity-5 backdrop-blur-sm rounded-xl text-white "
+        (click)="sendEmail()">Send</button>
     </div>
   </div>
 </dialog>

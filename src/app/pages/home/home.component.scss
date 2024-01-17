@@ -67,3 +67,15 @@
   @apply text-error font-bold pt-5;
 
 }
+
+.welcome {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  h1 {
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 10px white;
+  }
+}
