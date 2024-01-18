@@ -5,7 +5,8 @@
   <div class="flex flex-wrap gap-4 mt-5">
 
     @for (item of achievemnts; track $index) {
-    <div class="cell flex flex-col items-center justify-center cursor-pointer" (click)="detailAchievement($index)">
+    <div class="cell content flex flex-col items-center justify-center cursor-pointer"
+      (click)="detailAchievement($index)">
       <h1 class="text-lg">{{item.title}}</h1>
     </div>
     }

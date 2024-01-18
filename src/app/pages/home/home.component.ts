@@ -58,7 +58,6 @@ export class HomeComponent {
   }
 
   ngAfterViewInit(): void {
-    // if localhost
     let skipAnimation = true;
 
     if (location.hostname === "localhost" && skipAnimation) {

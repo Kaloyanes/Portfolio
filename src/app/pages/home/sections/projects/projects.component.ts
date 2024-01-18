@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, WritableSignal, signal } from '@angular/core';
 import { collection, collectionData, getFirestore } from '@angular/fire/firestore';
 import { Project } from '@models/project';
+import { ProjectsService } from '@services/projects.service';
 
 @Component({
   selector: 'projects',
@@ -14,26 +15,13 @@ import { Project } from '@models/project';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsComponent {
-  projects: WritableSignal<Project[]> = signal([]);
 
-  ngOnInit(): void {
-    this.getProjectsFromFireStore();
+  constructor(public projectsService: ProjectsService) {
   }
 
-  getProjectsFromFireStore() {
-    var firestore = getFirestore();
-
-    collectionData(collection(firestore, 'projects'), { idField: 'id' }).subscribe((data) => {
-      this.projects.set((data as Project[]).filter(el => el.top).sort((a, b) => {
-        if (a.position >= b.position) {
-          return 1;
-        }
-        if (a.position < b.position) {
-          return -1;
-        }
-        return 0;
-      }).slice(0, 3));
-      console.log(this.projects);
-    });
+  async ngOnInit(): Promise<void> {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    await this.projectsService.getProjects();
   }
 }

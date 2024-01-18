@@ -1,3 +1,22 @@
-<p>create works!</p>
+<div class="flex flex-col p-8 h-full">
+  <button (click)="signOut()"
+    class="self-end  btn btn-wide btn-primary bg-opacity-5 backdrop-blur-sm rounded-xl text-white transition-all duration-200 hover:rounded-2xl hover:scale-110 ">Sign
+    Out</button>
 
-<button (click)="signOut()">Sign Out</button>
+  <div class="flex flex-col gap-4 items-center  justify-center self-center w-1/2">
+    <input class="input input-bordered rounded-xl w-full" type="text" placeholder="Project Name" [formControl]='name'
+      [class.invalid]="name.invalid && name.dirty" />
+
+    <textarea
+      class="textarea textarea-primary bg-background-dark placeholder:text-lg textarea-ghost textarea-bordered rounded-xl min-h-52 w-full text-start transition-all duration-300 focus:rounded-3xl"
+      type="text" placeholder="Project Description" [formControl]="description"
+      [class.invalid]="description.invalid && description.dirty"></textarea>
+
+
+    <button (click)="createProject()"
+      class="self-end  btn btn-wide btn-primary bg-opacity-5 backdrop-blur-sm rounded-xl text-white transition-all duration-200 hover:rounded-2xl hover:scale-110 ">
+      Create Projects
+    </button>
+  </div>
+
+</div>

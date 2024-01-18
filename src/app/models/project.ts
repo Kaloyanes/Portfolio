@@ -5,4 +5,5 @@ export interface Project {
   description: string;
   top: boolean;
   position: number;
+  images: string[];
 }

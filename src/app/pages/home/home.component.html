@@ -54,8 +54,14 @@
 
 <dialog id="achievement-dialog"
   class="modal backdrop-blur-sm bg-opacity-5 modal-bottom sm:modal-middle border border-transparent">
-  <div class="modal-box border border-primary bg-card-bg gap-5">
-    <h1>{{selectedAchievement()?.title}}</h1>
+  <div class="modal-box border border-primary bg-card-bg gap-5 p-0 rounded-xl overflow-hidden ">
+    @if(selectedAchievement()?.imageUrl) {
+    <img src="/assets{{selectedAchievement()?.imageUrl}}" class="rounded-xl " />
+    }
+    <div class="p-7 flex-col flex gap-4">
+      <h1 class="text-xl">{{selectedAchievement()?.title}}</h1>
+      <p class="text-md">{{selectedAchievement()?.description}}</p>
+    </div>
   </div>
   <form method="dialog" class="modal-backdrop border-transparent">
     <button class="cursor-default border border-transparent">close</button>
