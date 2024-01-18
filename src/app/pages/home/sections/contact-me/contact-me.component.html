@@ -2,14 +2,12 @@
   @for (item of socials; track $index) {
 
   @if(item.icon == "envelope"){
-  <a (click)="contactMe(item.icon)"
-    class="flex flex-row items-center gap-5 border border-border-primary px-8 py-5 rounded-xl animation cursor-pointer">
+  <a (click)="contactMe(item.icon)" class="cell animation">
     <i class="fa-solid fa-{{item.icon}}"></i>
     <p class="font-mono text-2xl">{{item.name}}</p>
   </a>
   } @else {
-  <a href="{{item.url}}" target="_blank"
-    class="flex flex-row items-center gap-5 border border-border-primary px-8 py-5 rounded-xl animation">
+  <a href="{{item.url}}" target="_blank" class="cell animation">
     <i class="fa-brands fa-{{item.icon}}"></i>
     <p class="font-mono text-2xl">{{item.name}}</p>
   </a>
