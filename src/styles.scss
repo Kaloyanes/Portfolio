@@ -27,3 +27,12 @@ html {
 * {
   font-family: "Inter";
 }
+
+.invalid {
+  @apply input-bordered input-error;
+}
+
+.error {
+  @apply text-error font-bold pt-5;
+
+}

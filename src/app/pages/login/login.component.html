@@ -1,13 +1,38 @@
 <div class="flex flex-col justify-center items-center h-screen gap-8 ">
 
-  <form (submit)="signIn()"
+  <div
     class="bg-card-bg flex flex-col justify-center gap-5 p-8 rounded-xl bg-opacity-5 backdrop-blur-sm shadow-sm shadow-white">
 
     <h1 class="font-mono text-2xl">Login</h1>
 
-    <input class="input input-bordered rounded-xl" type="text" placeholder="Email" [(ngModel)]='email' />
-    <input class="input input-bordered rounded-xl" type="password" placeholder="Password" [(ngModel)]="password" />
+    <div>
 
-    <button type="submit" class="btn btn-primary rounded-xl" (click)="signIn()">Login</button>
-  </form>
+      <input class="input input-bordered rounded-xl" type="text" placeholder="Email" [formControl]='email'
+        [class.invalid]="email.invalid && email.dirty" />
+      <div class="mt-2">
+        @if(email.dirty && email.hasError('required')) {
+        <span class="error">This field is required</span>
+        }
+        @else if(email.dirty && email.hasError('email')) {
+        <span class="error">This field must be a valid email</span>
+        }
+      </div>
+    </div>
+    <div>
+      <input class="input input-bordered rounded-xl" type="password" placeholder="Password" [formControl]='password'
+        [class.invalid]="password.invalid && password.dirty" />
+
+      <div class="mt-2">
+        @if(password.dirty && password.hasError('required')) {
+        <span class="error">This field is required</span>
+        }
+        @else if(password.dirty && password.hasError('minlength')) {
+        <span class="error">This field must be 5 chars long</span>
+        }
+      </div>
+    </div>
+
+    <button (click)="signIn()"
+      class="btn btn-primary bg-opacity-5 hover:bg-opacity-100 rounded-xl text-white">Login</button>
+  </div>
 </div>

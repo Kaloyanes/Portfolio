@@ -1,41 +1,43 @@
-import { Component, Input, signal } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
-import { FormControl, FormsModule } from '@angular/forms';
-import { browserLocalPersistence, browserSessionPersistence, setPersistence } from 'firebase/auth';
+import { Component, } from '@angular/core';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '@services/auth.service';
 @Component({
   selector: 'login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  email = '';
-  password = '';
+  email = new FormControl('', {
+    nonNullable: true,
+    validators: [
+      Validators.required,
+      Validators.email,
+      Validators.minLength(5),
+    ],
+  });
+  password = new FormControl('', {
+    nonNullable: true,
+    validators: [
+      Validators.required,
+      Validators.minLength(5),
+    ],
+  });
 
-  constructor(public auth: Auth) { }
-
-  async ngOnInit(): Promise<void> {
-    await setPersistence(this.auth, browserSessionPersistence);
-    await this.auth.authStateReady();
-
-    if (this.auth.currentUser) {
-      window.location.href = "/create";
-    }
-  }
+  constructor(public authService: AuthService) { }
 
   async signIn() {
-    console.log(this.email, this.password);
-    try {
-      await signInWithEmailAndPassword(this.auth, this.email, this.password);
-    } catch (e) {
-      console.error(e);
-      alert(e);
+    console.log(this.email.value, this.password.value);
+
+    if (this.email.invalid || this.password.invalid) {
+      alert("Invalid email or password");
       return;
     }
 
+    await this.authService.signIn(this.email.value, this.password.value);
+
     // redirect to create
     window.location.href = "/create";
-
   }
 }

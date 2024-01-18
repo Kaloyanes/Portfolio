@@ -36,6 +36,9 @@
       "@utils/*": [
         "./src/app/utils/*"
       ],
+      "@guards/*": [
+        "./src/app/guards/*"
+      ],
     }
   },
   "angularCompilerOptions": {
