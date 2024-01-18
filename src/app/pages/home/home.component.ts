@@ -18,6 +18,7 @@ import { getAnalytics, logEvent, setUserId, setAnalyticsCollectionEnabled, setCo
   imports: [ReactiveFormsModule, AboutMeComponent, ProjectsComponent, ContactMeComponent, EducationComponent,]
 })
 export class HomeComponent {
+
   email = new FormControl('', {
     nonNullable: true,
     validators: [
@@ -58,7 +59,7 @@ export class HomeComponent {
 
   ngAfterViewInit(): void {
     // if localhost
-    let skipAnimation = false;
+    let skipAnimation = true;
 
     if (location.hostname === "localhost" && skipAnimation) {
       document.querySelector(".welcome")?.classList.add('hidden');
@@ -122,7 +123,7 @@ export class HomeComponent {
             scale: [0.8, 1],
             y: ['100%', '0%'],
           }, {
-            delay: stagger(0.07, { from: "first" }), easing: easeOutCubic, at: 2, duration: 0.5
+            delay: stagger(0.07, { from: "first" }), easing: easeOutBack, at: 2, duration: 0.5
           }
         ]
       ],
@@ -143,9 +144,48 @@ export class HomeComponent {
       this.message.value
     );
 
+    this.openToast(true);
+
+
     this.email.reset();
     this.message.reset();
     this.isSubmitted = false;
+  }
+
+  openToast(open: boolean) {
+    if (!open) {
+      // close toast
+      animate(".toast", {
+        opacity: [1, 0],
+        scale: [1, 0.6],
+        y: ["0px", "-50px"],
+      }, {
+        easing: easeOutCubic,
+      });
+
+      // add closed class to toast
+      setTimeout(() => {
+        document.querySelector(".toast")?.classList.add("closed");
+      }, 400);
+      return;
+    }
+
+    document.querySelector(".toast")?.classList.remove("closed");
+    animate(".toast", {
+      opacity: [0, 1],
+      scale: [0.6, 1],
+      y: ["-50px", "0px"],
+    }, {
+      easing: easeOutCubic,
+    });
+
+    setTimeout(() => {
+      if (document.querySelector(".toast")?.classList.contains("closed")) {
+        return;
+      }
+
+      this.openToast(false);
+    }, 4000)
   }
 
   closeDialog() {
