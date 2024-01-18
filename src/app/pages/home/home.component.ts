@@ -1,23 +1,26 @@
-import { Component, Input, NgModule } from '@angular/core';
+import { Component, Input, NgModule, WritableSignal, signal } from '@angular/core';
 import { AboutMeComponent } from "./sections/about-me/about-me.component";
 import { ProjectsComponent } from "./sections/projects/projects.component";
 import { ContactMeComponent } from "./sections/contact-me/contact-me.component";
-import { EducationComponent } from "./sections/education/education.component";
 import { EmailService } from '@services/email.service';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { animate, timeline, stagger } from 'motion';
 import { easeOutBack, easeOutCubic, easeOutElastic } from '@utils/Easings';
 import SplitType from 'split-type';
 import { getAnalytics, logEvent, setUserId, setAnalyticsCollectionEnabled, setConsent } from '@angular/fire/analytics';
+import { AchievementsComponent } from "./sections/achievements/achievements.component";
+import { Achievement } from '@models/achievement';
 
 @Component({
   selector: 'home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  imports: [ReactiveFormsModule, AboutMeComponent, ProjectsComponent, ContactMeComponent, EducationComponent,]
+  imports: [ReactiveFormsModule, AboutMeComponent, ProjectsComponent, ContactMeComponent, AchievementsComponent]
 })
 export class HomeComponent {
+
+  selectedAchievement: WritableSignal<Achievement | undefined> = signal(undefined);
 
   email = new FormControl('', {
     nonNullable: true,
@@ -41,13 +44,10 @@ export class HomeComponent {
   constructor(public emailService: EmailService) { }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
     this.analytic();
   }
 
   async analytic() {
-
     let analytics = getAnalytics();
     await setAnalyticsCollectionEnabled(analytics, true);
     await setUserId(analytics, new Date().getTime().toString());
@@ -109,7 +109,7 @@ export class HomeComponent {
           },
         ],
         [
-          ".cell:not(.img-pfp)", {
+          ".cell:not(.content, .img-pfp)", {
             opacity: [0, 1],
             scale: [0.8, 1],
           }
@@ -190,5 +190,10 @@ export class HomeComponent {
 
   closeDialog() {
     (document.querySelector('#contact-me-dialog') as HTMLDialogElement).close();
+  }
+
+  showAchievementDetails(achievement: Achievement) {
+    this.selectedAchievement.set(achievement);
+    (document.querySelector('#achievement-dialog') as HTMLDialogElement).showModal();
   }
 }

@@ -1,17 +1,18 @@
-<div class="flex gap-10 flex-wrap justify-center">
-  @for (item of socials; track $index) {
+<div class="flex items-center">
+  <div class="flex gap-8 flex-wrap justify-center">
+    @for (item of socials; track $index) {
 
-  @if(item.icon == "envelope"){
-  <a (click)="contactMe(item.icon)" class="cell animation">
-    <i class="fa-solid fa-{{item.icon}}"></i>
-    <p class="font-mono text-2xl">{{item.name}}</p>
-  </a>
-  } @else {
-  <a href="{{item.url}}" target="_blank" class="cell animation">
-    <i class="fa-brands fa-{{item.icon}}"></i>
-    <p class="font-mono text-2xl">{{item.name}}</p>
-  </a>
-  }
-
-  }
+    @if(item.icon == "envelope"){
+    <a (click)="contactMe(item.icon)" class="cell content animation">
+      <i class="fa-solid fa-{{item.icon}}"></i>
+      <p class="font-mono text-2xl">{{item.name}}</p>
+    </a>
+    } @else {
+    <a href="{{item.url}}" target="_blank" class="cell content animation">
+      <i class="fa-brands fa-{{item.icon}}"></i>
+      <p class="font-mono text-2xl">{{item.name}}</p>
+    </a>
+    }
+    }
+  </div>
 </div>

@@ -30,7 +30,7 @@ export class ContactMeComponent {
       name: "Instagram"
     },
     {
-      url: "https://www.github.com/KaloyanStoyanov06",
+      url: "https://www.github.com/Kaloyanes",
       icon: "github",
       name: "GitHub"
     },
@@ -46,8 +46,8 @@ export class ContactMeComponent {
     }
   ]
 
-  contactMe(item_icon: string) {
-    if (item_icon !== "envelope") { return; }
+  contactMe(itemIcon: string) {
+    if (itemIcon !== "envelope") { return; }
 
     (document.querySelector("#contact-me-dialog") as HTMLDialogElement).showModal();
   }

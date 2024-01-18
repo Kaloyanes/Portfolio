@@ -10,7 +10,7 @@
         <about-me />
       </div>
       <div class="cell p-6" id="projectsText">
-        <education />
+        <achievements />
       </div>
     </div>
     <div class="flex flex-col gap-5 flex-wrap" id="pics">
@@ -52,8 +52,18 @@
 </div>
 
 
+<dialog id="achievement-dialog"
+  class="modal backdrop-blur-sm bg-opacity-5 modal-bottom sm:modal-middle border border-transparent">
+  <div class="modal-box border border-primary bg-card-bg gap-5">
+    <h1>{{selectedAchievement()?.title}}</h1>
+  </div>
+  <form method="dialog" class="modal-backdrop border-transparent">
+    <button class="cursor-default border border-transparent">close</button>
+  </form>
+</dialog>
 
-<dialog id="contact-me-dialog" class="modal backdrop-blur-sm bg-opacity-5">
+<dialog id="contact-me-dialog"
+  class="modal backdrop-blur-sm bg-opacity-5 modal-bottom sm:modal-middle border border-transparent">
   <div class="modal-box border border-primary bg-card-bg gap-5">
     <div class="flex flex-col gap-8 w-full">
       <h1 class="font-mono text-3xl">Contact Me</h1>
@@ -99,4 +109,7 @@
         (click)="sendEmail()">Send</button>
     </div>
   </div>
+  <form method="dialog" class="modal-backdrop border border-transparent">
+    <button class="cursor-default border border-transparent">close</button>
+  </form>
 </dialog>
