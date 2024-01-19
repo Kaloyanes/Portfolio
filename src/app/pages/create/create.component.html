@@ -4,13 +4,43 @@
     Out</button>
 
   <div class="flex flex-col gap-4 items-center  justify-center self-center w-1/2">
-    <input class="input input-bordered rounded-xl w-full" type="text" placeholder="Project Name" [formControl]='name'
-      [class.invalid]="name.invalid && name.dirty" />
+    <input
+      class="input focus:input-primary input-bordered rounded-xl focus:rounded-2xl w-full transition-all duration-300"
+      type="text" placeholder="Project Name" [formControl]='name' [class.invalid]="name.invalid && name.dirty" />
+
+    <input
+      class="input focus:input-primary input-bordered rounded-xl focus:rounded-2xl w-full transition-all duration-300"
+      type="text" placeholder="Short Project Description" [formControl]='shortDescription'
+      [class.invalid]="shortDescription.invalid && shortDescription.dirty" />
 
     <textarea
-      class="textarea textarea-primary bg-background-dark placeholder:text-lg textarea-ghost textarea-bordered rounded-xl min-h-52 w-full text-start transition-all duration-300 focus:rounded-3xl"
+      class="textarea focus:textarea-primary bg-background-dark placeholder:text-lg textarea-ghost textarea-bordered rounded-xl min-h-52 w-full text-start transition-all duration-300 focus:rounded-2xl"
       type="text" placeholder="Project Description" [formControl]="description"
       [class.invalid]="description.invalid && description.dirty"></textarea>
+    <!-- Files -->
+    <div class="flex flex-col gap-2 self-start">
+      <label class="label">Files</label>
+      <input type="file" class="file-input file-input-bordered file-input-primary" accept="image/png, image/jpeg"
+        multiple [formControl]="files" (change)="onImagePicked($event)" />
+    </div>
+
+    <!-- Checkbox for top -->
+    <div class="flex items-center gap-2 self-start">
+      <input type="checkbox" class="checkbox checkbox-primary checkbox-lg" [formControl]="top" />
+      <label class="label">Top</label>
+    </div>
+
+
+
+
+    <!-- Number input for position -->
+    @if (top.getRawValue()) {
+    <div class="flex items-center gap-2 self-start">
+      <input type="number" class="input input-bordered input-primary rounded-xl w-1/2" placeholder="Position"
+        [formControl]="position" />
+    </div>
+    }
+
 
 
     <button (click)="createProject()"
