@@ -4,6 +4,8 @@
     Out</button>
 
   <div class="flex flex-col gap-4 items-center  justify-center self-center w-1/2">
+    <h1 class="text-3xl font-mono">Create a new project</h1>
+
     <input
       class="input focus:input-primary input-bordered rounded-xl focus:rounded-2xl w-full transition-all duration-300"
       type="text" placeholder="Project Name" [formControl]='name' [class.invalid]="name.invalid && name.dirty" />
@@ -26,7 +28,9 @@
 
     <!-- Checkbox for top -->
     <div class="flex items-center gap-2 self-start">
-      <input type="checkbox" class="checkbox checkbox-primary checkbox-lg" [formControl]="top" />
+      <input type="checkbox"
+        class="checkbox checkbox-primary checkbox-lg transition-all duration-300 checked:rounded-full"
+        [formControl]="top" />
       <label class="label">Top</label>
     </div>
 
@@ -36,8 +40,9 @@
     <!-- Number input for position -->
     @if (top.getRawValue()) {
     <div class="flex items-center gap-2 self-start">
-      <input type="number" class="input input-bordered input-primary rounded-xl w-1/2" placeholder="Position"
-        [formControl]="position" />
+      <input type="number"
+        class="input input-bordered input-primary rounded-xl w-1/2 transition-all duration-300 focus:rounded-2xl"
+        placeholder="Position" [formControl]="position" />
     </div>
     }
 

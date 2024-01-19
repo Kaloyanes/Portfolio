@@ -1,11 +1,12 @@
 import { Injectable, WritableSignal, computed, signal } from '@angular/core';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, doc, setDoc } from '@angular/fire/firestore';
 import { Project } from '@models/project';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectsService {
+
   projects: WritableSignal<Project[]> = signal([]);
   sortedProjects = computed(() => {
     return this.getProjectsForSection(this.projects());
@@ -37,14 +38,21 @@ export class ProjectsService {
         return -1;
       }
       return 0;
-    });
+    }).slice(0, 3);
   }
 
   GenerateSlug(projectName: string): string {
     return projectName.toLowerCase().trim().replace(" ", "-");
   }
 
-  CreateNewProject(project: Project) {
+  async CreateNewProject(project: Project) {
+    let docReference = doc(this.firestore, "projects", project.id);
+
+    await setDoc(
+      docReference,
+      project
+    );
+
 
   }
 

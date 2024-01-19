@@ -5,6 +5,7 @@ import { ProjectsService } from '@services/projects.service';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { getDownloadURL, uploadBytes } from '@angular/fire/storage';
+import { Project } from '@models/project';
 
 @Component({
   selector: 'create',
@@ -31,6 +32,18 @@ export class CreateComponent {
     await this.uploadImages(id);
 
     console.log(this.images());
+
+    var project: Project = {
+      id: id,
+      name: this.name.value!,
+      description: this.description.value!,
+      shortDescription: this.shortDescription.value!,
+      top: this.top.value!,
+      position: this.position.value!,
+      images: this.images(),
+    }
+
+    await this.ProjectService.CreateNewProject(project);
 
     this.clearFields();
   }
