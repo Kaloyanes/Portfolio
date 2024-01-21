@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, computed, signal } from '@angular/core';
 import { Project } from '@models/project';
 import { ActivatedRoute } from '@angular/router';
+import { ProjectsService } from '@services/projects.service';
 
 @Component({
   selector: 'project-details',
@@ -15,10 +16,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProjectDetailsComponent {
   id = signal("");
+  project = computed(() => {
+    return this.ProjectsService.projects().find(x => x.id == this.id());
+  })
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private ProjectsService: ProjectsService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.id.set(this.route.snapshot.paramMap.get('id') ?? "");
+    if (this.ProjectsService.projects().length === 0) {
+      await this.ProjectsService.GetProjects();
+    }
   }
 }

@@ -9,19 +9,20 @@ export class ProjectsService {
 
   projects: WritableSignal<Project[]> = signal([]);
   sortedProjects = computed(() => {
-    return this.getProjectsForSection(this.projects());
+    return this.GetProjectsForSection(this.projects());
   });
 
-  constructor(public firestore: Firestore) {
-  }
+  constructor(public firestore: Firestore) { }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    this.getProjects();
+
+
+    this.GetProjects();
   }
 
-  getProjects() {
+  GetProjects() {
+    if (this.projects().length > 0) return;
+
     console.log("getProjects");
     collectionData(collection(this.firestore, 'projects'), { idField: 'id' }).subscribe((data) => {
       this.projects.set((data as Project[]));
@@ -29,7 +30,22 @@ export class ProjectsService {
     });
   }
 
-  getProjectsForSection(projects: Project[]) {
+  async GetProjectById(id: string) {
+    if (this.projects().length == 0) {
+
+      await this.GetProjects();
+    }
+
+
+
+    let result = this.projects().find(x => x.id == id);
+
+    console.log(result);
+
+    return result;
+  }
+
+  GetProjectsForSection(projects: Project[]) {
     return projects.filter(x => x.top).sort((a, b) => {
       if (a.position >= b.position) {
         return 1;
@@ -53,7 +69,5 @@ export class ProjectsService {
       project
     );
 
-
   }
-
 }

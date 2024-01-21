@@ -54,7 +54,6 @@ export class HomeComponent {
     await logEvent(analytics, "page_view", {});
 
     console.log("analytics", analytics);
-
   }
 
   ngAfterViewInit(): void {

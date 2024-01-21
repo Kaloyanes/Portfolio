@@ -34,9 +34,6 @@
       <label class="label">Top</label>
     </div>
 
-
-
-
     <!-- Number input for position -->
     @if (top.getRawValue()) {
     <div class="flex items-center gap-2 self-start">
@@ -45,8 +42,6 @@
         placeholder="Position" [formControl]="position" />
     </div>
     }
-
-
 
     <button (click)="createProject()"
       class="self-end  btn btn-wide btn-primary bg-opacity-5 backdrop-blur-sm rounded-xl text-white transition-all duration-200 hover:rounded-2xl hover:scale-110 ">
