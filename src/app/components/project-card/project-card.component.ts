@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Project } from '../../models/project';
+import { animate, timeline, stagger } from 'motion';
+import { easeOutBack, easeOutCubic } from '@utils/Easings';
 
 @Component({
   selector: 'project-card',
@@ -10,5 +12,6 @@ import { Project } from '../../models/project';
 })
 export class ProjectCardComponent {
   @Input() project: Project | undefined;
+
 
 }

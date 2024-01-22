@@ -15,15 +15,13 @@ import { ProjectsService } from '@services/projects.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectDetailsComponent {
-  id = signal("");
   project = computed(() => {
-    return this.ProjectsService.projects().find(x => x.id == this.id());
+    return this.ProjectsService.projects().find(x => x.id == this.route.snapshot.paramMap.get('id'));
   })
 
   constructor(private route: ActivatedRoute, private ProjectsService: ProjectsService) { }
 
   async ngOnInit() {
-    this.id.set(this.route.snapshot.paramMap.get('id') ?? "");
     if (this.ProjectsService.projects().length === 0) {
       await this.ProjectsService.GetProjects();
     }
