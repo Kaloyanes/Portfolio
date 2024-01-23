@@ -1,5 +1,5 @@
 import { Injectable, WritableSignal, computed, signal } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, doc, setDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, setDoc } from '@angular/fire/firestore';
 import { Project } from '@models/project';
 
 @Injectable({
@@ -12,13 +12,10 @@ export class ProjectsService {
     return this.GetProjectsForSection(this.projects());
   });
 
-  constructor(public firestore: Firestore) { }
-
-  ngOnInit(): void {
-
-
+  constructor(public firestore: Firestore) {
     this.GetProjects();
   }
+
 
   GetProjects() {
     if (this.projects().length > 0) return;
@@ -30,13 +27,10 @@ export class ProjectsService {
     });
   }
 
-  async GetProjectById(id: string) {
+  GetProjectById(id: string) {
     if (this.projects().length == 0) {
-
-      await this.GetProjects();
+      this.GetProjects();
     }
-
-
 
     let result = this.projects().find(x => x.id == id);
 

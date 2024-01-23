@@ -1,14 +1,16 @@
-<div class="flex items-center">
-  <div class="flex gap-8 flex-wrap justify-center">
+<div class="flex flex-col flex-wrap ">
+  <h1 class="text-2xl font-mono" id="contact-me-title">Contact me</h1>
+
+  <div class="flex flex-wrap gap-5 mt-5">
     @for (item of socials; track $index) {
 
     @if(item.icon == "envelope"){
-    <a (click)="contactMe(item.icon)" class="cell content animation">
+    <a (click)="contactMe(item.icon)" class="cell content animation social">
       <i class="fa-solid fa-{{item.icon}}"></i>
       <p class="font-mono text-2xl">{{item.name}}</p>
     </a>
     } @else {
-    <a href="{{item.url}}" target="_blank" class="cell content animation">
+    <a href="{{item.url}}" target="_blank" class="cell content animation social">
       <i class="fa-brands fa-{{item.icon}}"></i>
       <p class="font-mono text-2xl">{{item.name}}</p>
     </a>

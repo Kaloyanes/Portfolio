@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, WritableSignal, signal } from '@ang
 import { collection, collectionData, getFirestore } from '@angular/fire/firestore';
 import { Achievement } from '@models/achievement';
 import { HomeComponent } from '../../home.component';
+import { animate, stagger } from 'motion';
 
 @Component({
   selector: 'achievements',
@@ -64,9 +65,6 @@ export class AchievementsComponent {
   constructor(public homeComponent: HomeComponent) { }
 
   detailAchievement(index: number) {
-    // HomeComponent method use
     this.homeComponent.showAchievementDetails(this.achievemnts[index]);
   }
-
-
 }

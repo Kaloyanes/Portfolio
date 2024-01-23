@@ -58,14 +58,66 @@ export class HomeComponent {
 
   ngAfterViewInit(): void {
     let skipAnimation = false;
+    const nameWords = new SplitType('#nameHeadline');
 
     if ((location.hostname === "localhost" && skipAnimation) || sessionStorage.getItem("visited") === "true") {
       document.querySelector(".welcome")?.classList.add('hidden');
+      var lines = new SplitType('.about-me > h1, .about-me-text > p, p > strong').lines;
+
+      if (lines == null) return;
+
+      timeline([
+        [
+          nameWords.chars!, {
+            opacity: [0, 1],
+            scale: [0.8, 1],
+            y: ['100%', '0%'],
+          }, {
+            delay: stagger(0.07, { from: "first" }), easing: easeOutBack, duration: 0.5
+          }
+        ],
+        [
+          lines, {
+            y: [100, 0],
+            scale: [0, 1],
+            opacity: [0, 1],
+          }, {
+            delay: stagger(0.1, { from: 'first' }),
+            duration: 0.5,
+            easing: easeOutCubic,
+            at: '<'
+          }
+        ],
+
+        [
+          '#achievement-title, .achievement', {
+            opacity: [0, 1],
+            scale: [0, 1],
+            y: [50, 0],
+          }, {
+            delay: stagger(0.2, { from: "first" }),
+            duration: 0.6,
+            at: 1
+          }
+        ],
+        [
+          '#contact-me-title, .social', {
+            opacity: [0, 1],
+            scale: [0, 1],
+            y: [100, 0],
+          }, {
+            delay: stagger(0.1),
+            duration: 0.5,
+            at: 1
+          }
+        ]
+
+      ])
+
       return;
     }
 
 
-    const nameWords = new SplitType('#nameHeadline');
 
     timeline(
       [
