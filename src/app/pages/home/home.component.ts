@@ -59,10 +59,11 @@ export class HomeComponent {
   ngAfterViewInit(): void {
     let skipAnimation = false;
 
-    if (location.hostname === "localhost" && skipAnimation) {
+    if ((location.hostname === "localhost" && skipAnimation) || sessionStorage.getItem("visited") === "true") {
       document.querySelector(".welcome")?.classList.add('hidden');
       return;
     }
+
 
     const nameWords = new SplitType('#nameHeadline');
 
@@ -126,6 +127,9 @@ export class HomeComponent {
         ]
       ],
     );
+    sessionStorage.setItem("visited", "true");
+
+
   }
 
   sendEmail() {

@@ -28,8 +28,7 @@ export class ProjectsComponent {
   }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+    //Called after the constructor, initializing hello world hello world hello world hello world hello world hello world hello world.
     this.projectsService.GetProjects();
   }
 
