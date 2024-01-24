@@ -1,5 +1,4 @@
-<div class="flex flex-col justify-center items-center h-max xl:h-screen 2xl:py-20 mt-5 relative flex-wrap"
-  id="container">
+<div class="flex flex-col justify-center items-center h-max xl:h-screen 2xl:py-20  relative flex-wrap" id="container">
   <div class="flex gap-5 mx-2 2xl:mx-32 xl:mx-12 md:mx-4 flex-wrap flex-col xl:flex-row">
     <div class="flex flex-col flex-1 gap-5 items-stretch flex-wrap" id="aboutme">
       <div class="cell flex-1 text-4xl overflow-hidden" id="headline">
@@ -38,15 +37,15 @@
   </div>
 
 
-  <div class="toast md:gap-12 self-center justify-self-center">
+  <div class="toast md:gap-12 self-center justify-self-center ">
     <div class="flex items-center gap-3">
       <div class="checkmark-box">
         <img src="/assets/check.svg" class="checkmark" />
       </div>
-      <h1 class="text-2xl font-bold ">Message sent successfully</h1>
+      <h1 class="text-2xl font-bold text-white">Message sent successfully</h1>
     </div>
-    <button class="btn btn-ghost">
-      <img src="/assets/close.svg" class="close w-5" (click)="openToast(false)" />
+    <button class="btn btn-ghost" (click)="openToast(false)">
+      <img src="/assets/close.svg" class="close w-5" />
     </button>
   </div>
 
@@ -56,7 +55,7 @@
 <dialog id="achievement-dialog"
   class="modal backdrop-blur-sm bg-opacity-5 modal-bottom sm:modal-middle border border-transparent">
   <div
-    class="modal-box border border-primary bg-card-bg dark:bg-card-bg-dark gap-5 p-0 rounded-xl lg:overflow-hidden flex flex-col ">
+    class="modal-box border border-primary bg-card-bg dark:bg-card-bg-dark gap-2.5 p-0 rounded-xl lg:overflow-hidden flex flex-col ">
     @if(selectedAchievement()?.imageUrl) {
     <img src="/assets{{selectedAchievement()?.imageUrl}}" class="rounded-xl self-center justify-self-center" />
     }

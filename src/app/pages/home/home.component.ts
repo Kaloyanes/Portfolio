@@ -254,8 +254,6 @@ export class HomeComponent {
   }
 
   sendEmail() {
-    this.openToast(true);
-
     this.isSubmitted = true;
 
     if (this.email.invalid || this.message.invalid) {
@@ -280,7 +278,6 @@ export class HomeComponent {
   openToast(open: boolean) {
 
     var x = window.innerWidth < 768 ? '50%' : '0';
-
     if (!open) {
       animate(".toast", {
         opacity: [1, 0],
@@ -292,13 +289,14 @@ export class HomeComponent {
 
       // add closed class to toast
       setTimeout(() => {
-        document.querySelector(".toast")?.classList.add("closed");
+        document.querySelector(".toast")?.classList.add("hidden");
       }, 400);
       return;
     }
 
-    document.querySelector(".toast")?.classList.remove("closed");
+    document.querySelector(".toast")?.classList.remove("hidden");
     animate(".toast", {
+
       opacity: [0, 1],
       scale: [0.6, 1],
       x: [0, x],
@@ -307,7 +305,7 @@ export class HomeComponent {
     });
 
     setTimeout(() => {
-      if (document.querySelector(".toast")?.classList.contains("closed")) {
+      if (document.querySelector(".toast")?.classList.contains("hidden")) {
         return;
       }
 
