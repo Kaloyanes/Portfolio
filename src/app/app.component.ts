@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Firestore, doc, getDoc } from '@angular/fire/firestore';
+import { FaviconService } from '@services/favicon.service';
 
 @Component({
   selector: 'root',
@@ -11,13 +12,8 @@ import { Firestore, doc, getDoc } from '@angular/fire/firestore';
   imports: [CommonModule, RouterOutlet]
 })
 export class AppComponent {
-  title = 'Portfolio';
 
-  fs = signal("fs");
+  constructor(private firestore: Firestore, public faviconService: FaviconService) { }
 
-  constructor(private firestore: Firestore) { }
 
-  async ngOnInit() {
-
-  }
 }
