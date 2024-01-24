@@ -47,6 +47,5 @@ export class ProjectsComponent {
       duration: 0.3,
       easing: easeOutCubic,
     });
-
-
   }
+}
