@@ -1,9 +1,9 @@
-<div class="flex flex-col justify-center h-max 2xl:h-screen py-20 xl:m-0 relative flex-wrap">
-  <div class="flex gap-5 xl:mx-32 md:mx-12 sm:mx-4 flex-wrap">
-    <div class="flex flex-col flex-1 gap-5  items-stretch flex-wrap" id="aboutme">
+<div class="flex flex-col justify-center items-center h-max xl:h-screen 2xl:py-20 relative flex-wrap">
+  <div class="flex gap-5 mx-2 2xl:mx-32 xl:mx-12 md:mx-4 flex-wrap flex-col xl:flex-row">
+    <div class="flex flex-col flex-1 gap-5 items-stretch flex-wrap" id="aboutme">
       <div class="cell flex-1 text-4xl overflow-hidden" id="headline">
-        <h1 id="nameHeadline" class="text-gray-950 dark:text-white">Kaloyan <strong
-            class="text-purple-600 dark:text-purple-400">Stoyanov</strong>
+        <h1 id="nameHeadline" class="text-gray-950 dark:text-white text-center">Kaloyan <strong
+            class="text-purple-600 dark:text-purple-400 text-center">Stoyanov</strong>
         </h1>
       </div>
       <div class="cell p-6" id="aboutText">
@@ -14,8 +14,8 @@
       </div>
     </div>
     <div class="flex flex-col gap-5 flex-wrap" id="pics">
-      <div class="flex flex-1 gap-5">
-        <div class="cell p-8 img-pfp" id="pfp">
+      <div class="flex flex-col lg:flex-row flex-1 gap-5">
+        <div class="cell p-8 img-pfp min-w-full lg:min-w-0 lg:min-h-0" id="pfp">
 
         </div>
         <div class="cell p-8" id="projects">
@@ -36,27 +36,28 @@
     </div>
   </div>
 
-  <div class="flex justify-center w-full flex-wrap">
-    <div class="toast gap-12">
-      <div class="flex items-center gap-3">
-        <div class="checkmark-box">
-          <img src="/assets/check.svg" class="checkmark" />
-        </div>
-        <h1 class="text-2xl font-bold ">Message sent successfully</h1>
+
+  <div class="toast md:gap-12 self-center justify-self-center">
+    <div class="flex items-center gap-3">
+      <div class="checkmark-box">
+        <img src="/assets/check.svg" class="checkmark" />
       </div>
-      <button class="btn btn-ghost">
-        <img src="/assets/close.svg" class="close w-5" (click)="openToast(false)" />
-      </button>
+      <h1 class="text-2xl font-bold ">Message sent successfully</h1>
     </div>
+    <button class="btn btn-ghost">
+      <img src="/assets/close.svg" class="close w-5" (click)="openToast(false)" />
+    </button>
   </div>
+
 </div>
 
 
 <dialog id="achievement-dialog"
   class="modal backdrop-blur-sm bg-opacity-5 modal-bottom sm:modal-middle border border-transparent">
-  <div class="modal-box border border-primary bg-background dark:bg-card-bg gap-5 p-0 rounded-xl overflow-hidden ">
+  <div
+    class="modal-box border border-primary bg-card-bg dark:bg-card-bg-dark gap-5 p-0 rounded-xl lg:overflow-hidden flex flex-col ">
     @if(selectedAchievement()?.imageUrl) {
-    <img src="/assets{{selectedAchievement()?.imageUrl}}" class="rounded-xl " />
+    <img src="/assets{{selectedAchievement()?.imageUrl}}" class="rounded-xl self-center justify-self-center" />
     }
     <div class="p-7 flex-col flex gap-4">
       <h1 class="text-xl text-gray-900 dark:text-white">{{selectedAchievement()?.title}}</h1>
@@ -70,7 +71,7 @@
 
 <dialog id="contact-me-dialog"
   class="modal backdrop-blur-sm bg-opacity-5 modal-bottom sm:modal-middle border border-transparent">
-  <div class="modal-box border border-primary bg-card-bg gap-5">
+  <div class="modal-box border border-primary bg-card-bg dark:bg-card-bg-dark gap-5">
     <div class="flex flex-col gap-8 w-full">
       <h1 class="font-mono text-3xl">Contact Me</h1>
       <div>

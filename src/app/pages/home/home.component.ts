@@ -10,7 +10,8 @@ import SplitType from 'split-type';
 import { getAnalytics, logEvent, setUserId, setAnalyticsCollectionEnabled, setConsent } from '@angular/fire/analytics';
 import { AchievementsComponent } from "./sections/achievements/achievements.component";
 import { Achievement } from '@models/achievement';
-
+import * as config from 'tailwindcss/defaultConfig'; // just an alias for the tailwind.config.js
+import resolveConfig from 'tailwindcss/resolveConfig';
 @Component({
   selector: 'home',
   standalone: true,
@@ -185,6 +186,8 @@ export class HomeComponent {
   }
 
   sendEmail() {
+    this.openToast(true);
+
     this.isSubmitted = true;
 
     if (this.email.invalid || this.message.invalid) {
@@ -207,12 +210,14 @@ export class HomeComponent {
   }
 
   openToast(open: boolean) {
+
+    var x = window.innerWidth < 768 ? '50%' : '0';
+
     if (!open) {
-      // close toast
       animate(".toast", {
         opacity: [1, 0],
         scale: [1, 0.6],
-        y: ["0px", "-50px"],
+        x: [x, 0],
       }, {
         easing: easeOutCubic,
       });
@@ -228,7 +233,7 @@ export class HomeComponent {
     animate(".toast", {
       opacity: [0, 1],
       scale: [0.6, 1],
-      y: ["-50px", "0px"],
+      x: [0, x],
     }, {
       easing: easeOutCubic,
     });
