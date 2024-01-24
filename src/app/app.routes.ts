@@ -31,7 +31,7 @@ export const routes: Routes = [
   },
   { path: 'projects', component: AllProjectsComponent, pathMatch: 'full', title: GenerateTitle("Projects") },
   { path: 'project', redirectTo: "projects", pathMatch: 'full', },
-  { path: 'project/:id', component: ProjectDetailsComponent, pathMatch: 'full', title: GenerateTitle("Project") },
+  { path: 'project/:id', component: ProjectDetailsComponent, pathMatch: 'full' },
   { path: 'projects/:id', redirectTo: "project/:id", pathMatch: 'full', },
   { path: "**", redirectTo: "", pathMatch: "full" },
 
