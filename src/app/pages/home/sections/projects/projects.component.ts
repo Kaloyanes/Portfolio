@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, WritableSignal, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, WritableSignal, computed, signal } from '@angular/core';
 import { collection, collectionData, getFirestore } from '@angular/fire/firestore';
 import { ProjectsService } from '@services/projects.service';
 import { ProjectCardComponent } from "@components/project-card/project-card.component";
@@ -9,6 +9,8 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { animate, stagger, timeline } from 'motion';
+import { easeOutCubic } from '@utils/Easings';
 
 
 @Component({
@@ -24,14 +26,27 @@ import 'swiper/css/pagination';
 })
 export class ProjectsComponent {
 
-  constructor(public projectsService: ProjectsService) {
+  x = computed(() => {
+    if (this.projectsService.sortedProjects().length > 0) {
+      this.animation();
+    }
+  });
+
+  constructor(public projectsService: ProjectsService) { }
+
+  animation() {
+    var elementsToAnimate = document.querySelectorAll('#projectsTitle, #seeMoreButton, .project-card');
+
+    animate(elementsToAnimate, {
+      opacity: [0, 1],
+      scale: [0, 1],
+      // x: [325, 0],
+      y: [50, 0],
+    }, {
+      delay: stagger(0.1),
+      duration: 0.3,
+      easing: easeOutCubic,
+    });
+
+
   }
-
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    this.projectsService.GetProjects();
-  }
-
-
-}

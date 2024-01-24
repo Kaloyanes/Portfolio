@@ -20,18 +20,16 @@
   min-width: 250px;
 
   &:hover {
-    scale: 1.1;
     @apply rounded-3xl;
+    scale: 1.05;
     letter-spacing: 1.5px;
 
     p {
       transform-origin: left;
     }
 
-
     i {
-      color: rgb(192, 132, 252);
-
+      @apply text-purple-700 dark:text-purple-400;
     }
   }
 }

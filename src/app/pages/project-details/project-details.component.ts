@@ -15,6 +15,8 @@ import { ProjectsService } from '@services/projects.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectDetailsComponent {
+  array = new Array(25000).fill(0);
+
   project = computed(() => {
     return this.ProjectsService.projects().find(x => x.id == this.route.snapshot.paramMap.get('id'));
   })

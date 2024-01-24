@@ -1,6 +1,8 @@
+
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Social } from '@models/social';
+import { animate, stagger } from 'motion';
 
 @Component({
   selector: 'contact-me',
@@ -50,5 +52,11 @@ export class ContactMeComponent {
     if (itemIcon !== "envelope") { return; }
 
     (document.querySelector("#contact-me-dialog") as HTMLDialogElement).showModal();
+  }
+
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+
   }
 }

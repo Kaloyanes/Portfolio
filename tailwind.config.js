@@ -8,7 +8,8 @@ module.exports = {
       colors: {
         'background': "#fff",
         'background-dark': "#050505",
-        "card-bg": "#171717",
+        'card-bg': "#fff",
+        "card-bg-dark": "#171717",
         'border-primary': "#2D2D2D",
         'accent': "#9A7AA0",
         'primary': "#fff",
@@ -31,6 +32,7 @@ module.exports = {
       {
         mytheme: {
           "primary": "rgb(192 132 252)",
+          "dark-primary": "#9A7AA0",
           "secondary": "#ffffff",
           "accent": "#ffffff",
           "neutral": "#ffffff",
