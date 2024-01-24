@@ -62,9 +62,9 @@ export class HomeComponent {
 
     if ((location.hostname === "localhost" && skipAnimation) || sessionStorage.getItem("visited") === "true") {
       document.querySelector(".welcome")?.classList.add('hidden');
-      var lines = new SplitType('.about-me > h1, .about-me-text > p, p > strong').lines;
+      var lines: HTMLElement[] = []
 
-      if (lines == null) return;
+      lines.push(document.querySelector('#about-me-title')!, ...new SplitType('.about-me-text > p, p > strong').lines!)
 
       timeline([
         [
