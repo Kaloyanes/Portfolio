@@ -1,7 +1,14 @@
 <div class="flex flex-col p-8 h-full">
-  <button (click)="signOut()"
-    class="self-end  btn btn-wide btn-primary bg-opacity-5 backdrop-blur-sm rounded-xl text-white transition-all duration-200 hover:rounded-2xl hover:scale-110 ">Sign
-    Out</button>
+  <div class="w-full flex justify-between">
+
+    <button (click)="goBack()"
+      class="self-end  btn btn-wide btn-primary bg-opacity-5 backdrop-blur-sm rounded-xl text-white transition-all duration-200 hover:rounded-2xl hover:scale-110 ">Go
+      Back</button>
+
+    <button (click)="signOut()"
+      class="self-end  btn btn-wide btn-primary bg-opacity-5 backdrop-blur-sm rounded-xl text-white transition-all duration-200 hover:rounded-2xl hover:scale-110 ">Sign
+      Out</button>
+  </div>
 
   <div class="flex flex-col gap-4 items-center  justify-center self-center w-1/2">
     <h1 class="text-3xl font-mono">Create a new project</h1>

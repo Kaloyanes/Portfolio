@@ -15,6 +15,7 @@ import { Project } from '@models/project';
   styleUrl: './create.component.scss'
 })
 export class CreateComponent {
+
   constructor(public auth: Auth, public ProjectService: ProjectsService, public Firestore: Firestore,) { }
 
   name = new FormControl<string>("");
@@ -95,5 +96,9 @@ export class CreateComponent {
   async signOut() {
     await signOut(this.auth);
     window.location.href = "/home";
+  }
+
+  goBack() {
+    window.location.href = "/";
   }
 }
