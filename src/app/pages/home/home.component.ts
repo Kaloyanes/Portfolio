@@ -4,7 +4,7 @@ import { ProjectsComponent } from "./sections/projects/projects.component";
 import { ContactMeComponent } from "./sections/contact-me/contact-me.component";
 import { EmailService } from '@services/email.service';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { animate, timeline, stagger } from 'motion';
+import { animate, timeline, stagger, TimelineDefinition, TimelineSegment } from 'motion';
 import { easeOutBack, easeOutCubic, easeOutElastic } from '@utils/Easings';
 import SplitType from 'split-type';
 import { getAnalytics, logEvent, setUserId, setAnalyticsCollectionEnabled, setConsent } from '@angular/fire/analytics';
@@ -61,20 +61,88 @@ export class HomeComponent {
     let skipAnimation = false;
     const nameWords = new SplitType('#nameHeadline');
 
-    if ((location.hostname === "localhost" && skipAnimation) || sessionStorage.getItem("visited") === "true") {
-      document.querySelector(".welcome")?.classList.add('hidden');
+    if ((location.hostname === "localhost" && skipAnimation) || sessionStorage.getItem("visited") === "true" || window.innerWidth < 1200) {
+      if (sessionStorage.getItem("visited") === "true") {
+        document.querySelector(".welcome")?.remove();
+      }
+
       var lines: HTMLElement[] = []
 
       lines.push(document.querySelector('#about-me-title')!, ...new SplitType('.about-me-text > p, p > strong').lines!)
 
+
+      var img: TimelineDefinition = [];
+
+      if ((window.innerWidth < 1200 && sessionStorage.getItem("visited") !== "true")) {
+        sessionStorage.setItem("watchedOtherAnimation", "true");
+        img = [
+          [
+            '.cell:not(.img-pfp)',
+            {
+              opacity: 0,
+            },
+          ],
+          ['.img-pfp', {
+            scale: [0.4, 0.98],
+            y: ['-75%', '-125%'],
+            opacity: [0, 1],
+          },
+            {
+              duration: 0.5, delay: 0.4, easing: easeOutCubic, at: 0,
+            }
+          ],
+          ['.welcome', {
+            opacity: [0, 1],
+            scale: [0.8, 1],
+            top: ['2%', '5%'],
+            translate: ['-50%', "-50%"],
+          },
+            {
+              duration: 0.5, delay: 0.4, easing: easeOutCubic, at: "<",
+            }
+          ],
+          [".img-pfp", {
+            scale: [0.98, 1],
+            y: ['-125%', 0],
+          },
+            {
+              duration: 1, delay: 2, easing: easeOutCubic, at: "<"
+            },
+          ],
+          ['.welcome',
+            {
+              opacity: [1, 0],
+              scale: [1, 0.8],
+              top: ['5%', '2%'],
+              translate: ['-50%', "-50%"],
+            },
+            {
+              at: "<",
+              delay: 2,
+              easing: easeOutCubic,
+            },
+          ],
+
+          ['.cell:not(.img-pfp)',
+            { opacity: 1 }, {
+              at: 2, delay: 0.35, easing: easeOutCubic, duration: 0.8,
+            },
+          ],
+        ];
+      }
+
+
+
       timeline([
+        ...img,
+
         [
           nameWords.chars!, {
             opacity: [0, 1],
             scale: [0.8, 1],
             y: ['100%', '0%'],
           }, {
-            delay: stagger(0.07, { from: "first" }), easing: easeOutBack, duration: 0.5
+            delay: stagger(0.07, { from: "first" }), easing: easeOutBack, duration: 0.5,
           }
         ],
         [
@@ -98,7 +166,7 @@ export class HomeComponent {
           }, {
             delay: stagger(0.2, { from: "first" }),
             duration: 0.6,
-            at: 1
+            at: '<'
           }
         ],
         [
@@ -109,15 +177,13 @@ export class HomeComponent {
           }, {
             delay: stagger(0.1),
             duration: 0.5,
-            at: 1
+            at: '<'
           }
-        ]
-
-      ])
-
+        ],
+      ]);
+      sessionStorage.setItem("visited", "true");
       return;
     }
-
 
 
     timeline(
@@ -155,6 +221,7 @@ export class HomeComponent {
             y: ['0%', '-50%'],
           },
           {
+            duration: 0.7,
             at: "<",
             delay: 1.5,
             easing: easeOutCubic,
@@ -181,6 +248,7 @@ export class HomeComponent {
       ],
     );
     sessionStorage.setItem("visited", "true");
+
 
 
   }
