@@ -15,9 +15,12 @@ import { ProjectsService } from '@services/projects.service';
 export class AllProjectsComponent {
   constructor(public ProjectsService: ProjectsService) { }
 
-  async ngOnInit(): Promise<void> {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    await this.ProjectsService.GetProjects();
+
+  GenerateRandomNumberFlex(max: number): number {
+    return Math.floor(Math.random() * max);
+  }
+
+  GoToThisProject(id: string) {
+    window.location.href = `/project/${id}`;
   }
 }

@@ -16,14 +16,11 @@ export class ProjectsService {
     this.GetProjects();
   }
 
-
   GetProjects() {
     if (this.projects().length > 0) return;
 
-    console.log("getProjects");
     collectionData(collection(this.firestore, 'projects'), { idField: 'id' }).subscribe((data) => {
-      this.projects.set((data as Project[]));
-      console.log(this.projects());
+      this.projects.set((data as Project[]).sort());
     });
   }
 

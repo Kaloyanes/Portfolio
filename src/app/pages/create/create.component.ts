@@ -42,6 +42,7 @@ export class CreateComponent {
       top: this.top.value!,
       position: this.position.value!,
       images: this.images(),
+      createdAt: new Date().getTime(),
     }
 
     await this.ProjectService.CreateNewProject(project);
@@ -91,6 +92,7 @@ export class CreateComponent {
     this.top.setValue(false);
     this.position.setValue(0);
     this.files.setValue(undefined);
+    this.images.set([]);
   }
 
   async signOut() {
@@ -101,4 +103,6 @@ export class CreateComponent {
   goBack() {
     window.location.href = "/";
   }
+
+
 }

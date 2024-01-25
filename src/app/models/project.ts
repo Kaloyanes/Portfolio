@@ -6,4 +6,5 @@ export interface Project {
   top: boolean;
   position: number;
   images: string[];
+  createdAt: number;
 }

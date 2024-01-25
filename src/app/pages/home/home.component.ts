@@ -314,6 +314,7 @@ export class HomeComponent {
   }
 
   closeDialog() {
+    (document.querySelector('#achievement-dialog') as HTMLDialogElement).close();
     (document.querySelector('#contact-me-dialog') as HTMLDialogElement).close();
   }
 

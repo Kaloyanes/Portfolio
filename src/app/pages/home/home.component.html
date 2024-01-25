@@ -56,13 +56,19 @@
   class="modal backdrop-blur-sm bg-opacity-5 modal-bottom sm:modal-middle border border-transparent">
   <div
     class="modal-box border border-primary bg-card-bg dark:bg-card-bg-dark gap-2.5 p-0 rounded-xl lg:overflow-hidden flex flex-col ">
+
     @if(selectedAchievement()?.imageUrl) {
     <img src="/assets{{selectedAchievement()?.imageUrl}}" class="rounded-xl self-center justify-self-center" />
     }
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-primary absolute right-3 top-3">✕</button>
+    </form>
+
     <div class="p-7 flex-col flex gap-4">
       <h1 class="text-xl text-gray-900 dark:text-white">{{selectedAchievement()?.title}}</h1>
       <p class="text-md text-gray-900 dark:text-white">{{selectedAchievement()?.description}}</p>
     </div>
+
   </div>
   <form method="dialog" class="modal-backdrop border-transparent">
     <button class="cursor-default border border-transparent">close</button>
@@ -75,6 +81,7 @@
     <div class="flex flex-col gap-8 w-full">
       <h1 class="font-mono text-3xl">Contact Me</h1>
       <div>
+
         <input
           class="input input-primary  bg-background dark:bg-background-dark placeholder:dark:text-white placeholder:text-gray-800 bg-opacity-10 input-ghost input-bordered rounded-xl w-full transition-all duration-300 focus:rounded-3xl "
           type="email" placeholder="Email" [formControl]="email"

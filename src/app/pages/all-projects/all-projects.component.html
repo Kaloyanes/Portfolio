@@ -1,3 +1,20 @@
-@for (item of ProjectsService.projects(); track $index) {
-<h1>{{item.name}}</h1>
-}
+<div class="p-12 flex flex-col gap-12 items-center h-full lg:h-screen">
+
+  <h1 class="text-4xl font-mono text-center">My Projects</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  gap-5">
+
+    @for (item of ProjectsService.projects(); track $index) {
+    <div class="cell p-8 flex flex-col items-center justify-center h-full hover:scale-105 cursor-pointer"
+      (click)="GoToThisProject(item.id)">
+      <img src="{{item.images[0]}}" alt="{{item.name}}" class="max-w-[250px] flex-[1] object-cover  rounded-2xl">
+
+      <div class="divider"></div>
+      <div class="flex-[2] text-left w-full flex flex-col gap-[15px] ">
+        <h1 class="text-3xl font-mono">{{item.name}}</h1>
+        <p>{{item.shortDescription}}</p>
+      </div>
+    </div>
+    }
+  </div>
+</div>
