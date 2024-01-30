@@ -1,13 +1,15 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { ProjectsService } from '@services/projects.service';
 import { animate, stagger } from 'motion';
+
 
 @Component({
   selector: 'all-projects',
   standalone: true,
   imports: [
     CommonModule,
+    NgOptimizedImage,
   ],
   templateUrl: './all-projects.component.html',
   styleUrl: './all-projects.component.scss',
@@ -35,10 +37,10 @@ export class AllProjectsComponent {
   });
 
   animateProjects() {
-    animate('.cell', {
-      top: [-100, `${this.GenerateRandomNumberFlex(50) * 10}%`],
-      left: [-100, `${this.GenerateRandomNumberFlex(50) * 10}%`],
-      width: [0, '100%'],
+    animate('.project', {
+      y: ['100%', 0],
+      opacity: [0, 1],
+      scale: [0.8, 1],
     }, {
       delay: stagger(0.1),
       duration: 0.5,
