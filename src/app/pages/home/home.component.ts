@@ -84,7 +84,7 @@ export class HomeComponent {
           ],
           ['.img-pfp', {
             scale: [0.4, 0.98],
-            y: ['-75%', '-125%'],
+            y: ['-75%', '-150%'],
             opacity: [0, 1],
           },
             {
@@ -103,7 +103,7 @@ export class HomeComponent {
           ],
           [".img-pfp", {
             scale: [0.98, 1],
-            y: ['-125%', 0],
+            y: ['-150%', 0],
           },
             {
               duration: 1, delay: 2, easing: easeOutCubic, at: "<"

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { ProjectsService } from '@services/projects.service';
+import { animate, stagger } from 'motion';
 
 @Component({
   selector: 'all-projects',
@@ -13,11 +14,48 @@ import { ProjectsService } from '@services/projects.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AllProjectsComponent {
-  constructor(public ProjectsService: ProjectsService) { }
+  constructor(public projectsService: ProjectsService) { }
 
+  x = computed(() => {
+    if (this.sorted().length > 0) {
+      this.animateProjects();
+    }
+  })
+
+  sorted = computed(() => {
+    return this.projectsService.projects().sort((a, b) => {
+      if (a.createdAt > b.createdAt) return -1;
+      if (a.createdAt < b.createdAt) return 1;
+      return 0;
+    }).sort((a, b) => {
+      if (a.top && !b.top) return -1;
+      if (!a.top && b.top) return 1;
+      return 0;
+    });
+  });
+
+  animateProjects() {
+    animate('.cell', {
+      top: [-100, `${this.GenerateRandomNumberFlex(50) * 10}%`],
+      left: [-100, `${this.GenerateRandomNumberFlex(50) * 10}%`],
+      width: [0, '100%'],
+    }, {
+      delay: stagger(0.1),
+      duration: 0.5,
+    });
+  }
+
+  lastChosenImage: number = -1;
 
   GenerateRandomNumberFlex(max: number): number {
-    return Math.floor(Math.random() * max);
+    let generated = Math.floor(Math.random() * max);
+
+    if (this.lastChosenImage == generated) {
+      return this.GenerateRandomNumberFlex(max);
+    }
+
+    this.lastChosenImage = generated;
+    return generated;
   }
 
   GoToThisProject(id: string) {
