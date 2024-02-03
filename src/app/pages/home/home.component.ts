@@ -12,6 +12,8 @@ import { AchievementsComponent } from "./sections/achievements/achievements.comp
 import { Achievement } from '@models/achievement';
 import * as config from 'tailwindcss/defaultConfig'; // just an alias for the tailwind.config.js
 import resolveConfig from 'tailwindcss/resolveConfig';
+import Lenis from '@studio-freight/lenis';
+import { ScrollService } from '@services/scroll.service';
 @Component({
   selector: 'home',
   standalone: true,
@@ -58,6 +60,7 @@ export class HomeComponent {
   }
 
   ngAfterViewInit(): void {
+
     let skipAnimation = false;
     const nameWords = new SplitType('#nameHeadline');
 

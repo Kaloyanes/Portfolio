@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Firestore, doc, getDoc } from '@angular/fire/firestore';
 import { FaviconService } from '@services/favicon.service';
+import { ScrollService } from '@services/scroll.service';
 
 @Component({
   selector: 'root',
@@ -13,7 +14,7 @@ import { FaviconService } from '@services/favicon.service';
 })
 export class AppComponent {
 
-  constructor(private firestore: Firestore, public faviconService: FaviconService) { }
+  constructor(private firestore: Firestore, public faviconService: FaviconService, public scrollService: ScrollService) { }
 
 
 }
