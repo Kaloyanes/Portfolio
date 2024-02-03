@@ -4,7 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { Firestore, doc, getDoc } from '@angular/fire/firestore';
 import { FaviconService } from '@services/favicon.service';
 import { ScrollService } from '@services/scroll.service';
-import { injectSpeedInsights } from '@vercel/speed-insights/*';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 
 @Component({
   selector: 'root',
