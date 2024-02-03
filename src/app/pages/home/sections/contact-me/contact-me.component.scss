@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+
+.fa-brands,
+.fa-solid {
+  transition: all 0.2s ease-in-out;
+  scale: 2.5;
+
+}
+
+.cell {
+  @apply flex flex-row items-center gap-5 border-border-primary px-8 py-5 rounded-xl animation cursor-pointer bg-background bg-opacity-60 dark:bg-opacity-5 text-center border flex-1 backdrop-blur-sm p-5 w-full;
+}
+
+.animation {
+  scale: 1;
+  transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+  letter-spacing: 1px;
+  min-width: 250px;
+
+  &:hover {
+    @apply rounded-3xl;
+    scale: 1.05;
+    letter-spacing: 1.5px;
+
+    p {
+      transform-origin: left;
+    }
+
+    i {
+      @apply text-purple-700 dark:text-purple-400;
+    }
+  }
+}

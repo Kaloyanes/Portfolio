@@ -1,0 +1,17 @@
+<div
+  class="cell flex flex-col items-center justify-center h-full transition-all duration-300 hover:scale-[1.03] cursor-pointer py-12 tracking-[1px] hover:tracking-[1.5px] project "
+  (click)="GoToThisProject()">
+  <div class="flex relative">
+    <img ngSrc="{{project().images[0]}}" alt="{{project().name}}" width="130" height="250"
+      class="max-w-[130px] flex-[1] object-cover  rounded-2xl hover:rounded-3xl top-3 -rotate-[5deg] hover:rotate-0 hover:scale-105 shadow-sm transition-all duration-300">
+
+    <img ngSrc="{{project().images[1]}}" alt="{{project().name}}" width="130" height="250"
+      class="max-w-[130px] flex-[1] object-cover  rounded-2xl hover:rounded-3xl top-3 rotate-[5deg] hover:rotate-0 hover:scale-105 shadow-sm transition-all duration-300">
+  </div>
+
+  <div class="divider"></div>
+  <div class="flex-[2] text-left w-full flex flex-col gap-[15px] px-10 pt-5 ">
+    <h1 class="text-3xl font-mono">{{project().name}}</h1>
+    <p class="text-lg ">{{project().shortDescription}}</p>
+  </div>
+</div>

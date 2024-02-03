@@ -1,0 +1,59 @@
+<div class="flex flex-col p-8 h-full">
+  <div class="w-full flex justify-between">
+
+    <button (click)="goBack()"
+      class="self-end  btn btn-wide btn-primary bg-opacity-5 backdrop-blur-sm rounded-xl text-white transition-all duration-200 hover:rounded-2xl hover:scale-110 ">Go
+      Back</button>
+
+    <button (click)="signOut()"
+      class="self-end  btn btn-wide btn-primary bg-opacity-5 backdrop-blur-sm rounded-xl text-white transition-all duration-200 hover:rounded-2xl hover:scale-110 ">Sign
+      Out</button>
+  </div>
+
+  <div class="flex flex-col gap-4 items-center  justify-center self-center w-1/2">
+    <h1 class="text-3xl font-mono">Create a new project</h1>
+
+    <input
+      class="input focus:input-primary input-bordered rounded-xl focus:rounded-2xl w-full transition-all duration-300"
+      type="text" placeholder="Project Name" [formControl]='name' [class.invalid]="name.invalid && name.dirty" />
+
+    <input
+      class="input focus:input-primary input-bordered rounded-xl focus:rounded-2xl w-full transition-all duration-300"
+      type="text" placeholder="Short Project Description" [formControl]='shortDescription'
+      [class.invalid]="shortDescription.invalid && shortDescription.dirty" />
+
+    <textarea
+      class="textarea focus:textarea-primary bg-background-dark placeholder:text-lg textarea-ghost textarea-bordered rounded-xl min-h-52 w-full text-start transition-all duration-300 focus:rounded-2xl"
+      type="text" placeholder="Project Description" [formControl]="description"
+      [class.invalid]="description.invalid && description.dirty"></textarea>
+    <!-- Files -->
+    <div class="flex flex-col gap-2 self-start">
+      <label class="label">Files</label>
+      <input type="file" class="file-input file-input-bordered file-input-primary"
+        accept="image/png, image/jpeg, image/webp" multiple [formControl]="files" (change)="onImagePicked($event)" />
+    </div>
+
+    <!-- Checkbox for top -->
+    <div class="flex items-center gap-2 self-start">
+      <input type="checkbox"
+        class="checkbox checkbox-primary checkbox-lg transition-all duration-300 checked:rounded-full"
+        [formControl]="top" />
+      <label class="label">Top</label>
+    </div>
+
+    <!-- Number input for position -->
+    @if (top.getRawValue()) {
+    <div class="flex items-center gap-2 self-start">
+      <input type="number"
+        class="input input-bordered input-primary rounded-xl w-1/2 transition-all duration-300 focus:rounded-2xl"
+        placeholder="Position" [formControl]="position" />
+    </div>
+    }
+
+    <button (click)="createProject()"
+      class="self-end  btn btn-wide btn-primary bg-opacity-5 backdrop-blur-sm rounded-xl text-white transition-all duration-200 hover:rounded-2xl hover:scale-110 ">
+      Create Projects
+    </button>
+  </div>
+
+</div>

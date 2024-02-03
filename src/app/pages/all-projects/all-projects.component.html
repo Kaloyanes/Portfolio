@@ -1,0 +1,13 @@
+<h1 class="text-5xl font-mono text-center tracking-widest py-20">My Projects</h1>
+
+<div class="flex justify-center">
+
+  <div
+    class="w-[85%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 pb-12 grid-rows-2 items-center justify-center">
+
+    @for (item of sorted(); track $index) {
+    <project-showcase-card [project]="item" class="w-full h-full" />
+    }
+  </div>
+</div>
+{{x()}}

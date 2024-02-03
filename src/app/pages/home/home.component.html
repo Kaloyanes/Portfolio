@@ -1,0 +1,125 @@
+<div class="flex flex-col justify-center items-center h-max xl:h-screen 2xl:py-20  relative flex-wrap" id="container">
+  <div class="flex gap-5 mx-2 2xl:mx-32 xl:mx-12 md:mx-4 flex-wrap flex-col xl:flex-row">
+    <div class="flex flex-col flex-1 gap-5 items-stretch flex-wrap" id="aboutme">
+      <div class="cell flex-1 text-4xl overflow-hidden" id="headline">
+        <h1 id="nameHeadline" class="text-gray-950 dark:text-white text-center">Kaloyan <strong
+            class="text-purple-600 dark:text-purple-400 text-center">Stoyanov</strong>
+        </h1>
+      </div>
+      <div class="cell p-6" id="aboutText">
+        <about-me />
+      </div>
+      <div class="cell p-6" id="projectsText">
+        <achievements />
+      </div>
+    </div>
+    <div class="flex flex-col gap-5 flex-wrap" id="pics">
+      <div class="flex flex-col lg:flex-row flex-1 gap-5">
+        <div class="cell p-8 img-pfp min-w-full lg:min-w-0 lg:min-h-0" id="pfp">
+
+        </div>
+        <div class="cell p-8" id="projects">
+          <projects />
+        </div>
+      </div>
+      <div class="flex flex-1 gap-5">
+        <div class="cell p-8">
+          <contact-me />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center w-full flex-wrap">
+    <div class="welcome">
+      <h1 class="text-4xl font-mono text-center md:text-left">Welcome to my Portfolio</h1>
+    </div>
+  </div>
+
+
+  <div class="toast md:gap-12 self-center justify-self-center ">
+    <div class="flex items-center gap-3">
+      <div class="checkmark-box">
+        <img src="/assets/check.svg" class="checkmark" />
+      </div>1
+      <h1 class="text-2xl font-bold text-white">Message sent successfully</h1>
+    </div>
+    <button class="btn btn-ghost" (click)="openToast(false)">
+      <img src="/assets/close.svg" class="close w-5" />
+    </button>
+  </div>
+
+</div>
+
+
+<dialog id="achievement-dialog" class="modal backdrop-blur-sm bg-opacity-5 modal-middle border border-transparent">
+  <div
+    class="modal-box border border-primary bg-card-bg dark:bg-card-bg-dark gap-2.5 p-0 rounded-xl lg:overflow-hidden flex flex-col ">
+
+    @if(selectedAchievement()?.imageUrl) {
+    <img src="/assets{{selectedAchievement()?.imageUrl}}" class="rounded-xl self-center justify-self-center" />
+    }
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-primary absolute right-3 top-3">✕</button>
+    </form>
+
+    <div class="p-7 flex-col flex gap-4">
+      <h1 class="text-xl text-gray-900 dark:text-white">{{selectedAchievement()?.title}}</h1>
+      <p class="text-md text-gray-900 dark:text-white">{{selectedAchievement()?.description}}</p>
+    </div>
+
+  </div>
+  <form method="dialog" class="modal-backdrop border-transparent">
+    <button class="cursor-default border border-transparent">close</button>
+  </form>
+</dialog>
+
+<dialog id="contact-me-dialog" class="modal backdrop-blur-sm bg-opacity-5 modal-middle border border-transparent">
+  <div class="modal-box border border-primary bg-card-bg dark:bg-card-bg-dark gap-5">
+    <div class="flex flex-col gap-8 w-full">
+      <h1 class="font-mono text-3xl">Contact Me</h1>
+      <div>
+
+        <input
+          class="input input-primary  bg-background dark:bg-background-dark placeholder:dark:text-white placeholder:text-gray-800 bg-opacity-10 input-ghost input-bordered rounded-xl w-full transition-all duration-300 focus:rounded-3xl "
+          type="email" placeholder="Email" [formControl]="email"
+          [class.invalid]="email.invalid && email.dirty && isSubmitted" />
+
+        <div class="mt-2">
+          @if(email.dirty && email.hasError('required')) {
+          <span class="error">This field is required</span>
+          }
+          @else if(email.dirty && email.hasError('email')) {
+          <span class="error">This field must be a valid email</span>
+          }
+        </div>
+      </div>
+      <div>
+        <textarea
+          class="textarea textarea-primary  bg-background dark:bg-background-dark placeholder:dark:text-white placeholder:text-gray-800 bg-opacity-10  textarea-ghost textarea-bordered rounded-xl min-h-52 w-full text-start transition-all duration-300 focus:rounded-3xl "
+          type="text" placeholder="Your Message" [formControl]="message"
+          [class.invalid]="message.invalid && message.dirty"></textarea>
+
+        <div class="mt-2">
+          @if(message.dirty && message.hasError('required')) {
+          <span class="error">This field is required</span>
+          } @else if(message.dirty && message.hasError('minlength') && isSubmitted) {
+          <span class="error">This field must be at least 10 characters long</span>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="modal-action flex">
+      <button
+        class="btn flex-1 btn-primary bg-opacity-5 backdrop-blur-sm rounded-xl hover:rounded-2xl duration-300 text-gray-800 dark:text-white"
+        (click)="closeDialog()">Close</button>
+
+      <button
+        class="btn flex-1 btn-primary bg-opacity-5 backdrop-blur-sm rounded-xl hover:rounded-2xl transition-all duration-300 text-gray-800 dark:text-white "
+        (click)="sendEmail()">Send</button>
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop border border-transparent">
+    <button class="cursor-default border border-transparent">close</button>
+  </form>
+</dialog>

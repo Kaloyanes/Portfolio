@@ -1,0 +1,12 @@
+:host {
+  display: block;
+}
+
+.cell {
+  @apply bg-gray-900 rounded-xl bg-opacity-25 dark:bg-opacity-5 border-border-primary border flex-1 backdrop-blur-sm hover:rounded-2xl transition-all duration-200;
+
+  &:hover {
+    scale: 1.03 !important;
+  }
+
+}
