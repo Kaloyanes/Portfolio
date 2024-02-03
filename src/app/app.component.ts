@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { Firestore, doc, getDoc } from '@angular/fire/firestore';
 import { FaviconService } from '@services/favicon.service';
 import { ScrollService } from '@services/scroll.service';
+import { injectSpeedInsights } from '@vercel/speed-insights/*';
 
 @Component({
   selector: 'root',
@@ -14,7 +15,9 @@ import { ScrollService } from '@services/scroll.service';
 })
 export class AppComponent {
 
-  constructor(private firestore: Firestore, public faviconService: FaviconService, public scrollService: ScrollService) { }
+  constructor(private firestore: Firestore, public faviconService: FaviconService, public scrollService: ScrollService) {
+    injectSpeedInsights({ framework: 'angular' })
+  }
 
 
 }

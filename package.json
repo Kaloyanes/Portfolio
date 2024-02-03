@@ -21,6 +21,7 @@
     "@angular/router": "^17.1.0",
     "@formkit/auto-animate": "^0.8.1",
     "@studio-freight/lenis": "^1.0.34",
+    "@vercel/speed-insights": "^1.0.9",
     "motion": "^10.17.0",
     "rxjs": "~7.8.0",
     "split-type": "^0.3.4",
