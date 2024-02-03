@@ -1,5 +1,7 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
+import { ProjectShowcaseCardComponent } from '@components/project-showcase-card/project-showcase-card.component';
+import { Project } from '@models/project';
 import { ProjectsService } from '@services/projects.service';
 import { animate, stagger } from 'motion';
 
@@ -10,12 +12,16 @@ import { animate, stagger } from 'motion';
   imports: [
     CommonModule,
     NgOptimizedImage,
+    ProjectShowcaseCardComponent,
   ],
   templateUrl: './all-projects.component.html',
   styleUrl: './all-projects.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AllProjectsComponent {
+  log(_t27: Project) {
+    console.log(_t27);
+  }
   constructor(public projectsService: ProjectsService) { }
 
   x = computed(() => {
@@ -23,6 +29,8 @@ export class AllProjectsComponent {
       this.animateProjects();
     }
   })
+
+
 
   sorted = computed(() => {
     return this.projectsService.projects().sort((a, b) => {
@@ -37,7 +45,7 @@ export class AllProjectsComponent {
   });
 
   animateProjects() {
-    animate('.project', {
+    animate('.cell', {
       y: ['100%', 0],
       opacity: [0, 1],
       scale: [0.8, 1],
@@ -60,7 +68,5 @@ export class AllProjectsComponent {
     return generated;
   }
 
-  GoToThisProject(id: string) {
-    window.location.href = `/project/${id}`;
-  }
+
 }

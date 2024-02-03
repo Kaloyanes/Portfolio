@@ -1,32 +1,13 @@
-<div class="p-12 flex flex-col gap-12 items-center h-full lg:h-screen">
+<h1 class="text-5xl font-mono text-center tracking-widest py-20">My Projects</h1>
 
-  <h1 class="text-4xl font-mono text-center">My Projects</h1>
+<div class="flex justify-center">
 
-
-  <div class="w-[85%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 pb-12 grid-rows-2">
+  <div
+    class="w-[85%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 pb-12 grid-rows-2 items-center justify-center">
 
     @for (item of sorted(); track $index) {
-    <div
-      class="cell flex flex-col items-center justify-center h-full transition-all duration-300 hover:scale-[1.02] cursor-pointer py-12 tracking-[1px] hover:tracking-[1.5px] project "
-      (click)="GoToThisProject(item.id)">
-      <div class="flex relative">
-        <img ngSrc="{{item.images[0]}}" alt="{{item.name}}" width="130" height="500"
-          class="max-w-[130px] flex-[1] object-cover  rounded-2xl hover:rounded-3xl top-3 -rotate-[5deg] hover:rotate-0 hover:scale-105 shadow-sm transition-all duration-300">
-
-        <img ngSrc="{{item.images[1]}}" alt="{{item.name}}" width="130" height="500"
-          class="max-w-[130px] flex-[1] object-cover  rounded-2xl hover:rounded-3xl top-3 rotate-[5deg] hover:rotate-0 hover:scale-105 shadow-sm transition-all duration-300">
-      </div>
-
-      <div class="divider"></div>
-      <div class="flex-[2] text-left w-full flex flex-col gap-[15px] px-10 pt-5 ">
-        <h1 class="text-3xl font-mono">{{item.name}}</h1>
-        <p class="text-lg ">{{item.shortDescription}}</p>
-      </div>
-    </div>
+    <project-showcase-card [project]="item" class="w-full h-full" />
     }
   </div>
-
-
 </div>
-
 {{x()}}

@@ -6,6 +6,7 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideAnalytics, getAnalytics, initializeAnalytics } from '@angular/fire/analytics';
 
+import { AutoAnimateModule } from '@formkit/auto-animate/angular'
 
 import { routes } from './app.routes';
 import { take } from 'rxjs';
