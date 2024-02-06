@@ -4,4 +4,4 @@ Disallow: /nogooglebot/
 User-agent: *
 Allow: /
 
-Sitemap: https://kaloyanes-portfolio.web.app/sitemap.xml
+Sitemap: https://portfolio-nine-brown-65.vercel.app/sitemap.xml
