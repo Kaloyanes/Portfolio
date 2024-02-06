@@ -14,12 +14,14 @@ import * as config from 'tailwindcss/defaultConfig'; // just an alias for the ta
 import resolveConfig from 'tailwindcss/resolveConfig';
 import Lenis from '@studio-freight/lenis';
 import { ScrollService } from '@services/scroll.service';
+import { NgOptimizedImage } from '@angular/common';
 @Component({
   selector: 'home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  imports: [ReactiveFormsModule, AboutMeComponent, ProjectsComponent, ContactMeComponent, AchievementsComponent]
+  imports: [ReactiveFormsModule, AboutMeComponent, ProjectsComponent, ContactMeComponent,
+    NgOptimizedImage, AchievementsComponent]
 })
 export class HomeComponent {
 

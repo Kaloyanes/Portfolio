@@ -15,8 +15,9 @@
     </div>
     <div class="flex flex-col gap-5 flex-wrap" id="pics">
       <div class="flex flex-col lg:flex-row flex-1 gap-5">
-        <div class="cell p-8 img-pfp min-w-full lg:min-w-0 lg:min-h-0" id="pfp">
-
+        <div class="cell img-pfp min-w-full lg:min-w-0 lg:min-h-0" id="pfp">
+          <img ngSrc="/assets/intro2.jpg" class="w-full h-full object-cover object-center "
+            alt="Kaloyan Stoyanov, Burgas Developer of Mobile Applications and Web Applications" fill />
         </div>
         <div class="cell p-8" id="projects">
           <projects />
@@ -40,12 +41,13 @@
   <div class="toast md:gap-12 self-center justify-self-center ">
     <div class="flex items-center gap-3">
       <div class="checkmark-box">
-        <img src="/assets/check.svg" class="checkmark" />
+        <img src="/assets/check.svg" class="checkmark"
+          alt="checkmark to show to users that everything went successfully" />
       </div>1
       <h1 class="text-2xl font-bold text-white">Message sent successfully</h1>
     </div>
     <button class="btn btn-ghost" (click)="openToast(false)">
-      <img src="/assets/close.svg" class="close w-5" />
+      <img src="/assets/close.svg" class="close w-5" alt="icon for the button to close the toast" />
     </button>
   </div>
 
@@ -57,7 +59,8 @@
     class="modal-box border border-primary bg-card-bg dark:bg-card-bg-dark gap-2.5 p-0 rounded-xl lg:overflow-hidden flex flex-col ">
 
     @if(selectedAchievement()?.imageUrl) {
-    <img src="/assets{{selectedAchievement()?.imageUrl}}" class="rounded-xl self-center justify-self-center" />
+    <img src="/assets{{selectedAchievement()?.imageUrl}}"
+      class="rounded-xl self-center justify-self-center max-h-[400px]" alt="image of the achievement event" />
     }
     <form method="dialog">
       <button class="btn btn-sm btn-circle btn-primary absolute right-3 top-3">✕</button>

@@ -11,10 +11,6 @@
 }
 
 .img-pfp {
-  background-image: url('/assets/intro2.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: local;
   // width: 370px;
   // height: 500px;
 
@@ -22,7 +18,7 @@
 
   flex: 0.5;
 
-  @apply saturate-50 hue-rotate-30 hover:saturate-100 hover:hue-rotate-0 transition-all duration-500 lg:hover:scale-105 hover:rounded-3xl;
+  @apply saturate-50 hue-rotate-30 hover:saturate-100 hover:hue-rotate-0 transition-all duration-500 lg:hover:scale-105 hover:rounded-3xl overflow-hidden;
 }
 
 
