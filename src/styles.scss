@@ -7,7 +7,6 @@
 
 body,
 html {
-  @apply bg-background dark:bg-background-dark text-text dark:text-gray-300;
 
   height: max-content;
   width: 100%;
@@ -22,6 +21,8 @@ html {
   @media (prefers-color-scheme: dark) {
     background-image: radial-gradient(#707070 1px, transparent 0);
   }
+
+  @apply bg-background dark:bg-background-dark text-text dark:text-gray-300;
 }
 
 * {

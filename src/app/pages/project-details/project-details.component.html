@@ -1,26 +1,32 @@
-<div class="flex flex-col m-12 gap-12">
+<div class="flex flex-col justify-center items-center p-12 gap-12 h-screen"
+  [ngClass]="{'hidden': project() === undefined}">
 
-  <h1 class="text-4xl text-center">{{project()?.name}}</h1>
+  <h1 class="text-4xl font-bold text-center tracking-wide py-12">{{project()!.name}}</h1>
 
-  <div class="flex flex-col items-start justify-start w-1/2 self-center mt-20">
-    <h1 class="title">
-      The problem
-    </h1>
-    <p class="description">
-      {{project()?.problem}}
-    </p>
-    <h1 class="title">
-      The solution
-    </h1>
-    <p class="description">
-      {{project()?.solution}}
-    </p>
-    <h1 class="title">
-      The result
-    </h1>
-    <p class="description">
-      {{project()?.result}}
-    </p>
+  <div class="flex w-2/3 self-center mx-52 justify-self-center">
+    <div class="flex-1 flex flex-col items-start justify-start">
+      <h1 class="title ">
+        The problem
+      </h1>
+      <p class="description">
+        {{project()!.problem}}
+      </p>
+      <h1 class="title">
+        The solution
+      </h1>
+      <p class="description">
+        {{project()!.solution}}
+      </p>
+      <h1 class="title">
+        The result
+      </h1>
+      <p class="description">
+        {{project()!.result}}
+      </p>
+    </div>
+    <div class="flex-1 flex justify-center">
+      <img src="{{project()!.images[1]}}" alt="" class="rounded-3xl shadow-purple-500 max-h-[550px]">
+    </div>
   </div>
 
 </div>

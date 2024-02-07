@@ -1,3 +1,5 @@
 .title {
-  @apply text-2xl font-bold uppercase text-purple-600 dark:text-purple-300;
+  text-shadow: 0px 0px 25px rgb(126 34 206 / var(--tw-text-opacity));
+
+  @apply text-2xl font-bold uppercase text-purple-700 dark:text-purple-300;
 }
