@@ -19,12 +19,14 @@ export class CreateComponent {
   constructor(public auth: Auth, public ProjectService: ProjectsService, public Firestore: Firestore,) { }
 
   name = new FormControl<string>("");
-  description = new FormControl<string>("");
   shortDescription = new FormControl<string>("");
   top = new FormControl<boolean>(false);
   position = new FormControl<number>(0);
   files = new FormControl<FileList | undefined>(undefined);
   images = signal<string[]>([]);
+  problem = new FormControl<string>("");
+  solution = new FormControl<string>("");
+  result = new FormControl<string>("");
 
   async createProject() {
     let id = this.ProjectService.GenerateSlug(this.name.value!);
@@ -37,12 +39,14 @@ export class CreateComponent {
     var project: Project = {
       id: id,
       name: this.name.value!,
-      description: this.description.value!,
       shortDescription: this.shortDescription.value!,
       top: this.top.value!,
       position: this.position.value!,
       images: this.images(),
       createdAt: new Date().getTime(),
+      problem: this.problem.value!,
+      solution: this.solution.value!,
+      result: this.result.value!,
     }
 
     await this.ProjectService.CreateNewProject(project);
@@ -87,17 +91,20 @@ export class CreateComponent {
 
   clearFields() {
     this.name.setValue("");
-    this.description.setValue("");
     this.shortDescription.setValue("");
     this.top.setValue(false);
     this.position.setValue(0);
     this.files.setValue(undefined);
     this.images.set([]);
+    this.problem.setValue("");
+    this.solution.setValue("");
+    this.result.setValue("");
+
   }
 
   async signOut() {
     await signOut(this.auth);
-    window.location.href = "/home";
+    window.location.href = "/";
   }
 
   goBack() {
