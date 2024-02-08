@@ -4,6 +4,7 @@ import { Project } from '@models/project';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectsService } from '@services/projects.service';
 import { Title } from '@angular/platform-browser';
+import { stagger, timeline } from 'motion';
 
 @Component({
   selector: 'project-details',
@@ -29,6 +30,12 @@ export class ProjectDetailsComponent {
     return project;
   })
 
+  x = computed(() => {
+    if (this.project()) {
+      this.animate();
+    }
+  });
+
   constructor(private route: ActivatedRoute, private ProjectsService: ProjectsService, private titleService: Title) { }
 
   private GenerateTitle(title: string): string {
@@ -45,4 +52,36 @@ export class ProjectDetailsComponent {
 
 
   }
+
+  animate() {
+    timeline([
+      [
+        "#projectName", {
+          opacity: [0, 1],
+          y: ['-55%', 0],
+        }, {
+          duration: 0.5,
+        }
+      ],
+      [
+        ".projectInfo", {
+          opacity: [0, 1],
+          x: ['-70%', 0],
+        }, {
+          duration: 0.5,
+          delay: stagger(0.2)
+        }
+      ],
+      [
+        "#projectImage", {
+          opacity: [0, 1],
+          x: ['100%', 0],
+        }, {
+          duration: 0.5,
+          at: "<"
+        }
+      ]
+    ])
+  }
+
 }

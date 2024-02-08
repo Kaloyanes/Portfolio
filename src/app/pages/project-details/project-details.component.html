@@ -7,12 +7,12 @@
 }
 
 <div class="flex flex-col justify-center items-center p-12 gap-12" [ngClass]="{'hidden': project() === undefined}">
-  <h1 class="text-4xl font-bold text-center tracking-wide py-6 font-mono">{{project()!.name}}</h1>
+  <h1 class="text-4xl font-bold text-center tracking-wide py-6 font-mono" id="projectName">{{project()!.name}}</h1>
 
   <div class="xl:w-[75%] 2xl:w-[65%] w-full ">
     <div class="flex flex-col lg:flex-row gap-10 lg:gap-0 self-center items-center justify-self-center py-16">
       <div class="flex-1 flex flex-col items-start justify-evenly gap-10">
-        <div class="">
+        <div class="projectInfo">
           <h1 class="title ">
             The problem
           </h1>
@@ -21,7 +21,7 @@
           </p>
         </div>
 
-        <div class="">
+        <div class="projectInfo">
           <h1 class="title">
             The solution
           </h1>
@@ -30,7 +30,7 @@
           </p>
         </div>
 
-        <div class="">
+        <div class="projectInfo">
           <h1 class="title">
             The result
           </h1>
@@ -40,7 +40,8 @@
         </div>
       </div>
       <div class="flex-1 flex justify-center lg:justify-end">
-        <img src="{{project()!.images[4]}}" alt="" class="rounded-3xl shadow-purple-500 max-h-[550px]">
+        <img src="{{project()!.images[4]}}" alt="" class="rounded-3xl shadow-purple-500 max-h-[550px]"
+          id="projectImage">
       </div>
     </div>
 
@@ -68,3 +69,5 @@
   </div>
 
 </div>
+
+{{x()}}
