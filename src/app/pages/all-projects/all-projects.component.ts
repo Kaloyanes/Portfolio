@@ -19,9 +19,7 @@ import { animate, stagger } from 'motion';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AllProjectsComponent {
-  log(_t27: Project) {
-    console.log(_t27);
-  }
+
   constructor(public projectsService: ProjectsService) { }
 
   x = computed(() => {

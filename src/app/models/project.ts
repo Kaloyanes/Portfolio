@@ -9,4 +9,6 @@ export interface Project {
   problem: string;
   solution: string;
   result: string;
+  technologies: string[];
+
 }

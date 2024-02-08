@@ -1,31 +1,69 @@
-<div class="flex flex-col justify-center items-center p-12 gap-12 h-screen"
-  [ngClass]="{'hidden': project() === undefined}">
+@if(project() === undefined)
+{
+<div class="flex flex-col justify-center items-center p-12 gap-12 h-screen">
+  <div class="spinner">
+  </div>
+</div>
+}
 
-  <h1 class="text-4xl font-bold text-center tracking-wide py-12">{{project()!.name}}</h1>
+<div class="flex flex-col justify-center items-center p-12 gap-12" [ngClass]="{'hidden': project() === undefined}">
+  <h1 class="text-4xl font-bold text-center tracking-wide py-6 font-mono">{{project()!.name}}</h1>
 
-  <div class="flex w-2/3 self-center mx-52 justify-self-center">
-    <div class="flex-1 flex flex-col items-start justify-start">
-      <h1 class="title ">
-        The problem
-      </h1>
-      <p class="description">
-        {{project()!.problem}}
-      </p>
-      <h1 class="title">
-        The solution
-      </h1>
-      <p class="description">
-        {{project()!.solution}}
-      </p>
-      <h1 class="title">
-        The result
-      </h1>
-      <p class="description">
-        {{project()!.result}}
-      </p>
+  <div class="xl:w-[75%] 2xl:w-[65%] w-full ">
+    <div class="flex flex-col lg:flex-row gap-10 lg:gap-0 self-center items-center justify-self-center py-16">
+      <div class="flex-1 flex flex-col items-start justify-evenly gap-10">
+        <div class="">
+          <h1 class="title ">
+            The problem
+          </h1>
+          <p class="description">
+            {{project()!.problem}}
+          </p>
+        </div>
+
+        <div class="">
+          <h1 class="title">
+            The solution
+          </h1>
+          <p class="description">
+            {{project()!.solution}}
+          </p>
+        </div>
+
+        <div class="">
+          <h1 class="title">
+            The result
+          </h1>
+          <p class="description">
+            {{project()!.result}}
+          </p>
+        </div>
+      </div>
+      <div class="flex-1 flex justify-center lg:justify-end">
+        <img src="{{project()!.images[4]}}" alt="" class="rounded-3xl shadow-purple-500 max-h-[550px]">
+      </div>
     </div>
-    <div class="flex-1 flex justify-center">
-      <img src="{{project()!.images[1]}}" alt="" class="rounded-3xl shadow-purple-500 max-h-[550px]">
+
+
+    <h1 class="text-4xl font-bold font-mono  text-left tracking-wide py-12 mt-5">Tech stack</h1>
+
+    <div class="flex gap-12 justify-start w-full flex-wrap">
+      @for (item of project()!.technologies; track $index) {
+      <div class="flex gap-2 justify-start items-center min-w-44 ">
+        <img src="/assets/technologies/{{item.replaceAll(' ', '-')}}.svg" alt="{{item}} logo"
+          class="shadow-purple-500 max-h-[50px] ">
+        <h1 class="capitalize text-3xl">{{item.replaceAll('-',' ')}}</h1>
+      </div>
+      }
+    </div>
+
+    <h1 class="text-4xl font-bold font-mono  text-left tracking-wide mt-5 py-16">Images</h1>
+
+    <div class="flex flex-wrap gap-12 items-center justify-center  ">
+
+      @for (item of project()!.images; track $index) {
+      <img src="{{item}}" alt="" class="rounded-3xl shadow-purple-500 max-h-[550px]">
+      }
     </div>
   </div>
 

@@ -39,6 +39,11 @@
       type="text" placeholder="Project Result" [formControl]="result"
       [class.invalid]="result.invalid && result.dirty"></textarea>
 
+    <textarea
+      class="textarea focus:textarea-primary bg-background-dark placeholder:text-lg textarea-ghost textarea-bordered rounded-xl min-h-52 w-full text-start transition-all duration-300 focus:rounded-2xl"
+      type="text" placeholder="Project Technologies" [formControl]="technologies"
+      [class.invalid]="technologies.invalid && technologies.dirty"></textarea>
+
 
     <!-- Files -->
     <div class="flex flex-col gap-2 self-start">

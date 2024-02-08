@@ -27,6 +27,7 @@ export class CreateComponent {
   problem = new FormControl<string>("");
   solution = new FormControl<string>("");
   result = new FormControl<string>("");
+  technologies = new FormControl<string>("");
 
   async createProject() {
     let id = this.ProjectService.GenerateSlug(this.name.value!);
@@ -47,6 +48,7 @@ export class CreateComponent {
       problem: this.problem.value!,
       solution: this.solution.value!,
       result: this.result.value!,
+      technologies: this.technologies.value?.trim().split(" ").map(x => x.toLowerCase().trim()) ?? []
     }
 
     await this.ProjectService.CreateNewProject(project);
