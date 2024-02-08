@@ -61,198 +61,198 @@ export class HomeComponent {
 
   ngAfterViewInit(): void {
 
-    return;
-
-    // let skipAnimation = false;
-    // const nameWords = new SplitType('#nameHeadline');
-
-    // if ((location.hostname === "localhost" && skipAnimation) || sessionStorage.getItem("visited") === "true" || window.innerWidth < 1200) {
-    //   if (sessionStorage.getItem("visited") === "true") {
-    //     document.querySelector(".welcome")?.remove();
-    //   }
-
-    //   var lines: HTMLElement[] = []
-
-    //   lines.push(document.querySelector('#about-me-title')!, ...new SplitType('.about-me-text > p, p > strong').lines!)
 
 
-    //   var img: TimelineDefinition = [];
+    let skipAnimation = false;
+    const nameWords = new SplitType('#nameHeadline');
 
-    //   if ((window.innerWidth < 1200 && sessionStorage.getItem("visited") !== "true")) {
-    //     sessionStorage.setItem("watchedOtherAnimation", "true");
-    //     img = [
-    //       [
-    //         '.cell:not(.img-pfp)',
-    //         {
-    //           opacity: 0,
-    //         },
-    //       ],
-    //       ['.img-pfp', {
-    //         scale: [0.4, 0.98],
-    //         y: ['-75%', '-150%'],
-    //         opacity: [0, 1],
-    //       },
-    //         {
-    //           duration: 0.5, delay: 0.4, easing: easeOutCubic, at: 0,
-    //         }
-    //       ],
-    //       ['.welcome', {
-    //         opacity: [0, 1],
-    //         scale: [0.8, 1],
-    //         top: ['2%', '5%'],
-    //         translate: ['-50%', "-50%"],
-    //       },
-    //         {
-    //           duration: 0.5, delay: 0.4, easing: easeOutCubic, at: "<",
-    //         }
-    //       ],
-    //       [".img-pfp", {
-    //         scale: [0.98, 1],
-    //         y: ['-150%', 0],
-    //       },
-    //         {
-    //           duration: 1, delay: 2, easing: easeOutCubic, at: "<"
-    //         },
-    //       ],
-    //       ['.welcome',
-    //         {
-    //           opacity: [1, 0],
-    //           scale: [1, 0.8],
-    //           top: ['5%', '2%'],
-    //           translate: ['-50%', "-50%"],
-    //         },
-    //         {
-    //           at: "<",
-    //           delay: 2,
-    //           easing: easeOutCubic,
-    //         },
-    //       ],
+    if ((location.hostname === "localhost" && skipAnimation) || sessionStorage.getItem("visited") === "true" || window.innerWidth < 1200) {
+      if (sessionStorage.getItem("visited") === "true") {
+        document.querySelector(".welcome")?.remove();
+      }
 
-    //       ['.cell:not(.img-pfp)',
-    //         { opacity: 1 }, {
-    //           at: 2, delay: 0.35, easing: easeOutCubic, duration: 0.8,
-    //         },
-    //       ],
-    //     ];
-    //   }
+      var lines: HTMLElement[] = []
+
+      lines.push(document.querySelector('#about-me-title')!, ...new SplitType('.about-me-text > p, p > strong').lines!)
 
 
+      var img: TimelineDefinition = [];
 
-    //   timeline([
-    //     ...img,
+      if ((window.innerWidth < 1200 && sessionStorage.getItem("visited") !== "true")) {
+        sessionStorage.setItem("watchedOtherAnimation", "true");
+        img = [
+          [
+            '.cell:not(.img-pfp)',
+            {
+              opacity: 0,
+            },
+          ],
+          ['.img-pfp', {
+            scale: [0.4, 0.98],
+            y: ['-75%', '-150%'],
+            opacity: [0, 1],
+          },
+            {
+              duration: 0.5, delay: 0.4, easing: easeOutCubic, at: 0,
+            }
+          ],
+          ['.welcome', {
+            opacity: [0, 1],
+            scale: [0.8, 1],
+            top: ['2%', '5%'],
+            translate: ['-50%', "-50%"],
+          },
+            {
+              duration: 0.5, delay: 0.4, easing: easeOutCubic, at: "<",
+            }
+          ],
+          [".img-pfp", {
+            scale: [0.98, 1],
+            y: ['-150%', 0],
+          },
+            {
+              duration: 1, delay: 2, easing: easeOutCubic, at: "<"
+            },
+          ],
+          ['.welcome',
+            {
+              opacity: [1, 0],
+              scale: [1, 0.8],
+              top: ['5%', '2%'],
+              translate: ['-50%', "-50%"],
+            },
+            {
+              at: "<",
+              delay: 2,
+              easing: easeOutCubic,
+            },
+          ],
 
-    //     [
-    //       nameWords.chars!, {
-    //         opacity: [0, 1],
-    //         scale: [0.8, 1],
-    //         y: ['100%', '0%'],
-    //       }, {
-    //         delay: stagger(0.07, { from: "first" }), easing: easeOutBack, duration: 0.5,
-    //       }
-    //     ],
-    //     [
-    //       lines, {
-    //         y: [100, 0],
-    //         scale: [0, 1],
-    //         opacity: [0, 1],
-    //       }, {
-    //         delay: stagger(0.1, { from: 'first' }),
-    //         duration: 0.5,
-    //         easing: easeOutCubic,
-    //         at: '<'
-    //       }
-    //     ],
-
-    //     [
-    //       '#achievement-title, .achievement', {
-    //         opacity: [0, 1],
-    //         scale: [0, 1],
-    //         y: [50, 0],
-    //       }, {
-    //         delay: stagger(0.2, { from: "first" }),
-    //         duration: 0.6,
-    //         at: '<'
-    //       }
-    //     ],
-    //     [
-    //       '#contact-me-title, .social', {
-    //         opacity: [0, 1],
-    //         scale: [0, 1],
-    //         y: [100, 0],
-    //       }, {
-    //         delay: stagger(0.1),
-    //         duration: 0.5,
-    //         at: '<'
-    //       }
-    //     ],
-    //   ]);
-    //   sessionStorage.setItem("visited", "true");
-    //   return;
-    // }
+          ['.cell:not(.img-pfp)',
+            { opacity: 1 }, {
+              at: 2, delay: 0.35, easing: easeOutCubic, duration: 0.8,
+            },
+          ],
+        ];
+      }
 
 
-    // timeline(
-    //   [
-    //     ['.img-pfp', {
-    //       scale: [0.4, 1.3],
-    //       y: ['15%', '15%'],
-    //       opacity: [0, 1],
-    //     },
-    //       {
-    //         duration: 0.5, delay: 0.4, easing: easeOutCubic
-    //       }
-    //     ],
-    //     ['.welcome', {
-    //       opacity: [0, 1],
-    //       scale: [0.8, 1],
-    //       translate: ['-50%', "-50%"],
-    //       y: ['-50%', '0%'],
-    //     },
-    //       {
-    //         duration: 0.5, delay: 0.4, easing: easeOutCubic, at: "<",
-    //       }
-    //     ],
-    //     [".img-pfp", {
-    //       scale: [1.3, 1],
-    //       y: ['15%', 0],
 
-    //     },
-    //       { duration: 1, delay: 1.5, easing: easeOutBack, at: "<" }],
-    //     [".welcome",
-    //       {
-    //         opacity: [1, 0],
-    //         scale: [1, 0.8],
-    //         translate: ['-50%', "-50%"],
-    //         y: ['0%', '-50%'],
-    //       },
-    //       {
-    //         duration: 0.7,
-    //         at: "<",
-    //         delay: 1.5,
-    //         easing: easeOutCubic,
-    //       },
-    //     ],
-    //     [
-    //       ".cell:not(.content, .img-pfp)", {
-    //         opacity: [0, 1],
-    //         scale: [0.8, 1],
-    //       }
-    //       , {
-    //         duration: 0.8, delay: stagger(0.2, { from: "first" }), easing: easeOutElastic, at: 2
-    //       }
-    //     ],
-    //     [
-    //       nameWords.chars!, {
-    //         opacity: [0, 1],
-    //         scale: [0.8, 1],
-    //         y: ['100%', '0%'],
-    //       }, {
-    //         delay: stagger(0.07, { from: "first" }), easing: easeOutBack, at: 2, duration: 0.5
-    //       }
-    //     ]
-    //   ],
-    // );
-    // sessionStorage.setItem("visited", "true");
+      timeline([
+        ...img,
+
+        [
+          nameWords.chars!, {
+            opacity: [0, 1],
+            scale: [0.8, 1],
+            y: ['100%', '0%'],
+          }, {
+            delay: stagger(0.07, { from: "first" }), easing: easeOutBack, duration: 0.5,
+          }
+        ],
+        [
+          lines, {
+            y: [100, 0],
+            scale: [0, 1],
+            opacity: [0, 1],
+          }, {
+            delay: stagger(0.1, { from: 'first' }),
+            duration: 0.5,
+            easing: easeOutCubic,
+            at: '<'
+          }
+        ],
+
+        [
+          '#achievement-title, .achievement', {
+            opacity: [0, 1],
+            scale: [0, 1],
+            y: [50, 0],
+          }, {
+            delay: stagger(0.2, { from: "first" }),
+            duration: 0.6,
+            at: '<'
+          }
+        ],
+        [
+          '#contact-me-title, .social', {
+            opacity: [0, 1],
+            scale: [0, 1],
+            y: [100, 0],
+          }, {
+            delay: stagger(0.1),
+            duration: 0.5,
+            at: '<'
+          }
+        ],
+      ]);
+      sessionStorage.setItem("visited", "true");
+      return;
+    }
+
+
+    timeline(
+      [
+        ['.img-pfp', {
+          scale: [0.4, 1.3],
+          y: ['15%', '15%'],
+          opacity: [0, 1],
+        },
+          {
+            duration: 0.5, delay: 0.4, easing: easeOutCubic
+          }
+        ],
+        ['.welcome', {
+          opacity: [0, 1],
+          scale: [0.8, 1],
+          translate: ['-50%', "-50%"],
+          y: ['-50%', '0%'],
+        },
+          {
+            duration: 0.5, delay: 0.4, easing: easeOutCubic, at: "<",
+          }
+        ],
+        [".img-pfp", {
+          scale: [1.3, 1],
+          y: ['15%', 0],
+
+        },
+          { duration: 1, delay: 1.5, easing: easeOutBack, at: "<" }],
+        [".welcome",
+          {
+            opacity: [1, 0],
+            scale: [1, 0.8],
+            translate: ['-50%', "-50%"],
+            y: ['0%', '-50%'],
+          },
+          {
+            duration: 0.7,
+            at: "<",
+            delay: 1.5,
+            easing: easeOutCubic,
+          },
+        ],
+        [
+          ".cell:not(.content, .img-pfp)", {
+            opacity: [0, 1],
+            scale: [0.8, 1],
+          }
+          , {
+            duration: 0.8, delay: stagger(0.2, { from: "first" }), easing: easeOutElastic, at: 2
+          }
+        ],
+        [
+          nameWords.chars!, {
+            opacity: [0, 1],
+            scale: [0.8, 1],
+            y: ['100%', '0%'],
+          }, {
+            delay: stagger(0.07, { from: "first" }), easing: easeOutBack, at: 2, duration: 0.5
+          }
+        ]
+      ],
+    );
+    sessionStorage.setItem("visited", "true");
 
 
 
