@@ -10,8 +10,6 @@ import SplitType from 'split-type';
 import { getAnalytics, logEvent, setUserId, setAnalyticsCollectionEnabled, setConsent } from '@angular/fire/analytics';
 import { AchievementsComponent } from "./sections/achievements/achievements.component";
 import { Achievement } from '@models/achievement';
-import * as config from 'tailwindcss/defaultConfig'; // just an alias for the tailwind.config.js
-import resolveConfig from 'tailwindcss/resolveConfig';
 import Lenis from '@studio-freight/lenis';
 import { ScrollService } from '@services/scroll.service';
 import { NgOptimizedImage } from '@angular/common';

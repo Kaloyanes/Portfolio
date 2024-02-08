@@ -4,11 +4,6 @@ import { collection, collectionData, getFirestore } from '@angular/fire/firestor
 import { ProjectsService } from '@services/projects.service';
 import { ProjectCardComponent } from "@components/project-card/project-card.component";
 
-import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import { animate, stagger, timeline } from 'motion';
 import { easeOutCubic } from '@utils/Easings';
 

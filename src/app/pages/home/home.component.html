@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-center items-center h-max py-20 relative flex-wrap" id="container">
+<div class="flex flex-col justify-center items-center h-max xl:h-screen py-20 relative flex-wrap" id="container">
   <div class="flex gap-5 mx-2 2xl:mx-32 xl:mx-12 md:mx-4 flex-wrap flex-col 2xl:flex-row">
     <div class="flex flex-col flex-1 gap-5 items-stretch flex-wrap" id="aboutme">
       <div class="cell flex-1 text-4xl overflow-hidden" id="headline">
@@ -15,11 +15,11 @@
     </div>
     <div class="flex flex-col gap-5 flex-wrap" id="pics">
       <div class="flex flex-col lg:flex-row flex-1 gap-5">
-        <div class="cell img-pfp min-w-full lg:min-w-0 lg:min-h-0" id="pfp">
-          <img ngSrc="/assets/intro2.webp" class="w-full h-full object-cover object-center "
-            alt="Kaloyan Stoyanov, Burgas Developer of Mobile Applications and Web Applications" fill />
+        <div class="cell img-pfp min-w-full lg:min-w-0 lg:min-h-0 flex flex-1" id="pfp">
+          <img ngSrc="/assets/intro2.webp" class="w-full h-full object-cover object-center flex-1 "
+            alt="Kaloyan Stoyanov, Burgas Developer of Mobile Applications and Web Applications" fill priority />
         </div>
-        <div class="cell p-8" id="projects">
+        <div class="cell p-8 " id="projects">
           <projects />
         </div>
       </div>

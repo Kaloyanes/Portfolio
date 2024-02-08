@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, computed, signal } from '@angular/core';
 import { Project } from '@models/project';
 import { ActivatedRoute } from '@angular/router';
@@ -10,13 +10,13 @@ import { Title } from '@angular/platform-browser';
   standalone: true,
   imports: [
     CommonModule,
+    NgOptimizedImage,
   ],
   templateUrl: './project-details.component.html',
   styleUrl: './project-details.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectDetailsComponent {
-  array = new Array(25000).fill(0);
 
   project = computed(() => {
 
@@ -25,6 +25,7 @@ export class ProjectDetailsComponent {
 
     this.titleService.setTitle(this.GenerateTitle(project!.name));
 
+    project.technologies = project.technologies.map(x => x.toLowerCase());
     return project;
   })
 

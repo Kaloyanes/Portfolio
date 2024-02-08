@@ -22,10 +22,29 @@
       type="text" placeholder="Short Project Description" [formControl]='shortDescription'
       [class.invalid]="shortDescription.invalid && shortDescription.dirty" />
 
+
+
     <textarea
       class="textarea focus:textarea-primary bg-background-dark placeholder:text-lg textarea-ghost textarea-bordered rounded-xl min-h-52 w-full text-start transition-all duration-300 focus:rounded-2xl"
-      type="text" placeholder="Project Description" [formControl]="description"
-      [class.invalid]="description.invalid && description.dirty"></textarea>
+      type="text" placeholder="Project Problem" [formControl]="problem"
+      [class.invalid]="problem.invalid && problem.dirty"></textarea>
+
+    <textarea
+      class="textarea focus:textarea-primary bg-background-dark placeholder:text-lg textarea-ghost textarea-bordered rounded-xl min-h-52 w-full text-start transition-all duration-300 focus:rounded-2xl"
+      type="text" placeholder="Project Solution" [formControl]="solution"
+      [class.invalid]="solution.invalid && solution.dirty"></textarea>
+
+    <textarea
+      class="textarea focus:textarea-primary bg-background-dark placeholder:text-lg textarea-ghost textarea-bordered rounded-xl min-h-52 w-full text-start transition-all duration-300 focus:rounded-2xl"
+      type="text" placeholder="Project Result" [formControl]="result"
+      [class.invalid]="result.invalid && result.dirty"></textarea>
+
+    <textarea
+      class="textarea focus:textarea-primary bg-background-dark placeholder:text-lg textarea-ghost textarea-bordered rounded-xl min-h-52 w-full text-start transition-all duration-300 focus:rounded-2xl"
+      type="text" placeholder="Project Technologies" [formControl]="technologies"
+      [class.invalid]="technologies.invalid && technologies.dirty"></textarea>
+
+
     <!-- Files -->
     <div class="flex flex-col gap-2 self-start">
       <label class="label">Files</label>
