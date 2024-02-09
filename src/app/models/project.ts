@@ -10,5 +10,7 @@ export interface Project {
   solution: string;
   result: string;
   technologies: string[];
+  selectedImageIndex: number;
+  link: string;
 
 }

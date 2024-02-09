@@ -18,6 +18,11 @@ import { stagger, timeline } from 'motion';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectDetailsComponent {
+  goToGithub() {
+
+
+    window.open(this.project()!.link, "_blank");
+  }
 
   project = computed(() => {
 
