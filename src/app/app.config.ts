@@ -9,8 +9,6 @@ import { provideAnalytics, getAnalytics, initializeAnalytics } from '@angular/fi
 import { AutoAnimateModule } from '@formkit/auto-animate/angular'
 
 import { routes } from './app.routes';
-import { take } from 'rxjs';
-import { provideClientHydration } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -31,13 +29,7 @@ export const appConfig: ApplicationConfig = {
       provideFirestore(() => getFirestore()),
       provideStorage(() => getStorage()),
       provideAuth(() => getAuth()),
-      provideAnalytics(() => {
-        firebaseApp$.subscribe(firebaseApp => {
-          initializeAnalytics(firebaseApp);
-        });
 
-        return getAnalytics();
-      }),
-    )provideClientHydration(),
+    ),
   ],
 };

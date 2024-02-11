@@ -9,7 +9,6 @@ const serverConfig: ApplicationConfig = {
     provideClientHydration(withHttpTransferCacheOptions({
       includePostRequests: true
     }))
-
   ]
 };
 
