@@ -26,12 +26,12 @@ export class ProjectDetailsComponent {
 
   project = computed(() => {
 
-    var project = this.ProjectsService.projects().find(x => x.id == this.route.snapshot.paramMap.get('id'));
+    var project = this.ProjectsService.projects().find((x: Project) => x.id == this.route.snapshot.paramMap.get('id'));
     if (!project) return undefined;
 
     this.titleService.setTitle(this.GenerateTitle(project!.name));
 
-    project.technologies = project.technologies.map(x => x.toLowerCase());
+    project.technologies = project.technologies.map((x: string) => x.toLowerCase());
     return project;
   })
 
