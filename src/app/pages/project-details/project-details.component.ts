@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, Input, computed, signal } from '@an
 import { Project } from '@models/project';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectsService } from '@services/projects.service';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { stagger, timeline } from 'motion';
 
 @Component({
@@ -18,9 +18,11 @@ import { stagger, timeline } from 'motion';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectDetailsComponent {
+
+
+  constructor(private route: ActivatedRoute, private ProjectsService: ProjectsService, private titleService: Title, private meta: Meta) { }
+
   goToGithub() {
-
-
     window.open(this.project()!.link, "_blank");
   }
 
@@ -30,6 +32,7 @@ export class ProjectDetailsComponent {
     if (!project) return undefined;
 
     this.titleService.setTitle(this.GenerateTitle(project!.name));
+    this.meta.updateTag({ name: 'description', content: `Project: ${project.name}, made by Kaloyan Stoyanov or Kaloyanes, with ${project.technologies.map(x => x + " ")}${project.problem} ${project.solution} ${project.result}` });
 
     project.technologies = project.technologies.map((x: string) => x.toLowerCase());
     return project;
@@ -41,7 +44,6 @@ export class ProjectDetailsComponent {
     }
   });
 
-  constructor(private route: ActivatedRoute, private ProjectsService: ProjectsService, private titleService: Title) { }
 
   private GenerateTitle(title: string): string {
     if (title.trim() == "") return "Kaloyanes";

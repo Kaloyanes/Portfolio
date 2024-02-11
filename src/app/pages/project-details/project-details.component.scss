@@ -17,7 +17,7 @@
 
 .projectInfo {
   * {
-    @apply flex flex-col bg-white rounded-xl bg-opacity-75;
+    @apply flex flex-col bg-white rounded-xl bg-opacity-75 dark:bg-opacity-0;
   }
 }
 
@@ -33,7 +33,7 @@ img:not(.logo) {
 // dark mode
 @media (prefers-color-scheme: dark) {
 
-  img {
+  img:not(.logo) {
     box-shadow: 0px 0px 25px rgb(216, 180, 254);
   }
 }
