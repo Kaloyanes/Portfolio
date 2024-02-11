@@ -52,7 +52,7 @@
       @for (item of project()!.technologies; track $index) {
       <div class="flex gap-2 justify-start items-center min-w-44 ">
         <img src="/assets/technologies/{{item.replaceAll(' ', '-')}}.svg" alt="{{item}} logo"
-          class="shadow-purple-500 max-h-[50px] ">
+          class="shadow-purple-500 max-h-[50px] logo ">
         <h1 class="capitalize text-3xl">{{item.replaceAll('-',' ')}}</h1>
       </div>
       }
@@ -60,8 +60,8 @@
 
     <div class="flex w-full justify-center mt-16">
 
-      <button
-        class="btn btn-primary btn-wide bg-opacity-5 backdrop-blur-sm rounded-xl text-white transition-all duration-200 hover:rounded-2xl hover:scale-110 text-2xl font-bold font-mono"
+      <button class="btn btn-wide bg-purple-700 hover:bg-purple-800 border-purple-400 hover:border-purple-300 bg-opacity-100 dark:bg-opacity-5 backdrop-blur-sm rounded-xl
+     text-white transition-all duration-200 hover:rounded-2xl hover:scale-110 font-mono text-2xl"
         (click)="goToGithub()">Github</button>
     </div>
 
