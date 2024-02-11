@@ -46,9 +46,9 @@ export class HomeComponent {
 
   constructor(public emailService: EmailService) { }
 
-  ngOnInit(): void {
-    this.analytic();
-  }
+  // ngOnInit(): void {
+
+  // }
 
   async analytic() {
     let analytics = getAnalytics();
@@ -59,9 +59,12 @@ export class HomeComponent {
     console.log("analytics", analytics);
   }
 
+
+
   ngAfterViewInit(): void {
+    this.analytic();
 
-
+    document.querySelector('#container')?.classList.remove('hidden');
 
     let skipAnimation = false;
     const nameWords = new SplitType('#nameHeadline');
