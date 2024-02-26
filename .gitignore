@@ -68,3 +68,5 @@ Thumbs.db
 .firebase/kaloyanes-portfolio/hosting/browser/assets/robots.txt
 .firebase/kaloyanes-portfolio/hosting/browser/assets/sitemap.xml
 .firebase/kaloyanes-portfolio/hosting/browser/assets/vyarnataposoka.webp
+/src/environments/environment.development.ts
+/src/environments/environment.ts
