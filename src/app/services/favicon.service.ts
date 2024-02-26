@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FaviconService {
 
-  constructor() {
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
     const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     this.handleDarkmode(darkModeMediaQuery);
     darkModeMediaQuery.addEventListener("change", this.handleDarkmode);
