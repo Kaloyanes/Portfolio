@@ -14,7 +14,7 @@ export default function pageAnimation() {
 				filter: "blur(0px)",
 			},
 			{
-				opacity: 0.2,
+				opacity: 0.5,
 				scale: 0.8,
 				transform: "translateY(-150px)",
 				filter: "blur(10px)",

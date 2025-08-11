@@ -1,10 +1,12 @@
 "use client";
+import { Menu } from "lucide-react";
 import { motion, type Transition } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTransitionRouter } from "next-view-transitions";
 import React from "react";
+import { Button } from "../ui/button";
 import AnimatedLink from "./AnimatedLink";
 
 const padding = 150;
@@ -40,46 +42,44 @@ export default function Header() {
 	const path = usePathname();
 
 	return (
-		<motion.header
-			initial={{
-				opacity: 0.7,
-				y: "-150%",
-				filter: "blur(10px)",
-				paddingLeft: `${padding}px`,
-				paddingRight: `${padding}px`,
-				paddingTop: `${padding / 2}px`,
-				paddingBottom: `${padding}px`,
-			}}
-			animate={{
-				opacity: 1,
-				y: 0,
-				filter: "blur(0px)",
-				paddingLeft: "24px",
-				paddingRight: "12px",
-				paddingTop: "12px",
-				paddingBottom: "12px",
-			}}
-			transition={{
-				y: {
-					delay: 0.1,
-					...spring,
-				},
-
-				...spring,
-			}}
-			className="fixed top-4 left-1/2 -translate-x-1/2 flex items-center justify-between z-50 backdrop-blur-md rounded-full w-[55%] border border-primary/10 bg-foreground/25 dark:bg-foreground/5"
-		>
-			<AnimatedLink href="/" className="flex items-center gap-2 flex-1">
-				<Image
-					src="/moon-bl.svg"
-					alt="logo"
-					width={25}
-					height={25}
-					className="dark:invert"
+		<>
+			{new Array(3).fill(0).map((_, index) => (
+				<div
+					key={`header-${index}`}
+					className="fixed top-0 backdrop-blur-lg mask-to-t z-10 w-full h-24  "
 				/>
-				<span className="text-3xl font-bold">Kaloyanes</span>
-			</AnimatedLink>
+			))}
+			<motion.header
+				initial={{
+					opacity: 0,
+					scaleX: 0.8,
+					filter: "blur(10px)",
+				}}
+				animate={{
+					opacity: 1,
+					scaleX: 1,
+					filter: "blur(0px)",
+				}}
+				transition={{
+					type: "spring",
+					damping: 120,
+					stiffness: 900,
+					mass: 0.6,
+				}}
+				className="fixed top-0 w-full z-50 flex items-center justify-between p-6 "
+			>
+				<AnimatedLink href="/" className="flex items-center gap-2 size-12 ">
+					<Image
+						src="/moon-bl.svg"
+						alt="logo"
+						width={48}
+						height={48}
+						className="dark:invert w-full h-full"
+					/>
+					{/* <span className="text-3xl font-bold">Kaloyanes</span> */}
+				</AnimatedLink>
 
+				{/* 
 			<div className="flex items-center gap-4 justify-center flex-[2]">
 				{links.map((link) => (
 					<AnimatedLink
@@ -90,16 +90,35 @@ export default function Header() {
 						{link.label}
 					</AnimatedLink>
 				))}
-			</div>
+			</div> */}
 
-			<div className="flex-1 flex justify-end">
+				{/* <div className="flex-[0.1] flex justify-end">
 				<Link
 					href="/contact"
 					className="bg-white text-black px-6 py-2 rounded-full w-2/3 text-center text-lg font-semibold tracking-wide"
 				>
 					Contact
 				</Link>
-			</div>
-		</motion.header>
+			</div> */}
+				<motion.div
+					initial={{
+						scale: 1,
+					}}
+					whileHover={{
+						scale: 1.2,
+						rotate: 90,
+					}}
+					transition={{
+						type: "spring",
+						damping: 140,
+						stiffness: 900,
+						mass: 0.6,
+					}}
+					className="flex items-center justify-center rounded-full bg-primary size-12 p-2  "
+				>
+					<Menu className="text-primary-foreground size-12" strokeWidth={1.5} />
+				</motion.div>
+			</motion.header>
+		</>
 	);
 }

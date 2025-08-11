@@ -251,7 +251,7 @@ export default function Hero() {
 					transition={{
 						...spring,
 					}}
-					className="w-2/12 max-w-[150px] px-6 py-3 bg-white rounded-full text-black text-lg font-semibold tracking-wide text-center flex justify-center items-center contact-button"
+					className="w-2/12 max-w-[150px] px-6 py-3 bg-foreground rounded-full text-background text-lg font-semibold tracking-wide text-center flex justify-center items-center contact-button"
 				>
 					Contact
 				</motion.div>

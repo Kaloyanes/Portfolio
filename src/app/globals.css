@@ -126,6 +126,10 @@ body {
   }
 }
 
+@utility mask-to-t { 
+  mask: linear-gradient(to top, transparent 0%, rgba(0,0,0, 0.8) 50%, black 100%);
+}
+
 
 ::view-transition-group(root) { 
   z-index: auto !important;
