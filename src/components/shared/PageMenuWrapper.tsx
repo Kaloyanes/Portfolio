@@ -6,5 +6,5 @@ export default function PageMenuWrapper({
 }: {
 	children: React.ReactNode;
 }) {
-	return <motion.div className>{children}</motion.div>;
+	return <motion.div className="relative">{children}</motion.div>;
 }
