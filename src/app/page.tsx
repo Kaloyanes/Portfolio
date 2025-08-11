@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "motion/react";
 import Image from "next/image";
-import Hero from "@/components/sections/Hero";
+import Hero from "@/components/sections/Herо";
 import { Particles } from "@/components/shared/Particles";
 
 export default function Home() {
