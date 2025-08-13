@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "motion/react";
 import Image from "next/image";
-import Hero from "@/components/sections/Herо";
+import Hero from "@/components/sections/Hero";
 import { Particles } from "@/components/shared/Particles";
 
 export default function Home() {
@@ -12,9 +12,9 @@ export default function Home() {
 					className="absolute inset-0 -z-10"
 					quantity={500}
 					ease={50}
-					color={"#fff"}
+					color={"#000"}
 					refresh
-					size={0.3}
+					size={0.5}
 				/>
 				<Hero />
 			</div>

@@ -10,6 +10,7 @@ import { notFound } from "next/navigation";
 import { ViewTransitions } from "next-view-transitions";
 import LenisScrollProvider from "@/components/LenisProvider";
 import Cursor from "@/components/shared/Cursor";
+import Footer from "@/components/shared/Footer";
 import Header from "@/components/shared/Header";
 
 // Font files can be colocated inside of `app`
@@ -57,7 +58,7 @@ export default async function RootLayout({
 		<ViewTransitions>
 			<html lang="en">
 				<body
-					className={`${Switzer.className} ${Switzer.variable} ${PlayfairDisplay.variable} antialiased *:cursor-none m-0 p-0 dark`}
+					className={`${Switzer.className} ${Switzer.variable} ${PlayfairDisplay.variable} antialiased *:cursor-none m-0 p-0 `}
 				>
 					<LenisScrollProvider>
 						<div className="relative">
@@ -65,6 +66,8 @@ export default async function RootLayout({
 							<Header />
 
 							{children}
+
+							<Footer />
 						</div>
 					</LenisScrollProvider>
 				</body>

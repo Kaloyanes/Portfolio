@@ -70,11 +70,11 @@ export default function Header() {
 			>
 				<AnimatedLink href="/" className="flex items-center gap-2 size-12 ">
 					<Image
-						src="/moon-bl.svg"
+						src="/moon.svg"
 						alt="logo"
 						width={48}
 						height={48}
-						className="dark:invert w-full h-full"
+						className="mix-blend-difference w-full h-full"
 					/>
 					{/* <span className="text-3xl font-bold">Kaloyanes</span> */}
 				</AnimatedLink>
