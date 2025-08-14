@@ -5,21 +5,13 @@ import Hero from "@/components/sections/Hero";
 import { Particles } from "@/components/shared/Particles";
 
 export default function Home() {
-	return (
-		<div className="mx-[24px]">
-			<div className="h-screen py-[24px] overflow-clip">
-				<Particles
-					className="absolute inset-0 -z-10"
-					quantity={500}
-					ease={50}
-					color={"#000"}
-					refresh
-					size={0.5}
-				/>
-				<Hero />
-			</div>
+  return (
+    <div className="animate-in fade-in">
+      <div className="h-screen w-full overflow-clip ">
+        <Hero />
+      </div>
 
-			<div className="h-[200vh]"></div>
-		</div>
-	);
+      <div className="h-[200vh] mx-[24px]"></div>
+    </div>
+  );
 }
